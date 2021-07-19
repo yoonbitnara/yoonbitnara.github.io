@@ -3,7 +3,7 @@ title: "윈도우10 workbench 설치"
 tags: workbench설치 윈도우workbench설치 workbench
 ---
 
-> # 윈도우10에 workbench을 설치해보자.
+> # 윈도우10에 workbench를 설치해보자.
 > 시작메뉴에 MySQL Installer - Community를 클릭한다.
 > ![workbench](/assets/images/wb0.JPG)
 > <br>
