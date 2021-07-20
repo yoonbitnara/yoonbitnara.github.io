@@ -1,6 +1,6 @@
 ---
 title: "Mysql Quiz"
-tag : mysql문제 mysqlquiz mysql연습문제
+tag: mysql문제 mysqlquiz mysql연습문제
 ---
 
 ![quiz](/assets/images/mysqlquiz1.JPG)<br>
