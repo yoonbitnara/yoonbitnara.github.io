@@ -14,19 +14,21 @@ tags: JAVA 자바주사위
 ```java
 package pack_Random;
 
-public class Exercise05 {
+public class Main {
 
 	public static void main(String[] args) {
 		
-		for (int x = 0; x <= 10; x++) {
-			for (int y = 0; y <= 10; y++) {
-				if ((4 * x) + (5 * y) == 60) {
-					System.out.println("(" + x + ", " + y + ")");
-				}
-			}
+		Ex04 ex04 = new Ex04();
+		
+		int returnVar = 0;
+		
+		while (true) {
+			returnVar = ex04.mtd();
+			
+			if (returnVar == 1) break;
 		}
+		
 	}
-
 }
 ```
 <br>
