@@ -81,6 +81,10 @@ public class YaksuList implements Yaksu {
 		System.out.println();
 		System.out.println();
 	}
+
+	public int getRndNum() {
+		return rndNum;
+	}
 }
 ```
 <br>
@@ -91,18 +95,18 @@ public class YaksuList implements Yaksu {
 ```java
 package pack_Yaksu;
 
-public class YaksuSum implements Yaksu {
+public class YaksuSum extends YaksuList {
 	
-	private int rndNum;
-
 	public YaksuSum(int rndNum) {
-		this.rndNum = rndNum;
+		super(rndNum);
 	}
 
 	@Override
 	public void mtdYaksu() {
 		
 		int sum = 0;
+		
+		int rndNum = super.getRndNum();
 		
 		for (int i = 1; i <= rndNum; i++) {
 			
