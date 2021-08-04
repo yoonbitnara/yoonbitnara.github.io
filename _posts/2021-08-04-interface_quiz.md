@@ -14,19 +14,18 @@ tags: JAVAinterface
 package pack_Yaksu;
 
 public class ExamJava {
-	
-	static Yaksu objSuper;
-	static Yaksu objSub;
 
 	public static void main(String[] args) {
 		
-		int rndNum = (int) (Math.random() * 10) + 10; 
+		int rndValParam;
+		rndValParam = (int)((20-10+1)*Math.random() + 10);
 		
-		objSuper = new YaksuList(rndNum);
-		objSub = new YaksuSum(rndNum);
+		YaksuList objSuper = new YaksuList(rndValParam);
+		YaksuSum objSub = new YaksuSum(rndValParam);
+		
 		
 		System.out.println("[결과화면]\n");
-		System.out.println("생성된 랜덤 값 : " + rndNum);
+		System.out.println("생성된 랜덤 값 : " + rndValParam);
 		
 		objSuper.mtdYaksu();
 		objSub.mtdYaksu();
