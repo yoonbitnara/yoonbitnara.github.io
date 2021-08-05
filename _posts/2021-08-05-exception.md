@@ -19,7 +19,14 @@ tags: JAVAinterface
 <br>
 
 ## 수동으로 예외 발생시키기
-- 커스텀메서드에서 throws 구문을 사용하여 Exception 객체를 생성하고 전달.
+[커스텀 예외처리=익셉션 던지기]<br>
+생성자에서 입력값이 메인 메서드에서 지정한 조건과
+맞지 않을 경우
+"10이하의 자연수 입력"이라는<br>
+예외처리 메시지를 출력하도록 만들고
+지정한 조건과 일치하는 경우
+필드에 초기화하는 
+커스텀 예외처리 생성자를 구현.
 <br>
 <br>
 
@@ -83,3 +90,16 @@ public class Custom {
 	}
 }
 ```
+<br>
+<br>
+<br>
+
+## 결과
+
+10이하의 자연수 입력시<br>
+![exception res](/assets/images/excep1.PNG)
+<br>
+<br>
+
+10이상 1이하의 자연수 입력시<br>
+![exception res](/assets/images/excep2.PNG)
