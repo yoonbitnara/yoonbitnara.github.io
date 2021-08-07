@@ -58,4 +58,4 @@ public class Main {
 		}
 }
 ```
-![collection](/assets/images/collection.PNG)
+![collection](/assets/images/collection.png)
