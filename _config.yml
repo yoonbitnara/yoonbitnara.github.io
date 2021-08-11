@@ -102,7 +102,7 @@ analytics:
 # Site Author
 author:
   name             : "pitbull terrier"
-  avatar           : "/assets/images/dog.jpg"
+  avatar           : "/assets/images/main_img.PNG"
   bio              : "안되면 될때까지 물어뜯음."
   location         : "South Korea"
   email            :
