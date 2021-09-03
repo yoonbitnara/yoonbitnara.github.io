@@ -1,6 +1,8 @@
 ---
 title: "JAVA 두 개의 주사위(커스텀 클래스 활용)"
 tags: JAVA 자바주사위 
+categories: 
+    - Algorithm
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 title: "JAVA 두 개의 주사위"
 tags: JAVA 자바주사위 
+categories: 
+    - Algorithm
 ---
 
 

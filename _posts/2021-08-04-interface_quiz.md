@@ -1,6 +1,8 @@
 ---
 title: "JAVA interface quiz"
 tags: JAVAinterface 
+categories: 
+    - Algorithm
 ---
 
 

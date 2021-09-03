@@ -1,6 +1,8 @@
 ---
 title: "java 프리랜서 세금 계산"
 tags: java built-in class 자바내장클래스 자바세금계산
+categories: 
+    - Algorithm
 ---
 
 > # 문제

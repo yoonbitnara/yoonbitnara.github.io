@@ -1,6 +1,8 @@
 ---
 title: "java built-in class 주민등록번호 입력 후 나이,성별 반환"
 tags: java built-in class 자바내장클래스 자바주민등록번호 자바나이성별반환
+categories: 
+    - Algorithm
 ---
 
 > # 문제
