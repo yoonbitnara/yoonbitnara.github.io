@@ -1,4 +1,4 @@
-{% comment %} {% assign document = post | default: page %} {% if document.read_time or
+{% assign document = post | default: page %} {% if document.read_time or
 document.show_date %}
 <p class="page__meta">
   {% if document.show_date and document.date %} {% assign date = document.date
@@ -19,8 +19,12 @@ document.show_date %}
   >{% endif %} {% if document.read_time %} {% assign words_per_minute =
   document.words_per_minute | default: site.words_per_minute | default: 200 %}
   {% assign words = document.content | strip_html | number_of_words %}
+  </span>
+  {% endif %}
+</p>
+{% endif %}
 
-  <span class="page__meta-readtime">
+{% comment %} <span class="page__meta-readtime">
     <i
       class="far {% if include.type == 'grid' and document.read_time and document.show_date %}fa-fw {% endif %}fa-clock"
       aria-hidden="true"
@@ -32,8 +36,4 @@ document.show_date %}
     site.data.ui-text[site.locale].minute_read | default: "minute read" }} {%
     else %} {{ words | divided_by: words_per_minute }} {{
     site.data.ui-text[site.locale].minute_read | default: "minute read" }} {%
-    endif %}
-  </span>
-  {% endif %}
-</p>
-{% endif %} {% endcomment %}
+    endif %} {% endcomment %}
