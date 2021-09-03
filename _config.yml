@@ -272,9 +272,10 @@ defaults:
       type: posts
     values:
       layout: single
-      show_date: true
       author_profile: true
-      # read_time: true
-      comments: # true
+      read_time: true
+      comments: true
       share: true
       related: true
+      mathjax: true
+      sidebar_main: true
