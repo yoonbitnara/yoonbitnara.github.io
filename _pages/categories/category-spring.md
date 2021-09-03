@@ -1,11 +1,11 @@
 ---
-title: "JAVA"
+title: "SPRING"
 layout: archive
-permalink: categories/java
+permalink: categories/spring
 author_profile: true
 sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.java %}
+{% assign posts = site.categories.spring %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
