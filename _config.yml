@@ -278,8 +278,3 @@ defaults:
       comments: # true
       share: true
       related: true
-
-
-# Where are tags and categories displayed
-# tag_page: '/blog/tags/'
-# category_page: '/blog/categories/'
