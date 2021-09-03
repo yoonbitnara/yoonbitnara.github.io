@@ -1,4 +1,4 @@
-{% assign document = post | default: page %} {% if document.read_time or
+{% comment %} {% assign document = post | default: page %} {% if document.read_time or
 document.show_date %}
 <p class="page__meta">
   {% if document.show_date and document.date %} {% assign date = document.date
@@ -36,4 +36,4 @@ document.show_date %}
   </span>
   {% endif %}
 </p>
-{% endif %}
+{% endif %} {% endcomment %}
