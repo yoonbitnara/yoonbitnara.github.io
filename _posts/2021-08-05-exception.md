@@ -1,6 +1,8 @@
 ---
 title: "JAVA 예외처리에 대하여"
 tags: JAVAinterface 
+categories: 
+    - Java
 ---
 
 

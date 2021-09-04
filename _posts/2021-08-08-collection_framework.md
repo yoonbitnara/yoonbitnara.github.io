@@ -1,6 +1,8 @@
 ---
 title: "JAVA 컬렉션 프레임워크 & 제네릭"
 tags: JAVA JAVACollectionFramework 
+categories: 
+    - Java
 ---
 
 
