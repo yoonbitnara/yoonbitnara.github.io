@@ -279,7 +279,3 @@ defaults:
       related: true
       mathjax: true
       sidebar_main: true
-
-dark_theme_toggle        : true # 다크 모드 토글 기능 추가
-footer_scripts:
-  - /assets/js/custom/dark-theme.js
