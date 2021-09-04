@@ -12,7 +12,7 @@
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
-        <span class="nav__sub-title">Programming Languages/Frameworks</span>
+        <span class="nav__sub-title">언어/프레임워크</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/java 주소의 글로 링크 연결-->
@@ -25,8 +25,23 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "Python" %}
+                        <li><a href="/categories/python" class="">PYTHON ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "Spring" %}
                         <li><a href="/categories/spring" class="">SPRING ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <span class="nav__sub-title">DB</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Mysql" %}
+                        <li><a href="/categories/mysql" class="">MySQL({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

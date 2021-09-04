@@ -1,6 +1,8 @@
 ---
 title: "윈도우10 Mysql 설치"
 tags: mysql설치 윈도우mysql설치 mysql
+categories: 
+    - Mysql
 ---
 
 > # 윈도우10에 mysql을 설치해보자.

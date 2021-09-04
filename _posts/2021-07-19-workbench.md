@@ -1,6 +1,8 @@
 ---
 title: "윈도우10 workbench 설치"
 tags: workbench설치 윈도우workbench설치 workbench
+categories: 
+    - Mysql
 ---
 
 > # 윈도우10에 workbench를 설치해보자.

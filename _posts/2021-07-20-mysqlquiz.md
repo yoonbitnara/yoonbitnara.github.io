@@ -1,6 +1,8 @@
 ---
 title: "Mysql Quiz"
 tags: mysql문제 mysqlquiz mysql연습문제
+categories: 
+    - Mysql
 ---
 
 ![quiz](/assets/images/mysqlquiz1.JPG)<br>
