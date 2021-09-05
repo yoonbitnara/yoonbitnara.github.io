@@ -64,7 +64,7 @@
              <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Til" %}
-                        <li><a href="/categories/til" class="">Today I Learn({{category[1].size}})</a></li>
+                        <li><a href="/categories/til" class="">ETC({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
