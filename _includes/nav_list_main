@@ -32,6 +32,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "R" %}
+                        <li><a href="/categories/r" class="">R언어 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "Spring" %}
                         <li><a href="/categories/spring" class="">SPRING ({{category[1].size}})</a></li>
                     {% endif %}
