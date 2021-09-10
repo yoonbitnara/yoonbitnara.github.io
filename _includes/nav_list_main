@@ -38,6 +38,14 @@
                 {% endfor %}
             </ul>
             <ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Js" %}
+                        <li><a href="/categories/js" class="">JavaScript  ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Spring" %}
                         <li><a href="/categories/spring" class="">SPRING ({{category[1].size}})</a></li>
