@@ -325,15 +325,16 @@ body {
   margin-bottom: 8px;
   padding: 3px 8px;
   text-decoration: none;
-  border: 1px solid $background-color;
-  border-radius: $border-radius;
+  border: 1px solid #fff;
+  border-radius: 10px;
   background-color: #4D5357;
-  font-family: $serif;
-  color: $primary-color;
+  font-family: Georgia,Times,serif;
+  color: white;
+  font-weight: bold;
 
   &:hover {
     text-decoration: none;
-    color: mix(#00adb5, $text-color, 40%); /* 커서 댈 때 색깔 */
+    color: mix(red, $text-color, 40%); /* 커서 댈 때 색깔 */
   }
 }
 
