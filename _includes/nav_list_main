@@ -76,6 +76,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        <span class="nav__sub-title">📕컴퓨터공학</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Internet" %}
+                        <li><a href="/categories/internet" class="">인터넷({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         <span class="nav__sub-title">🎸기타</span>
             <ul>
                 {% for category in site.categories %}
