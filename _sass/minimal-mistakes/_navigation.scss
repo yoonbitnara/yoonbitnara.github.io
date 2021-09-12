@@ -116,7 +116,7 @@
       }
     }
   }
-  .pagination_prev_next {
+.pagination_prev_next {
     @include clearfix();
     float: left;
     width: 100%;
@@ -174,9 +174,9 @@
         color: rgba($muted-text-color, 0.5);
         pointer-events: none;
         cursor: not-allowed;
-      }
     }
   }
+}
 
   /* next/previous buttons */
   &--pager {
