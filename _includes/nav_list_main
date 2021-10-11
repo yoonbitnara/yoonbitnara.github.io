@@ -32,6 +32,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "Servlet" %}
+                        <li><a href="/categories/servlet" class="">Servlet/JSP ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "Python" %}
                         <li><a href="/categories/python" class="">PYTHON ({{category[1].size}})</a></li>
                     {% endif %}
