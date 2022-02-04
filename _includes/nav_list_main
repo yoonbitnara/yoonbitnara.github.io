@@ -70,14 +70,14 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Mysql" %}
-                        <li><a href="/categories/mysql" class="">MySQL({{category[1].size}})</a></li>
+                        <li><a href="/categories/mysql" class="">MySQL ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Oracle" %}
-                        <li><a href="/categories/oracle" class="">Oracle({{category[1].size}})</a></li>
+                        <li><a href="/categories/oracle" class="">Oracle ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -85,7 +85,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Bigdata" %}
-                        <li><a href="/categories/bigdata" class="">빅데이터({{category[1].size}})</a></li>
+                        <li><a href="/categories/bigdata" class="">빅데이터 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -93,7 +93,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "HtmlCss" %}
-                        <li><a href="/categories/htmlcss" class="">HTML/CSS({{category[1].size}})</a></li>
+                        <li><a href="/categories/htmlcss" class="">HTML/CSS ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -101,7 +101,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Internet" %}
-                        <li><a href="/categories/internet" class="">인터넷({{category[1].size}})</a></li>
+                        <li><a href="/categories/internet" class="">인터넷 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -116,7 +116,7 @@
              <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Til" %}
-                        <li><a href="/categories/til" class="">ETC({{category[1].size}})</a></li>
+                        <li><a href="/categories/til" class="">ETC ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
