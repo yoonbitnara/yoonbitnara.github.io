@@ -1,5 +1,5 @@
 ---
-title: "MySQL"
+title: "MySQL&Oracle"
 layout: archive
 permalink: categories/mysql
 author_profile: true
