@@ -66,6 +66,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Linux" %}
+                        <li><a href="/categories/linux" class="">Linux ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
             <span class="nav__sub-title">⚙️데이터베이스</span>
             <ul>
                 {% for category in site.categories %}
@@ -74,13 +81,6 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-            {% comment %} <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Oracle" %}
-                        <li><a href="/categories/oracle" class="">Oracle ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul> {% endcomment %}
             <span class="nav__sub-title">🧮빅데이터</span>
             <ul>
                 {% for category in site.categories %}
