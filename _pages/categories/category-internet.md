@@ -1,5 +1,5 @@
 ---
-title: "인터넷"
+title: "컴퓨터 네트워크"
 layout: archive
 permalink: categories/internet
 author_profile: true
