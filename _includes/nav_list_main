@@ -101,7 +101,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Internet" %}
-                        <li><a href="/categories/internet" class="">인터넷 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/internet" class="">컴퓨터 네트워크 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
