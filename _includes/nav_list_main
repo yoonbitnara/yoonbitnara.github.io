@@ -68,6 +68,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "Shoppingmall" %}
+                        <li><a href="/categories/Shoppingmall" class="">스프링 쇼핑몰 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "Linux" %}
                         <li><a href="/categories/linux" class="">Linux ({{category[1].size}})</a></li>
                     {% endif %}
