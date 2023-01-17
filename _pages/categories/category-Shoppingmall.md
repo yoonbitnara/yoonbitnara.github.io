@@ -1,7 +1,7 @@
 ---
 title: "쇼핑몰"
 layout: archive
-permalink: categories/Shoppingmall
+permalink: categories/shoppingmall
 author_profile: true
 sidebar_main: true
 ---
