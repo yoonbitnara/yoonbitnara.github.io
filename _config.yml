@@ -16,7 +16,7 @@ minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "n
 
 # Site Settings
 locale: "en-US"
-title: "Devlog"
+title: "Pitbull terrier Devlog"
 title_separator: "|"
 subtitle: # site tagline that appears below site title in masthead
 name: "pitbull terrier"
@@ -100,29 +100,29 @@ analytics:
 
 # Site Author
 author:
-  name: "pitbull terrier"
+  name: 
   avatar: "/assets/images/main_img.PNG"
-  bio: "안되면 될때까지 물어뜯음."
-  location: "South Korea"
+  bio: 
+  location: 
   email:
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:yoonbitnara@gmail.com"
-    - label: "Previous Blog"
-      icon: "fas fa-fw fa-link"
-      url: "https://velog.io/@ybnr_92"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/yoonbitnara"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
+    # - label: "Email"
+    #   icon: "fas fa-fw fa-envelope-square"
+    #   url: "mailto:yoonbitnara@gmail.com"
+    # - label: "Previous Blog"
+    #   icon: "fas fa-fw fa-link"
+    #   url: "https://velog.io/@ybnr_92"
+    # - label: "Twitter"
+    #   icon: "fab fa-fw fa-twitter-square"
+    #   # url: "https://twitter.com/"
+    # - label: "Facebook"
+    #   icon: "fab fa-fw fa-facebook-square"
+    #   # url: "https://facebook.com/"
+    # - label: "GitHub"
+    #   icon: "fab fa-fw fa-github"
+    #   url: "https://github.com/yoonbitnara"
+    # - label: "Instagram"
+    #   icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
 
 # Site Footer
