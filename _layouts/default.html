@@ -12,21 +12,10 @@
   <head>
     {% include head.html %}
     {% include head/custom.html %}
-    <style> 
-      ::-webkit-scrollbar{width: 16px;}
-      ::-webkit-scrollbar-track {background-color:#E6E6E6; border-radius: 13px;}
-      ::-webkit-scrollbar-thumb {background-color:#848484; border-radius: 13px;}
-      ::-webkit-scrollbar-thumb:hover {background: #FE2E2E;}
-      ::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment 
-      {
-          width:12px;height:12px;background:transparent;}
-      } 
-    </style>
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
     {% include_cached skip-links.html %}
-    {% include_cached browser-upgrade.html %}
     {% include_cached masthead.html %}
 
     <div class="initial-content">
@@ -39,14 +28,10 @@
       </div>
     {% endif %}
 
-    <div id="footer" class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include_cached footer.html %}
-      </footer>
-    </div>
-
     {% include scripts.html %}
 
+    <div id="toTop" style="display: none;">
+      <i class="fa-solid fa-angle-up"></i> 
+    </div>
   </body>
 </html>

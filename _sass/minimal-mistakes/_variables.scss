@@ -14,19 +14,19 @@ $indent-var: 1.3em !default;
 
 /* system typefaces */
 $serif: Georgia, Times, serif !default;
-$sans-serif: -apple-system, BlinkMacSystemFont,"Noto Sans KR", "Roboto", "Segoe UI",
-  "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
-$monospace: Monaco, Consolas, "Lucida Console", monospace !default;
+$sans-serif: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Lucida Grande',
+  Arial, sans-serif !default;
+$monospace: Monaco, Consolas, 'Lucida Console', monospace !default;
 
 /* sans serif typefaces */
 $sans-serif-narrow: $sans-serif !default;
-$helvetica: Helvetica, "Helvetica Neue", Arial, sans-serif !default;
+$helvetica: Helvetica, 'Helvetica Neue', Arial, sans-serif !default;
 
 /* serif typefaces */
 $georgia: Georgia, serif !default;
 $times: Times, serif !default;
-$bodoni: "Bodoni MT", serif !default;
-$calisto: "Calisto MT", serif !default;
+$bodoni: 'Bodoni MT', serif !default;
+$calisto: 'Calisto MT', serif !default;
 $garamond: Garamond, serif !default;
 
 $global-font-family: $sans-serif !default;
@@ -42,6 +42,7 @@ $type-size-5: 1em !default; // ~16px
 $type-size-6: 0.75em !default; // ~12px
 $type-size-7: 0.6875em !default; // ~11px
 $type-size-8: 0.625em !default; // ~10px
+$type-size-9: 0.5625em !default; // ~9px
 
 /* headline scale */
 $h-size-1: 1.563em !default; // ~25.008px
@@ -59,7 +60,7 @@ $gray: #7a8288 !default;
 $dark-gray: mix(#000, $gray, 50%) !default;
 $darker-gray: mix(#000, $gray, 60%) !default;
 $light-gray: mix(#fff, $gray, 50%) !default;
-$lighter-gray: mix(#fff, $gray, 90%) !default;
+$lighter-gray: mix(#fff, $gray, 80%) !default;
 
 $background-color: #fff !default;
 $code-background-color: #fafafa !default;
@@ -71,6 +72,7 @@ $form-background-color: $lighter-gray !default;
 $footer-background-color: $lighter-gray !default;
 
 $primary-color: #6f777d !default;
+$highlight-color: #0091ff !default;
 $success-color: #3fa63f !default;
 $warning-color: #d67f05 !default;
 $danger-color: #ee5f5b !default;
@@ -111,7 +113,7 @@ $youtube-color: #bb0000 !default;
 $xing-color: #006567 !default;
 
 /* links */
-$link-color: mix(#000, $info-color, 20%) !default;
+$link-color: mix(#000, $highlight-color, 20%) !default;
 $link-color-hover: mix(#000, $link-color, 25%) !default;
 $link-color-visited: mix(#fff, $link-color, 15%) !default;
 $masthead-link-color: $primary-color !default;

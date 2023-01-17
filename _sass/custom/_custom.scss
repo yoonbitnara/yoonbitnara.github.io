@@ -1,0 +1,35 @@
+.page__taxonomy {
+  margin-top: 5px;
+  display: block;
+
+  @include breakpoint($small) {
+    margin-left: 8px;
+    display: inline;
+  }
+}
+
+.page__taxonomy-item-tag {
+  display: inside;
+  margin-right: 5px;
+  margin-bottom: 8px;
+  padding: 3px 8px;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+}
+
+#toTop {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  background-color: $primary-color;
+  color: $background-color;
+  opacity: 35%;
+  border-radius: 50%;
+  right: 5.5%;
+  bottom: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}

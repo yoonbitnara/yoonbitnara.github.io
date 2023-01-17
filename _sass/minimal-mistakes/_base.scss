@@ -13,12 +13,27 @@ body {
   padding: 0;
   color: $text-color;
   font-family: $global-font-family;
-  line-height: 1.5;
+  line-height: 1.75;
 
   &.overflow--hidden {
     /* when primary navigation is visible, the content in the background won't scroll */
     overflow: hidden;
   }
+}
+
+body::-webkit-scrollbar {
+  width: 9px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: $background-color; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: mix($background-color, $muted-text-color, 50%); /* color of the scroll thumb */
+  border-right: 6px solid $background-color; /* creates padding around scroll thumb */
+  border-top: 10px solid $background-color;
+  border-bottom: 10px solid $background-color;
 }
 
 h1,
@@ -65,6 +80,11 @@ small,
 
 p {
   margin-bottom: 1.3em;
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 u,
@@ -117,7 +137,7 @@ blockquote {
     font-style: italic;
 
     &:before {
-      content: "\2014";
+      content: '\2014';
       padding-right: 5px;
     }
   }
@@ -127,6 +147,8 @@ blockquote {
 
 a {
   text-decoration: none;
+  cursor: pointer;
+
   &:focus {
     @extend %tab-focus;
   }
@@ -159,24 +181,6 @@ pre {
 
 pre {
   overflow-x: auto; /* add scrollbars to wide code blocks*/
-}
-
-p > code,
-a > code,
-li > code,
-figcaption > code,
-td > code {
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-  font-size: 0.8em;
-  background: $code-background-color;
-  border-radius: $border-radius;
-
-  &:before,
-  &:after {
-    letter-spacing: -0.2em;
-    content: "\00a0"; /* non-breaking space*/
-  }
 }
 
 /* horizontal rule */
@@ -349,10 +353,14 @@ a,
 tr,
 td,
 form button,
-input[type="submit"],
+input[type='submit'],
 .btn,
 .highlight,
 .archive__item-teaser {
   -webkit-transition: $global-transition;
   transition: $global-transition;
+}
+
+ol {
+  margin-bottom: 0;
 }

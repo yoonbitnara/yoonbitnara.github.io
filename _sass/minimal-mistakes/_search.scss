@@ -5,6 +5,15 @@
 .layout--search {
   .archive__item-teaser {
     margin-bottom: 0.25em;
+    height: 50vw;
+
+    @include breakpoint($large) {
+      height: 40vw;
+    }
+
+    @include breakpoint($x-large) {
+      height: 30vw;
+    }
   }
 }
 
@@ -50,7 +59,6 @@
     @include breakpoint($x-large) {
       max-width: $max-width;
     }
-
   }
 
   &__form {
@@ -81,7 +89,7 @@
     visibility: visible;
 
     &::after {
-      content: "";
+      content: '';
       display: block;
     }
   }

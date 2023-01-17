@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .archive {
-  margin-top: 1em;
+  margin-top: 2em;
   margin-bottom: 2em;
 
   @include breakpoint($large) {
@@ -18,6 +18,13 @@
   }
 }
 
+.archive-item > div {
+  margin-bottom: 14px;
+  @include breakpoint($small) {
+    margin-bottom: 2px;
+  }
+}
+
 .archive__item {
   position: relative;
 
@@ -26,7 +33,7 @@
     z-index: 10;
   }
 
-  a[rel="permalink"] {
+  a[rel='permalink'] {
     position: static;
   }
 }
@@ -50,7 +57,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  a[rel="permalink"]::before {
+  a[rel='permalink']::before {
     content: '';
     position: absolute;
     left: 0;
@@ -92,6 +99,8 @@
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -196,9 +205,18 @@
     }
   }
 
+  // 날짜
   .page__meta {
     margin: 0 0 4px;
-    font-size: 0.6em;
+    font-size: $type-size-7;
+
+    @include breakpoint($medium) {
+      font-size: $type-size-8;
+    }
+
+    @include breakpoint($small) {
+      font-size: $type-size-9;
+    }
   }
 
   .page__meta-sep {
@@ -209,27 +227,56 @@
     }
   }
 
+  // 제목
   .archive__item-title {
     margin-top: 0.5em;
-    font-size: $type-size-5;
-  }
+    font-size: $type-size-4;
 
-  .archive__item-excerpt {
-    display: none;
+    a {
+      text-decoration: none;
+    }
 
     @include breakpoint($medium) {
-      display: block;
+      margin-top: 0.4em;
+      font-size: $type-size-5;
+    }
+
+    @include breakpoint($small) {
+      margin-top: 0.3em;
       font-size: $type-size-6;
     }
   }
 
-  .archive__item-teaser {
+  // 설명
+  .archive__item-excerpt {
+    font-size: $type-size-6;
+
+    @include breakpoint($medium) {
+      font-size: $type-size-7;
+    }
+
     @include breakpoint($small) {
-      max-height: 200px;
+      font-size: $type-size-8;
+    }
+  }
+
+  .archive__item-teaser {
+    height: 50vw;
+
+    @include breakpoint($small) {
+      height: 30vw;
     }
 
     @include breakpoint($medium) {
-      max-height: 120px;
+      height: 15vw;
+    }
+
+    @include breakpoint($large) {
+      height: 11vw;
+    }
+
+    @include breakpoint($x-large) {
+      height: 136px;
     }
   }
 }
@@ -442,7 +489,7 @@
    Wide Pages
    ========================================================================== */
 
-  .wide {
+.wide {
   .archive {
     @include breakpoint($large) {
       padding-right: 0;
@@ -457,7 +504,7 @@
 /* Place inside a single layout */
 
 .layout--single {
-	.feature__wrapper {
-		display: inline-block;
-	}
+  .feature__wrapper {
+    display: inline-block;
+  }
 }
