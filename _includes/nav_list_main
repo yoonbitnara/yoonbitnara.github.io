@@ -101,7 +101,14 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Internet" %}
-                        <li><a href="/categories/internet" class="">컴퓨터 공학 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/internet" class="">네트워크 및 기타 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DiscreteMathematics" %}
+                        <li><a href="/categories/discretemathematics" class="">이산수학 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
