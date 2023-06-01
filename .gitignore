@@ -29,7 +29,7 @@ _asset_bundler_cache
 _site
 
 #sh deploy
-.sh
+*.sh
 
 # Created by https://www.toptal.com/developers/gitignore/api/powershell
 # Edit at https://www.toptal.com/developers/gitignore?templates=powershell
