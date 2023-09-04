@@ -18,7 +18,7 @@ minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "n
 locale: "en-US"
 title: "Pitbull terrier Devlog"
 title_separator: "|"
-subtitle: "만약 노력도 재능이면 내 재능은 어딜 가도 꿀리지 않음." # site tagline that appears below site title in masthead
+subtitle: "만약 노력도 재능이면 내 재능은 어딜 가도 꿀리지 않는다." # site tagline that appears below site title in masthead
 name: "pitbull terrier"
 description: "A website for organizing what I have learned."
 url: "https://yoonbitnara.github.io"
