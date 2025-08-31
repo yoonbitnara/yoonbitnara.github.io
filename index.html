@@ -373,19 +373,6 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="spring-contents">
-                                <!-- 디버깅: Spring 카테고리 게시물 수 -->
-                                <div style="color: red; font-weight: bold;">
-                                    DEBUG: site.categories.Spring = {{ site.categories.Spring.size }}개
-                                </div>
-                                
-                                <!-- 디버깅: 모든 카테고리 목록 -->
-                                <div style="color: blue; font-weight: bold;">
-                                    DEBUG: 모든 카테고리: 
-                                    {% for category in site.categories %}
-                                        {{ category[0] }}({{ category[1].size }}) 
-                                    {% endfor %}
-                                </div>
-                                
                                 {% for post in site.categories.Spring %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
@@ -980,7 +967,7 @@ layout: default
 
 .folder-contents.show {
     display: block;
-    max-height: 1000px;
+    max-height: none;
     animation: slideDown 0.3s ease;
 }
 
