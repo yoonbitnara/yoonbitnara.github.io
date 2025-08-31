@@ -1,19 +1,18 @@
 # Site Settings
 title: "PitBull Terrier Devlog"
-subtitle: "개발자의 성장 스토리"
 name: "pitbull terrier"
-description: "만약 노력도 재능이면, 내 재능은 어딜가도 꿀리지 않는다"
+description: "만약 노력이 재능이리면, 내 재능은 어딜가도 꿀리지 않는다"
 url: "https://yoonbitnara.github.io"
 baseurl: ""
 
 # Profile Settings
 avatar: "/assets/images/main_img.PNG"
-bio: "만약 노력도 재능이면, 내 재능은 어딜가도 꿀리지 않는다"
+bio: "만약 노력이 재능이리면, 내 재능은 어딜가도 꿀리지 않는다"
 location: "South Korea"
 email: "ybnr92@gmail.com"
 
 # Pagination
-paginate: 6
+paginate: 1000
 paginate_path: "/page:num/"
 
 # Social Links

@@ -373,9 +373,7 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="spring-contents">
-                                {% for post in site.posts %}
-                                    {% for category in post.categories %}
-                                        {% if category == 'Spring' %}
+                                {% for post in site.categories.Spring %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -385,8 +383,6 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
-                                        {% endif %}
-                                    {% endfor %}
                                 {% endfor %}
                             </div>
                             
