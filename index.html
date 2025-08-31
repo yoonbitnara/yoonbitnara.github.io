@@ -373,17 +373,7 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="spring-contents">
-                                {% for post in site.categories.Spring %}
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="{{ post.url }}">{{ post.title }}</a>
-                                    </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
-                                </div>
-                                {% endfor %}
+                                <!-- Spring 게시물들이 여기에 동적으로 로드됩니다 -->
                             </div>
                             
                             <!-- TIL 폴더 -->
@@ -1212,7 +1202,49 @@ layout: default
                 contents.classList.add('show');
                 icon.className = 'fa fa-folder-open';
                 console.log('Folder opened:', folderName);
+                
+                // Spring 폴더인 경우 동적으로 게시물 로드
+                if (folderName === 'spring' && contents.children.length === 0) {
+                    loadSpringPosts(contents);
+                }
             }
+        }
+        
+        function loadSpringPosts(container) {
+            // Spring 게시물 데이터 (실제로는 서버에서 가져와야 함)
+            const springPosts = [
+                {% for post in site.posts %}
+                    {% for category in post.categories %}
+                        {% if category == 'Spring' %}
+                {
+                    title: "{{ post.title | escape }}",
+                    url: "{{ post.url }}",
+                    date: "{{ post.date | date: '%Y-%m-%d' }}"
+                },
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            ];
+            
+            // 중복 제거 (Jekyll에서 중복이 발생할 수 있음)
+            const uniquePosts = springPosts.filter((post, index, self) => 
+                index === self.findIndex(p => p.url === post.url)
+            );
+            
+            // 게시물 HTML 생성
+            container.innerHTML = uniquePosts.map(post => `
+                <div class="file-item file-item">
+                    <div class="file-icon">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <div class="file-name">
+                        <a href="${post.url}">${post.title}</a>
+                    </div>
+                    <div class="file-meta">${post.date}</div>
+                </div>
+            `).join('');
+            
+            console.log(`Loaded ${uniquePosts.length} Spring posts`);
         }
 
         // 검색 기능
