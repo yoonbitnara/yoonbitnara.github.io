@@ -11,9 +11,9 @@ bio: "만약 노력이 재능이리면, 내 재능은 어딜가도 꿀리지 않
 location: "South Korea"
 email: "ybnr92@gmail.com"
 
-# Pagination
-paginate: 1000
-paginate_path: "/page:num/"
+# Pagination - disabled to load all posts
+# paginate: 1000
+# paginate_path: "/page:num/"
 
 # Social Links
 social:
