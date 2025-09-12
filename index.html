@@ -29,131 +29,169 @@ layout: default
     </div>
 </section>
 
-<!-- ***** Main Content Section Start ***** -->
-<section class="section main-content-section" id="main-content">
+<!-- ***** GitHub Style Repository View ***** -->
+<section class="section github-style-section" id="repository">
     <div class="container">
         <div class="row">
-            <!-- 카테고리 사이드바 -->
-            <div class="col-lg-3 col-md-4">
-                <div class="sidebar-categories">
-                    <h3>Categories</h3>
-                    <div class="category-list">
-                        <a href="/categories/algorithm/" class="category-item">
-                            <i class="fa fa-brain"></i>
-                            <span>Algorithm</span>
-                        </a>
-                        <a href="/categories/big/" class="category-item">
-                            <i class="fa fa-chart-bar"></i>
-                            <span>Big Data</span>
-                        </a>
-                        <a href="/categories/computerstructure/" class="category-item">
-                            <i class="fa fa-microchip"></i>
-                            <span>Computer Structure</span>
-                        </a>
-                        <a href="/categories/discretemathematics/" class="category-item">
-                            <i class="fa fa-calculator"></i>
-                            <span>Discrete Math</span>
-                        </a>
-                        <a href="/categories/htmlcss/" class="category-item">
-                            <i class="fa fa-html5"></i>
-                            <span>HTML/CSS</span>
-                        </a>
-                        <a href="/categories/internet/" class="category-item">
-                            <i class="fa fa-globe"></i>
-                            <span>Internet</span>
-                        </a>
-                        <a href="/categories/java/" class="category-item">
-                            <i class="fa fa-coffee"></i>
-                            <span>Java</span>
-                        </a>
-                        <a href="/categories/jdbc/" class="category-item">
-                            <i class="fa fa-database"></i>
-                            <span>JDBC</span>
-                        </a>
-                        <a href="/categories/js/" class="category-item">
-                            <i class="fa fa-js"></i>
-                            <span>JavaScript</span>
-                        </a>
-                        <a href="/categories/linux/" class="category-item">
-                            <i class="fa fa-linux"></i>
-                            <span>Linux</span>
-                        </a>
-                        <a href="/categories/mysql/" class="category-item">
-                            <i class="fa fa-database"></i>
-                            <span>MySQL</span>
-                        </a>
-                        <a href="/categories/python/" class="category-item">
-                            <i class="fa fa-python"></i>
-                            <span>Python</span>
-                        </a>
-                        <a href="/categories/r/" class="category-item">
-                            <i class="fa fa-chart-line"></i>
-                            <span>R</span>
-                        </a>
-                        <a href="/categories/servlet/" class="category-item">
-                            <i class="fa fa-server"></i>
-                            <span>Servlet</span>
-                        </a>
-                        <a href="/categories/spring/" class="category-item">
-                            <i class="fa fa-leaf"></i>
-                            <span>Spring</span>
-                        </a>
-                        <a href="/categories/til/" class="category-item">
-                            <i class="fa fa-book"></i>
-                            <span>TIL</span>
-                        </a>
+            <div class="col-lg-12">
+                <!-- Repository Header -->
+                <div class="repo-header">
+                    <div class="repo-title">
+                        <h2><i class="fa fa-folder"></i> PitBull Terrier Devlog</h2>
+                        <p>개발자의 성장 스토리와 학습 기록</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- 게시글 메인 영역 -->
-            <div class="col-lg-9 col-md-8">
-                <div class="posts-main">
-                    <div class="section-heading">
-                        <h2>Recent Posts</h2>
-                        <span>개발자의 성장 스토리</span>
-                    </div>
-                    
-                    <div class="posts-grid">
-                        {% for post in site.posts limit:6 %}
-                        <div class="post-card">
-                            <div class="post-header">
-                                <div class="post-category">
-                                    {% if post.categories %}
-                                        {% for category in post.categories limit:1 %}
-                                            <span class="category-tag">{{ category | upcase }}</span>
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
-                                <div class="post-date">{{ post.date | date: "%Y.%m.%d" }}</div>
-                            </div>
-                            <div class="post-content">
-                                <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-                                <p>{{ post.excerpt | truncate: 120 }}</p>
-                                <div class="post-tags">
-                                    {% if post.tags %}
-                                        {% for tag in post.tags limit:3 %}
-                                            <span class="tag">{{ tag }}</span>
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <a href="{{ post.url }}" class="read-more-btn">
-                                    <i class="fa fa-arrow-right"></i> Read More
-                                </a>
+                
+                <!-- Repository Content -->
+                <div class="repo-content">
+                    <div class="file-explorer">
+                        <div class="explorer-header">
+                            <div class="breadcrumb">
+                                <span class="breadcrumb-item">
+                                    <i class="fa fa-home"></i> yoonbitnara.github.io
+                                </span>
                             </div>
                         </div>
-                        {% endfor %}
-                    </div>
-                    
-                    <!-- 페이지네이션 -->
-                    <div class="pagination-wrapper">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination" id="pagination">
-                                <!-- JavaScript로 동적 생성 -->
-                            </ul>
-                        </nav>
+                        
+                        <div class="file-list">
+                            <!-- Algorithm 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('algorithm')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">Algorithm</div>
+                                <div class="file-meta">15 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="algorithm-contents">
+                                {% for post in site.categories.algorithm limit:5 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Java 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('java')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">Java</div>
+                                <div class="file-meta">27 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="java-contents">
+                                {% for post in site.categories.java limit:5 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Spring 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('spring')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">Spring</div>
+                                <div class="file-meta">69 files</div>
+                                <div class="file-date">1 year ago</div>
+                            </div>
+                            <div class="folder-contents" id="spring-contents">
+                                {% for post in site.categories.spring limit:5 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- MySQL 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('mysql')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">MySQL</div>
+                                <div class="file-meta">22 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="mysql-contents">
+                                {% for post in site.categories.mysql limit:5 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- JavaScript 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('js')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">JavaScript</div>
+                                <div class="file-meta">16 files</div>
+                                <div class="file-date">1 year ago</div>
+                            </div>
+                            <div class="folder-contents" id="js-contents">
+                                {% for post in site.categories.js limit:5 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- TIL 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('til')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">TIL</div>
+                                <div class="file-meta">23 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="til-contents">
+                                {% for post in site.categories.til limit:5 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -438,11 +476,161 @@ layout: default
     transform: none;
 }
 
-/* 메인 콘텐츠 레이아웃 */
-.main-content-section {
-    padding: 120px 0 40px 0; /* 헤더 높이만큼 상단 패딩 추가 */
-    background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%);
+/* GitHub 스타일 레이아웃 */
+.github-style-section {
+    padding: 120px 0 40px 0;
+    background: #0d1117;
     min-height: calc(100vh - 200px);
+}
+
+.repo-header {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px 6px 0 0;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.repo-title h2 {
+    color: var(--pitbull-orange);
+    font-size: 1.5rem;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.repo-title h2 i {
+    margin-right: 10px;
+    color: #7c3aed;
+}
+
+.repo-title p {
+    color: #8b949e;
+    margin: 0;
+    font-size: 14px;
+}
+
+.repo-content {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+}
+
+.file-explorer {
+    background: #0d1117;
+}
+
+.explorer-header {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 12px 16px;
+}
+
+.breadcrumb {
+    color: #8b949e;
+    font-size: 14px;
+}
+
+.breadcrumb-item i {
+    margin-right: 8px;
+    color: var(--pitbull-orange);
+}
+
+.file-list {
+    background: #0d1117;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid #21262d;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: #c9d1d9;
+}
+
+.file-item:hover {
+    background: #161b22;
+}
+
+.folder-item {
+    font-weight: 600;
+    color: #58a6ff;
+}
+
+.folder-item:hover {
+    background: #161b22;
+}
+
+.file-icon {
+    width: 20px;
+    margin-right: 12px;
+    text-align: center;
+}
+
+.file-icon i {
+    font-size: 16px;
+}
+
+.folder-item .file-icon i {
+    color: #7c3aed;
+}
+
+.file-item .file-icon i {
+    color: #8b949e;
+}
+
+.file-name {
+    flex: 1;
+    font-size: 14px;
+}
+
+.file-name a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.file-name a:hover {
+    color: var(--pitbull-orange);
+    text-decoration: underline;
+}
+
+.file-meta {
+    color: #8b949e;
+    font-size: 12px;
+    margin-right: 16px;
+    min-width: 60px;
+    text-align: right;
+}
+
+.file-date {
+    color: #8b949e;
+    font-size: 12px;
+    min-width: 80px;
+    text-align: right;
+}
+
+.folder-contents {
+    display: none;
+    background: #0d1117;
+    border-left: 2px solid #30363d;
+    margin-left: 20px;
+}
+
+.folder-contents.show {
+    display: block;
+}
+
+.folder-contents .file-item {
+    padding-left: 32px;
+    font-size: 13px;
+    color: #8b949e;
+}
+
+.folder-contents .file-item:hover {
+    background: #161b22;
+    color: #c9d1d9;
 }
 
 /* 카테고리 사이드바 */
@@ -644,95 +832,28 @@ layout: default
 </style>
 
 <script>
-// 페이지네이션 생성
-document.addEventListener('DOMContentLoaded', function() {
-    const pagination = document.getElementById('pagination');
-    const totalPages = 42; // 실제 총 페이지 수
-    const currentPage = 1; // 현재 페이지
+// 폴더 토글 기능
+function toggleFolder(folderName) {
+    const contents = document.getElementById(folderName + '-contents');
+    const folder = event.currentTarget;
+    const icon = folder.querySelector('.file-icon i');
     
-    function createPagination(current, total) {
-        let html = '';
-        
-        // Previous 버튼
-        if (current > 1) {
-            html += `<li class="page-item">
-                <a class="page-link" href="#" onclick="goToPage(${current - 1})" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>`;
-        } else {
-            html += `<li class="page-item disabled">
-                <span class="page-link" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </span>
-            </li>`;
-        }
-        
-        // 페이지 번호들
-        let startPage = Math.max(1, current - 2);
-        let endPage = Math.min(total, current + 2);
-        
-        if (startPage > 1) {
-            html += `<li class="page-item">
-                <a class="page-link" href="#" onclick="goToPage(1)">1</a>
-            </li>`;
-            if (startPage > 2) {
-                html += `<li class="page-item disabled">
-                    <span class="page-link">...</span>
-                </li>`;
-            }
-        }
-        
-        for (let i = startPage; i <= endPage; i++) {
-            if (i === current) {
-                html += `<li class="page-item active">
-                    <a class="page-link" href="#">${i}</a>
-                </li>`;
-            } else {
-                html += `<li class="page-item">
-                    <a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>
-                </li>`;
-            }
-        }
-        
-        if (endPage < total) {
-            if (endPage < total - 1) {
-                html += `<li class="page-item disabled">
-                    <span class="page-link">...</span>
-                </li>`;
-            }
-            html += `<li class="page-item">
-                <a class="page-link" href="#" onclick="goToPage(${total})">${total}</a>
-            </li>`;
-        }
-        
-        // Next 버튼
-        if (current < total) {
-            html += `<li class="page-item">
-                <a class="page-link" href="#" onclick="goToPage(${current + 1})" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>`;
-        } else {
-            html += `<li class="page-item disabled">
-                <span class="page-link" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </span>
-            </li>`;
-        }
-        
-        pagination.innerHTML = html;
+    if (contents.classList.contains('show')) {
+        contents.classList.remove('show');
+        icon.className = 'fa fa-folder';
+    } else {
+        contents.classList.add('show');
+        icon.className = 'fa fa-folder-open';
     }
-    
-    // 페이지 이동 함수
-    window.goToPage = function(page) {
-        // 실제로는 해당 페이지로 이동하거나 AJAX로 콘텐츠 로드
-        console.log('페이지 이동:', page);
-        // 여기서 실제 페이지 로드 로직 구현
-        createPagination(page, totalPages);
-    };
-    
-    // 초기 페이지네이션 생성
-    createPagination(currentPage, totalPages);
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // 모든 폴더를 닫힌 상태로 초기화
+    const folders = document.querySelectorAll('.folder-item');
+    folders.forEach(folder => {
+        const icon = folder.querySelector('.file-icon i');
+        icon.className = 'fa fa-folder';
+    });
 });
 </script>
