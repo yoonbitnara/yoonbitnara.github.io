@@ -585,6 +585,20 @@ button[aria-label="Toggle menu"] + span,
   backdrop-filter: blur(10px) !important;
   padding: 1.5rem 2rem !important;
   margin: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  max-width: 300px !important;
+  width: fit-content !important;
+}
+
+/* 상세페이지 페이지네이션 강제 표시 */
+.single .page__inner-wrap .pagination,
+.post .page__inner-wrap .pagination {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* 상세페이지 페이지네이션 버튼 스타일링 */
@@ -769,7 +783,8 @@ button[aria-label="Toggle menu"] + span,
 }
 
 /* 상세페이지 제목 스타일링 */
-.page__title {
+.single .page__title,
+.post .page__title {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
   color: var(--pitbull-orange) !important;
@@ -783,12 +798,23 @@ button[aria-label="Toggle menu"] + span,
 }
 
 /* 상세페이지 메타 정보 스타일링 */
-.page__meta {
+.single .page__meta,
+.post .page__meta {
   color: var(--pitbull-gold) !important;
   font-size: 1rem !important;
   text-align: center !important;
-  margin-bottom: 2rem !important;
+  margin-bottom: 0 !important;
   opacity: 0.9 !important;
+}
+
+/* 상세페이지 날짜 스타일링 */
+.single .page__date,
+.post .page__date {
+  color: var(--pitbull-gold) !important;
+  font-size: 1.1rem !important;
+  text-align: center !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600 !important;
 }
 
 .pagination a,
