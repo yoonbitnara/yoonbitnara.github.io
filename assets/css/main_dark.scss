@@ -1,10 +1,7 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
-search: false
----
-
 @charset "utf-8";
 
-@import 'minimal-mistakes'; // main partials
+// Minimal Mistakes 기본 스타일
+@import 'minimal-mistakes';
 
+// 커스텀 스타일 (디자인 변경 내용 포함)
 @import 'custom/custom.scss';
