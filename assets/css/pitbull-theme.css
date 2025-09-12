@@ -537,14 +537,229 @@ button[aria-label="Toggle menu"] + span,
   left: auto !important;
   transform: none !important;
   z-index: auto !important;
-  margin: 2rem auto !important;
+  margin: 3rem auto 0 auto !important;
   text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 25px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
+  padding: 1rem 2rem !important;
+  max-width: 300px !important;
+  width: fit-content !important;
+}
+
+/* 상세페이지 페이지네이션을 콘텐츠 밖으로 이동 */
+.single .page__inner-wrap,
+.post .page__inner-wrap {
+  position: relative !important;
+}
+
+.single .page__inner-wrap::after,
+.post .page__inner-wrap::after {
+  content: "" !important;
+  display: block !important;
+  margin: 2rem 0 !important;
+}
+
+/* 상세페이지 페이지네이션을 별도 컨테이너로 분리 */
+.single .page__pagination,
+.post .page__pagination {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 3rem auto 0 auto !important;
+  width: 100% !important;
+}
+
+/* 상세페이지 페이지네이션 버튼 스타일링 */
+.page__inner-wrap .pagination a,
+.single .pagination a,
+.post .pagination a {
+  padding: 0.5rem 1rem !important;
+  background: rgba(255, 107, 53, 0.1) !important;
+  color: var(--pitbull-white) !important;
+  text-decoration: none !important;
+  border-radius: 15px !important;
+  border: 1px solid var(--pitbull-orange) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  transition: all 0.3s ease !important;
+  min-width: 80px !important;
+  text-align: center !important;
+}
+
+.page__inner-wrap .pagination a:hover,
+.single .pagination a:hover,
+.post .pagination a:hover {
+  background: var(--pitbull-orange) !important;
+  color: var(--pitbull-white) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3) !important;
 }
 
 /* 상세페이지 메인 콘텐츠에 하단 여백 추가 */
 .single #main,
 .post #main {
   padding-bottom: 2rem !important;
+}
+
+/* 상세페이지 전체 레이아웃 개선 */
+.single .page__inner-wrap,
+.post .page__inner-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding: 2rem !important;
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 20px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* 상세페이지 콘텐츠 영역 */
+.single .page__content,
+.post .page__content {
+  flex: 1 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 상세페이지 본문 스타일링 */
+.single .page__content h1,
+.single .page__content h2,
+.single .page__content h3,
+.post .page__content h1,
+.post .page__content h2,
+.post .page__content h3 {
+  color: var(--pitbull-orange) !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  font-weight: 700 !important;
+}
+
+.single .page__content h1,
+.post .page__content h1 {
+  font-size: 1.8rem !important;
+  border-bottom: 2px solid var(--pitbull-orange) !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.single .page__content h2,
+.post .page__content h2 {
+  font-size: 1.5rem !important;
+  border-left: 4px solid var(--pitbull-orange) !important;
+  padding-left: 1rem !important;
+}
+
+.single .page__content h3,
+.post .page__content h3 {
+  font-size: 1.3rem !important;
+  color: var(--pitbull-gold) !important;
+}
+
+/* 상세페이지 본문 텍스트 */
+.single .page__content p,
+.post .page__content p {
+  color: var(--pitbull-white) !important;
+  line-height: 1.8 !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1rem !important;
+}
+
+/* 상세페이지 코드 블록 스타일링 */
+.single .page__content pre,
+.single .page__content code,
+.post .page__content pre,
+.post .page__content code {
+  background: rgba(0, 0, 0, 0.8) !important;
+  color: var(--pitbull-gold) !important;
+  border: 1px solid var(--pitbull-orange) !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  overflow-x: auto !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+.single .page__content pre,
+.post .page__content pre {
+  margin: 1.5rem 0 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 상세페이지 리스트 스타일링 */
+.single .page__content ul,
+.single .page__content ol,
+.post .page__content ul,
+.post .page__content ol {
+  color: var(--pitbull-white) !important;
+  margin-bottom: 1.5rem !important;
+  padding-left: 2rem !important;
+}
+
+.single .page__content li,
+.post .page__content li {
+  margin-bottom: 0.5rem !important;
+  line-height: 1.6 !important;
+}
+
+/* 상세페이지 태그 스타일링 */
+.single .page__taxonomy,
+.post .page__taxonomy {
+  margin-top: 2rem !important;
+  padding-top: 2rem !important;
+  border-top: 1px solid var(--pitbull-orange) !important;
+  text-align: center !important;
+}
+
+.single .page__taxonomy-item,
+.post .page__taxonomy-item {
+  display: inline-block !important;
+  margin: 0.25rem !important;
+  padding: 0.3rem 0.8rem !important;
+  background: rgba(255, 107, 53, 0.1) !important;
+  color: var(--pitbull-gold) !important;
+  border: 1px solid var(--pitbull-orange) !important;
+  border-radius: 15px !important;
+  font-size: 0.9rem !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.single .page__taxonomy-item:hover,
+.post .page__taxonomy-item:hover {
+  background: var(--pitbull-orange) !important;
+  color: var(--pitbull-white) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 상세페이지 제목 스타일링 */
+.page__title {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: var(--pitbull-orange) !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+  background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-gold)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-shadow: 0 2px 4px rgba(255, 107, 53, 0.3) !important;
+}
+
+/* 상세페이지 메타 정보 스타일링 */
+.page__meta {
+  color: var(--pitbull-gold) !important;
+  font-size: 1rem !important;
+  text-align: center !important;
+  margin-bottom: 2rem !important;
+  opacity: 0.9 !important;
 }
 
 .pagination a,
