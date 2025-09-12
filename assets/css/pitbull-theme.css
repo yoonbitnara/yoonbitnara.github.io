@@ -1,4 +1,6 @@
-/* 핏불테리어 테마 - 강렬하고 열정적인 디자인 */
+/* 핏불 테마 CSS - 간단하고 깔끔하게 */
+
+/* 핏불 테마 색상 변수 */
 :root {
   --pitbull-orange: #ff6b35;
   --pitbull-red: #d63031;
@@ -6,202 +8,199 @@
   --pitbull-gold: #fdcb6e;
   --pitbull-white: #ffffff;
   --pitbull-gray: #636e72;
-  --pitbull-light: #f8f9fa;
+  --pitbull-light: #ddd;
 }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
-  line-height: 1.6 !important;
-  background: linear-gradient(135deg, #2d3436 0%, #636e72 50%, #ff6b35 100%) !important;
-  background-attachment: fixed !important;
-  min-height: 100vh !important;
-  color: var(--pitbull-white) !important;
-  overflow-x: hidden !important;
+/* 프로필사진 스타일 - 좌측상단 동그랗게 */
+.author__avatar {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 50% !important;
+  border: 3px solid var(--pitbull-orange) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
+  object-fit: cover !important;
+  transition: all 0.3s ease !important;
+  position: fixed !important;
+  top: 1rem !important;
+  left: 1rem !important;
+  z-index: 1001 !important;
+  display: block !important;
 }
 
-/* 핏불 테마 배경 패턴 */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(214, 48, 49, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(253, 203, 110, 0.05) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
+/* 사이트 타이틀과 모토 */
+.site-header-info {
+  position: fixed !important;
+  top: 1rem !important;
+  left: 100px !important;
+  z-index: 1000 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
-/* 핏불 테마 사이트 타이틀 - 강렬하고 열정적 */
-.site-title {
-  font-weight: 900 !important;
-  font-size: 2rem !important;
-  letter-spacing: -0.03em !important;
-  background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-red), var(--pitbull-gold)) !important;
-  background-size: 200% 200% !important;
+.site-title-main {
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  color: var(--pitbull-orange) !important;
+  margin: 0 !important;
+  background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-gold)) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
-  animation: pitbullGlow 3s ease-in-out infinite !important;
-  text-shadow: 0 0 20px rgba(255, 107, 53, 0.3) !important;
-  position: relative !important;
 }
 
-.site-title::after {
-  content: '🐕';
-  position: absolute;
-  right: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2em;
-  animation: bounce 2s infinite;
-}
-
-@keyframes pitbullGlow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(-50%); }
-  40% { transform: translateY(-60%); }
-  60% { transform: translateY(-55%); }
-}
-
-.site-subtitle {
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  color: var(--pitbull-gold) !important;
-  margin-top: 0.5rem !important;
-  display: block !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* 핏불 테마 카드 스타일 - 강렬하고 모던 */
-.page__inner-wrap {
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%) !important;
-  backdrop-filter: blur(20px) !important;
-  border-radius: 20px !important;
-  border: 2px solid transparent !important;
-  background-clip: padding-box !important;
-  box-shadow: 
-    0 8px 32px rgba(255, 107, 53, 0.2),
-    0 0 0 1px rgba(255, 107, 53, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-  margin: 2rem !important;
-  padding: 3rem !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.page__inner-wrap::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--pitbull-orange), var(--pitbull-red), var(--pitbull-gold));
-  border-radius: 20px 20px 0 0;
-}
-
-.page__inner-wrap:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 
-    0 15px 40px rgba(255, 107, 53, 0.3),
-    0 0 0 1px rgba(255, 107, 53, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  transition: all 0.3s ease !important;
-}
-
-/* 핏불 테마 태그 스타일 - 강렬하고 역동적 */
-.page__taxonomy-item-tag {
-  display: inline-block !important;
-  margin-right: 10px !important;
-  margin-bottom: 10px !important;
-  padding: 8px 16px !important;
-  background: linear-gradient(135deg, var(--pitbull-orange) 0%, var(--pitbull-red) 100%) !important;
-  color: var(--pitbull-white) !important;
-  border-radius: 25px !important;
+.site-motto {
   font-size: 0.9rem !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  transition: all 0.3s ease !important;
-  border: 2px solid transparent !important;
-  position: relative !important;
-  overflow: hidden !important;
+  color: var(--pitbull-gold) !important;
+  margin: 0.2rem 0 0 0 !important;
+  font-style: italic !important;
+  opacity: 0.9 !important;
 }
 
-.page__taxonomy-item-tag:hover {
-  transform: translateY(-3px) scale(1.05) !important;
-  box-shadow: 
-    0 8px 20px rgba(255, 107, 53, 0.4),
-    0 0 0 2px var(--pitbull-gold) !important;
-  color: var(--pitbull-white) !important;
-  text-decoration: none !important;
-}
-
-/* 핏불 테마 네비게이션 - 강렬하고 모던 */
+/* 헤더 스타일 */
 .masthead {
+  min-height: 50px !important;
+  padding: 0.8rem 2rem 0.8rem 500px !important;
   background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%) !important;
-  backdrop-filter: blur(20px) !important;
-  border-bottom: 3px solid var(--pitbull-orange) !important;
-  box-shadow: 
-    0 4px 20px rgba(255, 107, 53, 0.2),
-    0 0 0 1px rgba(255, 107, 53, 0.1) !important;
+  border-bottom: 2px solid var(--pitbull-orange) !important;
+  backdrop-filter: blur(10px) !important;
   position: sticky !important;
   top: 0 !important;
-  z-index: 1000 !important;
+  z-index: 999 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
 }
 
-.greedy-nav a {
-  font-weight: 700 !important;
+/* 네비게이션 스타일 */
+.greedy-nav .visible-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  margin-left: auto !important;
+  flex-wrap: wrap !important;
+}
+
+.greedy-nav .visible-links a {
+  padding: 0.5rem 1rem !important;
+  background: linear-gradient(135deg, var(--pitbull-orange), var(--pitbull-red)) !important;
   color: var(--pitbull-white) !important;
+  text-decoration: none !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.5px !important;
   transition: all 0.3s ease !important;
-  position: relative !important;
-}
-
-.greedy-nav a:hover {
-  color: var(--pitbull-gold) !important;
-  transform: translateY(-2px) !important;
-  text-shadow: 0 0 10px rgba(253, 203, 110, 0.5) !important;
-}
-
-/* 핏불 테마 포스트 카드 - 강렬하고 역동적 */
-.archive__item {
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 15px !important;
   border: 2px solid transparent !important;
-  box-shadow: 
-    0 4px 15px rgba(255, 107, 53, 0.1),
-    0 0 0 1px rgba(255, 107, 53, 0.05) !important;
-  transition: all 0.4s ease !important;
-  overflow: hidden !important;
-  position: relative !important;
 }
 
-.archive__item:hover {
-  transform: translateY(-8px) scale(1.02) !important;
-  box-shadow: 
-    0 15px 35px rgba(255, 107, 53, 0.3),
-    0 0 0 2px var(--pitbull-orange) !important;
+.greedy-nav .visible-links a:hover {
+  background: linear-gradient(135deg, var(--pitbull-gold), var(--pitbull-orange)) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4) !important;
   border-color: var(--pitbull-gold) !important;
 }
 
+/* 토글 메뉴 숨기기 */
+.greedy-nav__toggle,
+.greedy-nav__toggle-wrapper,
+.greedy-nav__toggle-text,
+button[aria-label="Toggle menu"],
+button[aria-label="Menu"] {
+  display: none !important;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+  width: 250px !important;
+  max-width: 250px !important;
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 15px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  margin: 1rem !important;
+  padding: 1.5rem !important;
+  position: sticky !important;
+  top: 100px !important;
+  height: fit-content !important;
+}
+
+/* 사이드바에서 토글 메뉴 숨기기 */
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6,
+.sidebar .nav__sub-title,
+.sidebar .nav__title,
+.sidebar *[class*="toggle"],
+.sidebar *[class*="menu"] {
+  display: none !important;
+}
+
+/* 메인 컨텐츠 영역 */
+#main {
+  margin-left: 0 !important;
+  padding-top: 80px !important;
+  width: 100% !important;
+  max-width: none !important;
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+/* 페이지 내부 래퍼 */
+.page__inner-wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 2rem !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+}
+
+/* 게시글 목록 그리드 */
+.archive {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem !important;
+  margin-bottom: 3rem !important;
+  padding: 0 1rem !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* 게시글 카드 스타일 */
+.archive__item {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-bottom: 0 !important;
+  padding: 1.5rem !important;
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 15px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  height: fit-content !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.archive__item:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
+  border-color: var(--pitbull-gold) !important;
+}
+
+/* 게시글 제목 스타일 */
 .archive__item-title {
-  font-weight: 800 !important;
-  color: var(--pitbull-white) !important;
-  font-size: 1.2rem !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  margin-bottom: 0.5rem !important;
+  color: var(--pitbull-orange) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
 }
 
 .archive__item-title a {
@@ -215,392 +214,27 @@ body::before {
   text-shadow: 0 0 10px rgba(253, 203, 110, 0.5) !important;
 }
 
-/* 핏불 테마 링크 - 강렬하고 역동적 */
-a {
-  color: var(--pitbull-orange) !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
-  position: relative !important;
-}
-
-a:hover {
+/* 게시글 메타 정보 */
+.archive__item-meta {
   color: var(--pitbull-gold) !important;
-  text-shadow: 0 0 8px rgba(253, 203, 110, 0.5) !important;
-  transform: translateY(-1px) !important;
+  font-size: 0.8rem !important;
+  margin-bottom: 0.5rem !important;
+  opacity: 0.8 !important;
 }
 
-/* 프로필사진 스타일 - 좌측상단 동그랗게 */
-.author__avatar {
-  width: 80px !important;
-  height: 80px !important;
-  border-radius: 50% !important;
-  border: 3px solid var(--pitbull-orange) !important;
-  box-shadow: 
-    0 4px 15px rgba(255, 107, 53, 0.3),
-    0 0 0 2px var(--pitbull-gold) !important;
-  object-fit: cover !important;
-  transition: all 0.3s ease !important;
-  position: fixed !important;
-  top: 1rem !important;
-  left: 1rem !important;
-  z-index: 1001 !important;
-  display: block !important;
-}
-
-.author__avatar img {
-  width: 100% !important;
-  height: 100% !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-}
-
-.author__avatar:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 
-    0 6px 20px rgba(255, 107, 53, 0.5),
-    0 0 0 3px var(--pitbull-gold) !important;
-}
-
-/* 프로필사진 밑 문구 */
-.author__avatar::after {
-  content: "만약 노력도 재능이면,\A내 재능은 어딜가도 꿀리지 않는다";
-  position: absolute;
-  top: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  text-align: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--pitbull-gold);
-  white-space: pre-line;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  background: rgba(45, 52, 54, 0.9);
-  padding: 0.5rem;
-  border-radius: 10px;
-  border: 1px solid var(--pitbull-orange);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.author__avatar:hover::after {
-  opacity: 1;
-}
-
-/* 메인 페이지에서 프로필사진 강제 표시 */
-body.home .author__avatar,
-body.archive .author__avatar,
-body.single .author__avatar {
-  display: block !important;
-  position: fixed !important;
-  top: 1rem !important;
-  left: 1rem !important;
-  z-index: 1001 !important;
-}
-
-/* 사이트 타이틀과 모토 스타일 */
-.site-header-info {
-  position: fixed !important;
-  top: 1rem !important;
-  left: 100px !important; /* 프로필사진 옆 */
-  z-index: 1000 !important;
-  max-width: 400px !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.site-title-main {
-  font-size: 1.8rem !important;
-  font-weight: 700 !important;
-  color: var(--pitbull-orange) !important;
-  margin: 0 0 0.5rem 0 !important;
-  text-shadow: 0 2px 4px rgba(255, 107, 53, 0.3) !important;
-  background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-gold)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-}
-
-.site-motto {
-  font-size: 0.9rem !important;
-  color: var(--pitbull-gold) !important;
-  margin: 0 !important;
-  font-style: italic !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
-  line-height: 1.3 !important;
-}
-
-/* 토글메뉴 버튼 완전 숨기기 */
-.greedy-nav__toggle,
-.greedy-nav__toggle-wrapper,
-button[aria-label="Toggle menu"],
-button[aria-label="Menu"] {
-  display: none !important;
-}
-
-/* 네비게이션 메뉴 항상 표시 */
-.greedy-nav .visible-links {
-  display: flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* 헤더 정렬 개선 - 깔끔하고 가로형 */
-.masthead {
-  padding: 0.8rem 2rem 0.8rem 500px !important; /* 프로필사진 + 타이틀 공간 확보 */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important; /* 네비게이션을 오른쪽으로 */
-  min-height: 50px !important; /* 높이 더 줄임 */
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%) !important;
-  backdrop-filter: blur(10px) !important;
-  border-bottom: 2px solid var(--pitbull-orange) !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 999 !important;
-}
-
-.masthead__inner-wrap {
-  width: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-}
-
-.masthead__menu {
-  display: flex !important;
-  align-items: center !important;
-  width: 100% !important;
-}
-
-.greedy-nav {
-  display: flex !important;
-  align-items: center !important;
-  width: 100% !important;
-  justify-content: space-between !important;
-}
-
-.greedy-nav .site-title {
-  display: none !important; /* 기존 사이트 타이틀 숨기기 */
-}
-
-/* 기존 사이트 타이틀과 서브타이틀 완전 숨기기 */
-.site-title,
-.site-subtitle {
-  display: none !important;
-}
-
-/* Skip links 숨기기 */
-.skip-links {
-  display: none !important;
-}
-
-/* 사이드바 Toggle menu 숨기기 */
-.sidebar .greedy-nav__toggle,
-.sidebar button[aria-label="Toggle menu"],
-.sidebar button[aria-label="Menu"],
-.sidebar .greedy-nav__toggle-wrapper,
-.sidebar .greedy-nav__toggle-text {
-  display: none !important;
-}
-
-/* Toggle menu 텍스트 완전 숨기기 */
-.greedy-nav__toggle-text,
-button[aria-label="Toggle menu"] + span,
-.greedy-nav__toggle + span {
-  display: none !important;
-}
-
-/* 사이드바에서 프로필사진 숨기기 */
-.sidebar .author__avatar,
-.sidebar .author-profile,
-.sidebar .author-profile-custom-links {
-  display: none !important;
-}
-
-/* 사이드바에서 토글메뉴 관련 모든 요소 숨기기 */
-.sidebar .greedy-nav,
-.sidebar .masthead,
-.sidebar .site-title,
-.sidebar .site-subtitle {
-  display: none !important;
-}
-
-/* 사이드바에서 모든 불필요한 요소 숨기기 */
-.sidebar .author__avatar,
-.sidebar .author-profile,
-.sidebar .author-profile-custom-links,
-.sidebar .greedy-nav__toggle,
-.sidebar .greedy-nav__toggle-wrapper,
-.sidebar .greedy-nav__toggle-text,
-.sidebar button[aria-label="Toggle menu"],
-.sidebar button[aria-label="Menu"],
-.sidebar .site-title,
-.sidebar .site-subtitle,
-.sidebar .masthead,
-.sidebar .greedy-nav {
-  display: none !important;
-}
-
-/* 사이드바에서 "menu" 텍스트 숨기기 */
-.sidebar h3:contains("menu"),
-.sidebar .menu-text,
-.sidebar .toggle-menu-text {
-  display: none !important;
-}
-
-/* 사이드바에서 모든 토글 메뉴 관련 요소 완전 숨기기 */
-.sidebar *[class*="toggle"],
-.sidebar *[class*="menu"],
-.sidebar button,
-.sidebar .greedy-nav,
-.sidebar .masthead,
-.sidebar .site-title,
-.sidebar .site-subtitle,
-.sidebar .author__avatar,
-.sidebar .author-profile,
-.sidebar .author-profile-custom-links,
-.sidebar h3,
-.sidebar h4,
-.sidebar h5,
-.sidebar h6,
-.sidebar .nav__sub-title {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
-/* 사이드바에서 "Toggle menu" 텍스트 강제 제거 - 더 강력한 규칙 */
-.sidebar *:contains("Toggle menu"),
-.sidebar *:contains("toggle"),
-.sidebar *:contains("menu"),
-.sidebar h3:contains("Toggle menu"),
-.sidebar h4:contains("Toggle menu"),
-.sidebar h5:contains("Toggle menu"),
-.sidebar h6:contains("Toggle menu") {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-  text-indent: -9999px !important;
-}
-
-/* 사이드바에서 모든 텍스트 강제 제거 */
-.sidebar h3,
-.sidebar h4,
-.sidebar h5,
-.sidebar h6,
-.sidebar .nav__sub-title,
-.sidebar .nav__title,
-.sidebar *[class*="toggle"],
-.sidebar *[class*="menu"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-  text-indent: -9999px !important;
-}
-
-/* 사이드바에서 "Toggle menu" 텍스트 강제 제거 */
-.sidebar *:contains("Toggle menu"),
-.sidebar *:contains("toggle"),
-.sidebar *:contains("menu") {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
-/* 사이드바에서 모든 텍스트 노드 강제 제거 */
-.sidebar h3,
-.sidebar h4,
-.sidebar h5,
-.sidebar h6,
-.sidebar .nav__sub-title,
-.sidebar .nav__title {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-}
-
-/* 사이드바는 오직 카테고리 목록만 표시 */
-.sidebar .nav__list,
-.sidebar .nav__sub-title,
-.sidebar .nav__items {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.greedy-nav .visible-links {
-  display: flex !important;
-  align-items: center !important;
-  gap: 1rem !important; /* 간격 줄임 */
-  margin-left: auto !important;
-  flex-wrap: wrap !important;
-}
-
-.greedy-nav .visible-links li {
-  list-style: none !important;
-}
-
-.greedy-nav .visible-links a {
-  padding: 0.4rem 1rem !important;
-  border-radius: 20px !important;
-  background: rgba(255, 107, 53, 0.15) !important;
-  border: 1px solid var(--pitbull-orange) !important;
-  transition: all 0.3s ease !important;
-  font-size: 0.9rem !important;
-  white-space: nowrap !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-}
-
-.greedy-nav .visible-links a:hover {
-  background: var(--pitbull-orange) !important;
+/* 게시글 요약 */
+.archive__item-excerpt {
   color: var(--pitbull-white) !important;
-  transform: translateY(-1px) !important;
+  line-height: 1.4 !important;
+  font-size: 0.9rem !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
 }
 
-/* 페이지네이션 정렬 개선 - 1 2 3 4 5 > 형식 - 강력한 규칙 */
-.pagination,
-#main .pagination,
-.home .pagination,
-.archive-taxonomy .pagination,
-body .pagination,
-html .pagination,
-.page .pagination {
+/* 페이지네이션 스타일 */
+.pagination {
   display: flex !important;
   flex-direction: row !important;
   justify-content: center !important;
@@ -621,653 +255,47 @@ html .pagination,
   transform: translateX(-50%) !important;
 }
 
-/* 페이지네이션 리스트 강제 가로형 */
-.pagination ul,
-.pagination ol {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 0.2rem !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  list-style: none !important;
-}
-
-.pagination li {
-  display: inline-block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 페이지네이션 컨테이너 강제 가로형 */
-.pagination-wrapper,
-.pagination-container {
-  display: flex !important;
-  justify-content: center !important;
-  width: 100% !important;
-}
-
-/* 상세페이지 Previous Next 맨 밑 중앙으로 이동 - 게시글 가리지 않도록 수정 */
-.page__inner-wrap .pagination,
-.single .pagination,
-.post .pagination {
-  position: relative !important;
-  bottom: auto !important;
-  left: auto !important;
-  transform: none !important;
-  z-index: auto !important;
-  margin: 3rem auto 0 auto !important;
-  text-align: center !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 1rem !important;
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 25px !important;
-  border: 2px solid var(--pitbull-orange) !important;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
-  padding: 1rem 2rem !important;
-  max-width: 300px !important;
-  width: fit-content !important;
-}
-
-/* 상세페이지 페이지네이션을 콘텐츠 밖으로 이동 */
-.single .page__inner-wrap,
-.post .page__inner-wrap {
-  position: relative !important;
-}
-
-.single .page__inner-wrap::after,
-.post .page__inner-wrap::after {
-  content: "" !important;
-  display: block !important;
-  margin: 2rem 0 !important;
-}
-
-/* 상세페이지 페이지네이션을 별도 영역으로 분리 */
-.single .page__pagination,
-.post .page__pagination {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin: 0 auto !important;
-  width: 100% !important;
-}
-
-/* 상세페이지 페이지네이션 컨테이너 */
-.single .pagination,
-.post .pagination {
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 20px !important;
-  border: 2px solid var(--pitbull-orange) !important;
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
-  padding: 1.5rem 2rem !important;
-  margin: 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 1rem !important;
-  max-width: 300px !important;
-  width: fit-content !important;
-}
-
-/* 상세페이지 페이지네이션 강제 표시 */
-.single .page__inner-wrap .pagination,
-.post .page__inner-wrap .pagination {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-/* 상세페이지 페이지네이션 버튼 스타일링 */
-.page__inner-wrap .pagination a,
-.single .pagination a,
-.post .pagination a {
-  padding: 0.5rem 1rem !important;
-  background: rgba(255, 107, 53, 0.1) !important;
-  color: var(--pitbull-white) !important;
-  text-decoration: none !important;
-  border-radius: 15px !important;
-  border: 1px solid var(--pitbull-orange) !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-  transition: all 0.3s ease !important;
-  min-width: 80px !important;
-  text-align: center !important;
-}
-
-.page__inner-wrap .pagination a:hover,
-.single .pagination a:hover,
-.post .pagination a:hover {
-  background: var(--pitbull-orange) !important;
-  color: var(--pitbull-white) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3) !important;
-}
-
-/* 상세페이지 메인 콘텐츠에 하단 여백 추가 */
-.single #main,
-.post #main {
-  padding-bottom: 2rem !important;
-}
-
-/* 상세페이지 전체 레이아웃 개선 - 제목/날짜 → 내용 → 페이지네이션 */
-.single .page__inner-wrap,
-.post .page__inner-wrap {
-  display: flex !important;
-  flex-direction: column !important;
-  max-width: 800px !important;
-  margin: 0 auto !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-}
-
-/* 상세페이지 헤더 영역 (제목 + 날짜) */
-.single .page__header,
-.post .page__header {
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 20px !important;
-  border: 2px solid var(--pitbull-orange) !important;
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
-  padding: 2rem !important;
-  margin-bottom: 2rem !important;
-  text-align: center !important;
-}
-
-/* 상세페이지 콘텐츠 영역 */
-.single .page__content,
-.post .page__content {
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 20px !important;
-  border: 2px solid var(--pitbull-orange) !important;
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
-  padding: 2rem !important;
-  margin-bottom: 2rem !important;
-}
-
-/* 상세페이지 콘텐츠 영역 (중복 제거) */
-
-/* 상세페이지 본문 스타일링 */
-.single .page__content h1,
-.single .page__content h2,
-.single .page__content h3,
-.post .page__content h1,
-.post .page__content h2,
-.post .page__content h3 {
-  color: var(--pitbull-orange) !important;
-  margin-top: 2rem !important;
-  margin-bottom: 1rem !important;
-  font-weight: 700 !important;
-}
-
-.single .page__content h1,
-.post .page__content h1 {
-  font-size: 1.8rem !important;
-  border-bottom: 2px solid var(--pitbull-orange) !important;
-  padding-bottom: 0.5rem !important;
-}
-
-.single .page__content h2,
-.post .page__content h2 {
-  font-size: 1.5rem !important;
-  border-left: 4px solid var(--pitbull-orange) !important;
-  padding-left: 1rem !important;
-}
-
-.single .page__content h3,
-.post .page__content h3 {
-  font-size: 1.3rem !important;
-  color: var(--pitbull-gold) !important;
-}
-
-/* 상세페이지 본문 텍스트 */
-.single .page__content p,
-.post .page__content p {
-  color: var(--pitbull-white) !important;
-  line-height: 1.8 !important;
-  margin-bottom: 1.5rem !important;
-  font-size: 1rem !important;
-}
-
-/* 상세페이지 코드 블록 스타일링 */
-.single .page__content pre,
-.single .page__content code,
-.post .page__content pre,
-.post .page__content code {
-  background: rgba(0, 0, 0, 0.8) !important;
-  color: var(--pitbull-gold) !important;
-  border: 1px solid var(--pitbull-orange) !important;
-  border-radius: 8px !important;
-  padding: 1rem !important;
-  overflow-x: auto !important;
-  font-family: 'Courier New', monospace !important;
-}
-
-.single .page__content pre,
-.post .page__content pre {
-  margin: 1.5rem 0 !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* 상세페이지 리스트 스타일링 */
-.single .page__content ul,
-.single .page__content ol,
-.post .page__content ul,
-.post .page__content ol {
-  color: var(--pitbull-white) !important;
-  margin-bottom: 1.5rem !important;
-  padding-left: 2rem !important;
-}
-
-.single .page__content li,
-.post .page__content li {
-  margin-bottom: 0.5rem !important;
-  line-height: 1.6 !important;
-}
-
-/* 상세페이지 태그 스타일링 */
-.single .page__taxonomy,
-.post .page__taxonomy {
-  margin-top: 2rem !important;
-  padding-top: 2rem !important;
-  border-top: 1px solid var(--pitbull-orange) !important;
-  text-align: center !important;
-}
-
-.single .page__taxonomy-item,
-.post .page__taxonomy-item {
-  display: inline-block !important;
-  margin: 0.25rem !important;
-  padding: 0.3rem 0.8rem !important;
-  background: rgba(255, 107, 53, 0.1) !important;
-  color: var(--pitbull-gold) !important;
-  border: 1px solid var(--pitbull-orange) !important;
-  border-radius: 15px !important;
-  font-size: 0.9rem !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease !important;
-}
-
-.single .page__taxonomy-item:hover,
-.post .page__taxonomy-item:hover {
-  background: var(--pitbull-orange) !important;
-  color: var(--pitbull-white) !important;
-  transform: translateY(-2px) !important;
-}
-
-/* 상세페이지 제목 스타일링 */
-.single .page__title,
-.post .page__title {
-  font-size: 2.5rem !important;
-  font-weight: 700 !important;
-  color: var(--pitbull-orange) !important;
-  margin-bottom: 1rem !important;
-  text-align: center !important;
-  background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-gold)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  text-shadow: 0 2px 4px rgba(255, 107, 53, 0.3) !important;
-}
-
-/* 상세페이지 메타 정보 스타일링 */
-.single .page__meta,
-.post .page__meta {
-  color: var(--pitbull-gold) !important;
-  font-size: 1rem !important;
-  text-align: center !important;
-  margin-bottom: 0 !important;
-  opacity: 0.9 !important;
-}
-
-/* 상세페이지 날짜 스타일링 */
-.single .page__date,
-.post .page__date {
-  color: var(--pitbull-gold) !important;
-  font-size: 1.1rem !important;
-  text-align: center !important;
-  margin-bottom: 1rem !important;
-  font-weight: 600 !important;
-}
-
+/* 페이지네이션 버튼 */
 .pagination a,
 .pagination span {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-width: 28px !important;
+  width: 28px !important;
   height: 28px !important;
-  padding: 0.2rem 0.4rem !important;
-  background: rgba(255, 107, 53, 0.1) !important;
+  border-radius: 50% !important;
+  background: var(--pitbull-orange) !important;
   color: var(--pitbull-white) !important;
   text-decoration: none !important;
-  border-radius: 14px !important;
-  border: 1px solid var(--pitbull-orange) !important;
   font-weight: 600 !important;
-  font-size: 0.8rem !important;
-  transition: all 0.3s ease !important;
-}
-
-.pagination a:hover {
-  background: var(--pitbull-orange) !important;
-  color: var(--pitbull-white) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3) !important;
-}
-
-.pagination .current {
-  background: var(--pitbull-orange) !important;
-  color: var(--pitbull-white) !important;
-  border-color: var(--pitbull-gold) !important;
-  box-shadow: 0 0 10px rgba(255, 107, 53, 0.5) !important;
-}
-
-.pagination .disabled {
-  opacity: 0.5 !important;
-  cursor: not-allowed !important;
-}
-
-/* 푸터 정렬 개선 */
-.page__footer {
-  text-align: center !important;
-  padding: 2rem 0 !important;
-  margin-top: 4rem !important;
-}
-
-.page__footer-follow {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  gap: 1rem !important;
-  margin-bottom: 1rem !important;
-}
-
-.page__footer-follow .social-icons {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 1rem !important;
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.page__footer-follow .social-icons li {
-  list-style: none !important;
-}
-
-.page__footer-copyright {
-  text-align: center !important;
-  color: var(--pitbull-gold) !important;
-  font-weight: 600 !important;
-  margin-top: 1rem !important;
-}
-
-/* 사이드바 정렬 개선 - 컴팩트 (제거됨, 위에서 재정의) */
-
-/* 메인 콘텐츠 영역 조정 - 레이아웃 수정 */
-#main {
-  margin-left: 0 !important;
-  padding-top: 80px !important; /* 프로필사진 + 타이틀 공간 확보 */
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-top: 0 !important;
-  width: 100% !important;
-  max-width: none !important;
-  display: flex !important;
-  flex-direction: row !important;
-}
-
-/* 메인페이지 컨텐츠 영역 강제 설정 */
-.home #main,
-.archive-taxonomy #main {
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100% !important;
-  max-width: none !important;
-}
-
-/* 사이드바와 메인 콘텐츠를 나란히 배치 */
-.page__inner-wrap {
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 1rem !important;
-  gap: 2rem !important;
-}
-
-/* 사이드바 영역 */
-.sidebar {
-  flex: 0 0 250px !important;
-  width: 250px !important;
-  max-width: 250px !important;
-  margin: 0 !important;
-  padding: 1.5rem !important;
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 15px !important;
-  border: 2px solid var(--pitbull-orange) !important;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
-  height: fit-content !important;
-}
-
-/* 메인 콘텐츠 영역 */
-.page__content {
-  flex: 1 !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 메인 콘텐츠 영역 강제 표시 */
-.page__inner-wrap {
-  display: flex !important;
-  flex-direction: row !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 1rem !important;
-  background: transparent !important;
-  gap: 2rem !important;
-}
-
-/* 게시물 목록 컨테이너 강제 표시 */
-.archive,
-.posts-list,
-.entries-list {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  width: 100% !important;
-}
-
-/* 게시글 목록 그리드 컨테이너 - 강력한 규칙 */
-.archive,
-#main .archive,
-.home .archive,
-.archive-taxonomy .archive,
-body .archive,
-html .archive,
-.page .archive,
-.archive .archive,
-.archive__item-teaser,
-.archive__item-title,
-.archive__item-meta,
-.archive__item-excerpt {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 2rem !important;
-  margin-bottom: 3rem !important;
-  padding: 0 1rem !important;
-  width: 100% !important;
-  max-width: none !important;
-  grid-auto-rows: minmax(200px, auto) !important;
-}
-
-/* 게시글 목록 강제 그리드 적용 - 모든 선택자 */
-.archive__item,
-.archive .archive__item,
-#main .archive__item,
-.home .archive__item,
-.archive-taxonomy .archive__item,
-body .archive__item,
-html .archive__item,
-.page .archive__item,
-.archive__item-teaser,
-.archive__item-title,
-.archive__item-meta,
-.archive__item-excerpt {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  margin-bottom: 0 !important;
-  padding: 1.5rem !important;
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 15px !important;
-  border: 2px solid var(--pitbull-orange) !important;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
-  transition: all 0.3s ease !important;
-  cursor: pointer !important;
-  height: fit-content !important;
-  width: 100% !important;
-  max-width: none !important;
-}
-
-/* 게시글 목록 강제 그리드 적용 */
-.archive__item,
-.archive .archive__item,
-#main .archive__item,
-.home .archive__item,
-.archive-taxonomy .archive__item {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  margin-bottom: 0 !important;
-  padding: 1.5rem !important;
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 15px !important;
-  border: 2px solid var(--pitbull-orange) !important;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
-  transition: all 0.3s ease !important;
-  cursor: pointer !important;
-  height: fit-content !important;
-  width: 100% !important;
-  max-width: none !important;
-}
-
-/* 포스트 목록 강제 표시 - 카드챕터식 */
-.archive__item {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  margin-bottom: 0 !important;
-  padding: 1.5rem !important;
-  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 15px !important;
-  border: 2px solid var(--pitbull-orange) !important;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
-  transition: all 0.3s ease !important;
-  cursor: pointer !important;
-  height: fit-content !important;
-}
-
-.archive__item:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
-  border-color: var(--pitbull-gold) !important;
-}
-
-/* 포스트 목록 정렬 개선 - 카드챕터식 */
-.archive__item-title {
-  margin-bottom: 0.5rem !important;
-  color: var(--pitbull-orange) !important;
-  font-size: 1rem !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-}
-
-.archive__item-meta {
-  color: var(--pitbull-gold) !important;
-  font-size: 0.8rem !important;
-  margin-bottom: 0.5rem !important;
-  opacity: 0.8 !important;
-}
-
-.archive__item-excerpt {
-  color: var(--pitbull-white) !important;
-  line-height: 1.4 !important;
   font-size: 0.9rem !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-  opacity: 0.9 !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid transparent !important;
 }
 
-/* 핏불 테마 버튼 - 강렬하고 역동적 */
-#toTop {
-  position: fixed !important;
-  width: 60px !important;
-  height: 60px !important;
-  background: linear-gradient(135deg, var(--pitbull-orange) 0%, var(--pitbull-red) 100%) !important;
-  color: var(--pitbull-white) !important;
-  border-radius: 50% !important;
-  right: 2rem !important;
-  bottom: 2rem !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  z-index: 1000 !important;
-  cursor: pointer !important;
-  box-shadow: 
-    0 6px 20px rgba(255, 107, 53, 0.4),
-    0 0 0 3px rgba(255, 107, 53, 0.2) !important;
-  transition: all 0.4s ease !important;
-  border: 2px solid var(--pitbull-gold) !important;
-  font-weight: 900 !important;
-  font-size: 1.2rem !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-}
-
-#toTop::before {
-  content: '🐕';
-  animation: bounce 2s infinite;
-}
-
-#toTop:hover {
-  transform: translateY(-5px) scale(1.1) !important;
-  box-shadow: 
-    0 10px 30px rgba(255, 107, 53, 0.6),
-    0 0 0 4px var(--pitbull-gold) !important;
-  background: linear-gradient(135deg, var(--pitbull-red) 0%, var(--pitbull-orange) 100%) !important;
+.pagination a:hover,
+.pagination span:hover {
+  background: var(--pitbull-gold) !important;
+  color: var(--pitbull-dark) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(253, 203, 110, 0.4) !important;
+  border-color: var(--pitbull-orange) !important;
 }
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
+  .archive {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
   .author__avatar {
     width: 60px !important;
     height: 60px !important;
-    top: 0.5rem !important;
-    left: 0.5rem !important;
   }
   
   .site-header-info {
-    left: 70px !important;
-    max-width: 250px !important;
+    left: 80px !important;
   }
   
   .site-title-main {
@@ -1278,88 +306,24 @@ html .archive__item,
     font-size: 0.8rem !important;
   }
   
-  .greedy-nav .visible-links {
-    gap: 0.5rem !important;
-  }
-  
-  .greedy-nav .visible-links a {
-    padding: 0.2rem 0.5rem !important;
-    font-size: 0.8rem !important;
-  }
-  
   .masthead {
-    padding: 0.5rem 1rem 0.5rem 80px !important;
-    min-height: 50px !important;
+    padding: 0.5rem 1rem 0.5rem 200px !important;
   }
   
   .page__inner-wrap {
-    margin: 1rem !important;
-    padding: 1rem !important;
-  }
-  
-  .sidebar {
-    margin: 1rem !important;
-    padding: 1rem !important;
-  }
-  
-  #main {
-    padding-top: 100px !important;
     flex-direction: column !important;
   }
   
-  /* 모바일에서 2열 그리드 */
-  .archive {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
+  .sidebar {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 1rem 0 !important;
   }
 }
 
 @media (max-width: 480px) {
-  /* 모바일에서 1열 그리드 */
   .archive {
     grid-template-columns: 1fr !important;
     gap: 1rem !important;
-  }
-  
-  .page__inner-wrap {
-    flex-direction: column !important;
-    gap: 1rem !important;
-  }
-  
-  .sidebar {
-    flex: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-  
-  .page__content {
-    flex: 1 !important;
-    width: 100% !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .author__avatar {
-    width: 50px !important;
-    height: 50px !important;
-  }
-  
-  .greedy-nav .site-title {
-    margin-left: 60px !important;
-    font-size: 1.2rem !important;
-  }
-  
-  .greedy-nav .visible-links {
-    gap: 0.5rem !important;
-  }
-  
-  .page__inner-wrap {
-    margin: 0.5rem !important;
-    padding: 1.5rem !important;
-  }
-  
-  #main {
-    padding-top: 70px !important;
   }
 }
