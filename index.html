@@ -51,7 +51,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="algorithm-contents">
-                                {% for post in site.categories.Algorithm limit:10 %}
+                                {% for post in site.categories.Algorithm %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -74,7 +74,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="bigdata-contents">
-                                {% for post in site.categories.Bigdata limit:10 %}
+                                {% for post in site.categories.Bigdata %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -97,7 +97,7 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="computerstructure-contents">
-                                {% for post in site.categories.ComputerStructure limit:10 %}
+                                {% for post in site.categories.ComputerStructure %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -120,7 +120,7 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="discretemathematics-contents">
-                                {% for post in site.categories.DiscreteMathematics limit:10 %}
+                                {% for post in site.categories.DiscreteMathematics %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -143,7 +143,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="html-contents">
-                                {% for post in site.categories.HtmlCss limit:10 %}
+                                {% for post in site.categories.HtmlCss %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -166,7 +166,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="internet-contents">
-                                {% for post in site.categories.Internet limit:10 %}
+                                {% for post in site.categories.Internet %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -189,96 +189,17 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="java-contents">
+                                {% for post in site.categories.Java %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
                                     </div>
                                     <div class="file-name">
-                                        <a href="/java/2022-12-07-java38/">Java 17 새로운 기능들</a>
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">2022-12-07</div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2022-03-03-java37/">Java Stream API 활용법</a>
-                                    </div>
-                                    <div class="file-meta">2022-03-03</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2021-12-15-java36/">Java 람다식 완벽 가이드</a>
-                                    </div>
-                                    <div class="file-meta">2021-12-15</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2021-10-04-java35/">Java 제네릭 심화 학습</a>
-                                    </div>
-                                    <div class="file-meta">2021-10-04</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2021-09-28-java34/">Java 컬렉션 프레임워크</a>
-                                    </div>
-                                    <div class="file-meta">2021-09-28</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2021-09-27-java33/">Java 예외처리 완벽 정리</a>
-                                    </div>
-                                    <div class="file-meta">2021-09-27</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2021-09-14-java32/">Java 인터페이스와 추상클래스</a>
-                                    </div>
-                                    <div class="file-meta">2021-09-14</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2021-09-13-java31/">Java 상속과 다형성</a>
-                                    </div>
-                                    <div class="file-meta">2021-09-13</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2021-09-12-java30/">Java 객체지향 프로그래밍</a>
-                                    </div>
-                                    <div class="file-meta">2021-09-12</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/java/2021-09-12-java29/">Java 기본 문법 정리</a>
-                                    </div>
-                                    <div class="file-meta">2021-09-12</div>
-                                </div>
+                                {% endfor %}
                             </div>
                             
                             <!-- JDBC 폴더 -->
@@ -291,7 +212,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="jdbc-contents">
-                                {% for post in site.categories.Jdbc limit:10 %}
+                                {% for post in site.categories.Jdbc %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -314,7 +235,7 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="js-contents">
-                                {% for post in site.categories.Js limit:10 %}
+                                {% for post in site.categories.Js %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -337,7 +258,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="linux-contents">
-                                {% for post in site.categories.Linux limit:10 %}
+                                {% for post in site.categories.Linux %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -360,96 +281,17 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="mysql-contents">
+                                {% for post in site.categories.Mysql %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
                                     </div>
                                     <div class="file-name">
-                                        <a href="/mysql/2022-08-16-16/">MySQL 성능 최적화</a>
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">2022-08-16</div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-08-16-15/">MySQL 인덱스 설계</a>
-                                    </div>
-                                    <div class="file-meta">2022-08-16</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-07-20-14/">MySQL 트랜잭션 관리</a>
-                                    </div>
-                                    <div class="file-meta">2022-07-20</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-07-19-13/">MySQL 조인 최적화</a>
-                                    </div>
-                                    <div class="file-meta">2022-07-19</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-02-17-12/">MySQL 뷰와 프로시저</a>
-                                    </div>
-                                    <div class="file-meta">2022-02-17</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-02-17-11/">MySQL 트리거 활용</a>
-                                    </div>
-                                    <div class="file-meta">2022-02-17</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-02-17-10/">MySQL 함수와 연산자</a>
-                                    </div>
-                                    <div class="file-meta">2022-02-17</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-02-16-9/">MySQL 데이터 타입</a>
-                                    </div>
-                                    <div class="file-meta">2022-02-16</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-02-16-8/">MySQL 제약조건</a>
-                                    </div>
-                                    <div class="file-meta">2022-02-16</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/mysql/2022-02-09-6/">MySQL 테이블 설계</a>
-                                    </div>
-                                    <div class="file-meta">2022-02-09</div>
-                                </div>
+                                {% endfor %}
                             </div>
                             
                             <!-- Python 폴더 -->
@@ -462,7 +304,7 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="python-contents">
-                                {% for post in site.categories.Python limit:10 %}
+                                {% for post in site.categories.Python %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -485,7 +327,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="r-contents">
-                                {% for post in site.categories.R limit:10 %}
+                                {% for post in site.categories.R %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -508,7 +350,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="servlet-contents">
-                                {% for post in site.categories.Servlet limit:10 %}
+                                {% for post in site.categories.Servlet %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -531,96 +373,17 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="spring-contents">
+                                {% for post in site.categories.Spring %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
                                     </div>
                                     <div class="file-name">
-                                        <a href="/spring/2024-03-05-80/">Spring Boot 3.0 업그레이드 가이드</a>
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">2024-03-05</div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-09-04-79/">Spring Data JPA 페이징 처리</a>
-                                    </div>
-                                    <div class="file-meta">2023-09-04</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-03-29-78/">Spring Security 설정</a>
-                                    </div>
-                                    <div class="file-meta">2023-03-29</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-03-13-77/">Spring Boot REST API 개발</a>
-                                    </div>
-                                    <div class="file-meta">2023-03-13</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-03-08-76/">Spring AOP 개념과 활용</a>
-                                    </div>
-                                    <div class="file-meta">2023-03-08</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-02-21-75/">Spring Boot 테스트 작성법</a>
-                                    </div>
-                                    <div class="file-meta">2023-02-21</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-02-01-74/">Spring Boot 프로파일 설정</a>
-                                    </div>
-                                    <div class="file-meta">2023-02-01</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-01-26-73/">Spring Boot 로깅 설정</a>
-                                    </div>
-                                    <div class="file-meta">2023-01-26</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-01-25-72/">Spring Boot Actuator 활용</a>
-                                    </div>
-                                    <div class="file-meta">2023-01-25</div>
-                                </div>
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="/spring/2023-01-18-71/">Spring Interceptor 구현</a>
-                                    </div>
-                                    <div class="file-meta">2023-01-18</div>
-                                </div>
+                                {% endfor %}
                             </div>
                             
                             <!-- TIL 폴더 -->
@@ -633,7 +396,7 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="til-contents">
-                                {% for post in site.categories.Til limit:10 %}
+                                {% for post in site.categories.Til %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
