@@ -151,73 +151,37 @@ layout: default
                     <div class="pagination-wrapper">
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
-                                {% if paginator.previous_page %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ paginator.previous_page_path }}" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                                
-                                {% assign start_page = paginator.page | minus: 2 %}
-                                {% assign end_page = paginator.page | plus: 2 %}
-                                {% if start_page < 1 %}
-                                    {% assign start_page = 1 %}
-                                    {% assign end_page = 5 %}
-                                {% endif %}
-                                {% if end_page > paginator.total_pages %}
-                                    {% assign end_page = paginator.total_pages %}
-                                    {% assign start_page = end_page | minus: 4 %}
-                                    {% if start_page < 1 %}
-                                        {% assign start_page = 1 %}
-                                    {% endif %}
-                                {% endif %}
-                                
-                                {% if start_page > 1 %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="/">1</a>
-                                    </li>
-                                    {% if start_page > 2 %}
-                                        <li class="page-item disabled">
-                                            <span class="page-link">...</span>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-                                
-                                {% for page_num in (start_page..end_page) %}
-                                    {% if page_num == paginator.page %}
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">{{ page_num }}</a>
-                                        </li>
-                                    {% elsif page_num == 1 %}
-                                        <li class="page-item">
-                                            <a class="page-link" href="/">{{ page_num }}</a>
-                                        </li>
-                                    {% else %}
-                                        <li class="page-item">
-                                            <a class="page-link" href="{{ site.paginate_path | replace: ':num', page_num }}">{{ page_num }}</a>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                                
-                                {% if end_page < paginator.total_pages %}
-                                    {% if end_page < paginator.total_pages | minus: 1 %}
-                                        <li class="page-item disabled">
-                                            <span class="page-link">...</span>
-                                        </li>
-                                    {% endif %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ site.paginate_path | replace: ':num', paginator.total_pages }}">{{ paginator.total_pages }}</a>
-                                    </li>
-                                {% endif %}
-                                
-                                {% if paginator.next_page %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ paginator.next_page_path }}" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                {% endif %}
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">4</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">5</a>
+                                </li>
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">42</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -506,7 +470,7 @@ layout: default
 
 /* 메인 콘텐츠 레이아웃 */
 .main-content-section {
-    padding: 40px 0;
+    padding: 100px 0 40px 0; /* 헤더 높이만큼 상단 패딩 추가 */
     background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%);
     min-height: calc(100vh - 200px);
 }
@@ -533,22 +497,25 @@ layout: default
 }
 
 .category-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
 }
 
 .category-item {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
+    padding: 8px 10px;
     background: rgba(255, 107, 53, 0.1);
     border: 1px solid var(--pitbull-orange);
-    border-radius: 10px;
+    border-radius: 8px;
     text-decoration: none;
     color: var(--pitbull-white);
     transition: all 0.3s ease;
     font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    justify-content: center;
 }
 
 .category-item:hover {
@@ -689,14 +656,19 @@ layout: default
         display: block;
     }
     
+    .category-list {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    
     .category-item {
-        padding: 10px 12px;
-        font-size: 14px;
+        padding: 8px 10px;
+        font-size: 12px;
     }
     
     .category-item i {
-        font-size: 16px;
-        margin-right: 10px;
+        font-size: 14px;
+        margin-right: 8px;
     }
 }
 </style>
