@@ -451,6 +451,40 @@ button[aria-label="Toggle menu"] + span,
   display: none !important;
 }
 
+/* 사이드바에서 모든 토글 메뉴 관련 요소 완전 숨기기 */
+.sidebar *[class*="toggle"],
+.sidebar *[class*="menu"],
+.sidebar button,
+.sidebar .greedy-nav,
+.sidebar .masthead,
+.sidebar .site-title,
+.sidebar .site-subtitle,
+.sidebar .author__avatar,
+.sidebar .author-profile,
+.sidebar .author-profile-custom-links,
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6 {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 사이드바는 오직 카테고리 목록만 표시 */
+.sidebar .nav__list,
+.sidebar .nav__sub-title,
+.sidebar .nav__items {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 .greedy-nav .visible-links {
   display: flex !important;
   align-items: center !important;
