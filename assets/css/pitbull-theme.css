@@ -240,7 +240,7 @@ a:hover {
     0 0 0 2px var(--pitbull-gold) !important;
   object-fit: cover !important;
   transition: all 0.3s ease !important;
-  position: absolute !important;
+  position: fixed !important;
   top: 1rem !important;
   left: 1rem !important;
   z-index: 1001 !important;
@@ -253,12 +253,40 @@ a:hover {
     0 0 0 3px var(--pitbull-gold) !important;
 }
 
-/* 헤더 정렬 개선 */
+/* 프로필사진 밑 문구 */
+.author__avatar::after {
+  content: "만약 노력도 재능이면,\A내 재능은 어딜가도 꿀리지 않는다";
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pitbull-gold);
+  white-space: pre-line;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background: rgba(45, 52, 54, 0.9);
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--pitbull-orange);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.author__avatar:hover::after {
+  opacity: 1;
+}
+
+/* 헤더 정렬 개선 - 사용자 친화적 */
 .masthead {
-  padding: 1rem 2rem !important;
+  padding: 1rem 2rem 1rem 120px !important; /* 프로필사진 공간 확보 */
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
+  min-height: 80px !important;
 }
 
 .masthead__inner-wrap {
@@ -282,18 +310,83 @@ a:hover {
 }
 
 .greedy-nav .site-title {
-  margin-left: 100px !important; /* 프로필사진 공간 확보 */
+  margin-left: 0 !important;
+  font-size: 1.8rem !important;
 }
 
 .greedy-nav .visible-links {
   display: flex !important;
   align-items: center !important;
-  gap: 1.5rem !important;
+  gap: 2rem !important;
   margin-left: auto !important;
 }
 
 .greedy-nav .visible-links li {
   list-style: none !important;
+}
+
+.greedy-nav .visible-links a {
+  padding: 0.5rem 1rem !important;
+  border-radius: 20px !important;
+  background: rgba(255, 107, 53, 0.1) !important;
+  border: 1px solid var(--pitbull-orange) !important;
+  transition: all 0.3s ease !important;
+}
+
+.greedy-nav .visible-links a:hover {
+  background: var(--pitbull-orange) !important;
+  color: var(--pitbull-white) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 페이지네이션 정렬 개선 */
+.pagination {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  margin: 2rem 0 !important;
+  padding: 1rem !important;
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 15px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
+}
+
+.pagination a,
+.pagination span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  padding: 0.5rem 1rem !important;
+  background: rgba(255, 107, 53, 0.1) !important;
+  color: var(--pitbull-white) !important;
+  text-decoration: none !important;
+  border-radius: 20px !important;
+  border: 1px solid var(--pitbull-orange) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.pagination a:hover {
+  background: var(--pitbull-orange) !important;
+  color: var(--pitbull-white) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3) !important;
+}
+
+.pagination .current {
+  background: var(--pitbull-orange) !important;
+  color: var(--pitbull-white) !important;
+  border-color: var(--pitbull-gold) !important;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.5) !important;
+}
+
+.pagination .disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
 }
 
 /* 푸터 정렬 개선 */
@@ -343,7 +436,30 @@ a:hover {
 /* 메인 콘텐츠 영역 조정 */
 #main {
   margin-left: 0 !important;
-  padding-top: 100px !important; /* 프로필사진 공간 확보 */
+  padding-top: 120px !important; /* 프로필사진 공간 확보 */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* 포스트 목록 정렬 개선 */
+.archive__item {
+  margin-bottom: 2rem !important;
+  padding: 1.5rem !important;
+}
+
+.archive__item-title {
+  margin-bottom: 1rem !important;
+}
+
+.archive__item-meta {
+  color: var(--pitbull-gold) !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.archive__item-excerpt {
+  color: var(--pitbull-white) !important;
+  line-height: 1.6 !important;
 }
 
 /* 핏불 테마 버튼 - 강렬하고 역동적 */
