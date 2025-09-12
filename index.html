@@ -38,29 +38,69 @@ layout: default
                 <div class="sidebar-categories">
                     <h3>Categories</h3>
                     <div class="category-list">
-                        <a href="/categories/java" class="category-item">
-                            <i class="fa fa-code"></i>
-                            <span>Java</span>
-                        </a>
-                        <a href="/categories/mysql" class="category-item">
-                            <i class="fa fa-database"></i>
-                            <span>MySQL</span>
-                        </a>
-                        <a href="/categories/spring" class="category-item">
-                            <i class="fa fa-cogs"></i>
-                            <span>Spring</span>
-                        </a>
                         <a href="/categories/algorithm" class="category-item">
                             <i class="fa fa-brain"></i>
                             <span>Algorithm</span>
+                        </a>
+                        <a href="/categories/bigdata" class="category-item">
+                            <i class="fa fa-chart-bar"></i>
+                            <span>Big Data</span>
+                        </a>
+                        <a href="/categories/computerstructure" class="category-item">
+                            <i class="fa fa-microchip"></i>
+                            <span>Computer Structure</span>
+                        </a>
+                        <a href="/categories/discretemathematics" class="category-item">
+                            <i class="fa fa-calculator"></i>
+                            <span>Discrete Math</span>
+                        </a>
+                        <a href="/categories/html" class="category-item">
+                            <i class="fa fa-html5"></i>
+                            <span>HTML/CSS</span>
+                        </a>
+                        <a href="/categories/internet" class="category-item">
+                            <i class="fa fa-globe"></i>
+                            <span>Internet</span>
+                        </a>
+                        <a href="/categories/java" class="category-item">
+                            <i class="fa fa-coffee"></i>
+                            <span>Java</span>
+                        </a>
+                        <a href="/categories/jdbc" class="category-item">
+                            <i class="fa fa-database"></i>
+                            <span>JDBC</span>
                         </a>
                         <a href="/categories/js" class="category-item">
                             <i class="fa fa-js"></i>
                             <span>JavaScript</span>
                         </a>
+                        <a href="/categories/linux" class="category-item">
+                            <i class="fa fa-linux"></i>
+                            <span>Linux</span>
+                        </a>
+                        <a href="/categories/mysql" class="category-item">
+                            <i class="fa fa-database"></i>
+                            <span>MySQL</span>
+                        </a>
                         <a href="/categories/python" class="category-item">
                             <i class="fa fa-python"></i>
                             <span>Python</span>
+                        </a>
+                        <a href="/categories/r" class="category-item">
+                            <i class="fa fa-chart-line"></i>
+                            <span>R</span>
+                        </a>
+                        <a href="/categories/servlet" class="category-item">
+                            <i class="fa fa-server"></i>
+                            <span>Servlet</span>
+                        </a>
+                        <a href="/categories/spring" class="category-item">
+                            <i class="fa fa-leaf"></i>
+                            <span>Spring</span>
+                        </a>
+                        <a href="/categories/til" class="category-item">
+                            <i class="fa fa-book"></i>
+                            <span>TIL</span>
                         </a>
                     </div>
                 </div>
@@ -119,7 +159,32 @@ layout: default
                                     </li>
                                 {% endif %}
                                 
-                                {% for page_num in (1..paginator.total_pages) %}
+                                {% assign start_page = paginator.page | minus: 2 %}
+                                {% assign end_page = paginator.page | plus: 2 %}
+                                {% if start_page < 1 %}
+                                    {% assign start_page = 1 %}
+                                    {% assign end_page = 5 %}
+                                {% endif %}
+                                {% if end_page > paginator.total_pages %}
+                                    {% assign end_page = paginator.total_pages %}
+                                    {% assign start_page = end_page | minus: 4 %}
+                                    {% if start_page < 1 %}
+                                        {% assign start_page = 1 %}
+                                    {% endif %}
+                                {% endif %}
+                                
+                                {% if start_page > 1 %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="/">1</a>
+                                    </li>
+                                    {% if start_page > 2 %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">...</span>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                                
+                                {% for page_num in (start_page..end_page) %}
                                     {% if page_num == paginator.page %}
                                         <li class="page-item active">
                                             <a class="page-link" href="#">{{ page_num }}</a>
@@ -134,6 +199,17 @@ layout: default
                                         </li>
                                     {% endif %}
                                 {% endfor %}
+                                
+                                {% if end_page < paginator.total_pages %}
+                                    {% if end_page < paginator.total_pages | minus: 1 %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">...</span>
+                                        </li>
+                                    {% endif %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ site.paginate_path | replace: ':num', paginator.total_pages }}">{{ paginator.total_pages }}</a>
+                                    </li>
+                                {% endif %}
                                 
                                 {% if paginator.next_page %}
                                     <li class="page-item">
@@ -412,6 +488,20 @@ layout: default
     background: linear-gradient(135deg, var(--pitbull-gold), var(--pitbull-orange));
     color: var(--pitbull-dark);
     transform: translateY(-2px);
+}
+
+.page-item.disabled .page-link {
+    color: var(--pitbull-gray);
+    background: transparent;
+    border-color: transparent;
+    cursor: not-allowed;
+}
+
+.page-item.disabled .page-link:hover {
+    color: var(--pitbull-gray);
+    background: transparent;
+    border-color: transparent;
+    transform: none;
 }
 
 /* 메인 콘텐츠 레이아웃 */
