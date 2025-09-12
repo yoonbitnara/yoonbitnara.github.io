@@ -299,13 +299,48 @@ body.single .author__avatar {
   z-index: 1001 !important;
 }
 
-/* 헤더 정렬 개선 - 사용자 친화적 */
+/* 사이트 타이틀과 모토 스타일 */
+.site-header-info {
+  position: fixed !important;
+  top: 1rem !important;
+  left: 100px !important; /* 프로필사진 옆 */
+  z-index: 1000 !important;
+  max-width: 400px !important;
+}
+
+.site-title-main {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: var(--pitbull-orange) !important;
+  margin: 0 0 0.5rem 0 !important;
+  text-shadow: 0 2px 4px rgba(255, 107, 53, 0.3) !important;
+  background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-gold)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.site-motto {
+  font-size: 0.9rem !important;
+  color: var(--pitbull-gold) !important;
+  margin: 0 !important;
+  font-style: italic !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  line-height: 1.3 !important;
+}
+
+/* 토글메뉴 버튼 숨기기 */
+.greedy-nav__toggle {
+  display: none !important;
+}
+
+/* 헤더 정렬 개선 - 깔끔하고 가로형 */
 .masthead {
   padding: 1rem 2rem 1rem 120px !important; /* 프로필사진 공간 확보 */
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  min-height: 80px !important;
+  min-height: 60px !important; /* 높이 줄임 */
 }
 
 .masthead__inner-wrap {
@@ -329,15 +364,15 @@ body.single .author__avatar {
 }
 
 .greedy-nav .site-title {
-  margin-left: 0 !important;
-  font-size: 1.8rem !important;
+  display: none !important; /* 기존 사이트 타이틀 숨기기 */
 }
 
 .greedy-nav .visible-links {
   display: flex !important;
   align-items: center !important;
-  gap: 2rem !important;
+  gap: 1rem !important; /* 간격 줄임 */
   margin-left: auto !important;
+  flex-wrap: wrap !important;
 }
 
 .greedy-nav .visible-links li {
@@ -345,17 +380,19 @@ body.single .author__avatar {
 }
 
 .greedy-nav .visible-links a {
-  padding: 0.5rem 1rem !important;
-  border-radius: 20px !important;
+  padding: 0.3rem 0.8rem !important; /* 패딩 줄임 */
+  border-radius: 15px !important;
   background: rgba(255, 107, 53, 0.1) !important;
   border: 1px solid var(--pitbull-orange) !important;
   transition: all 0.3s ease !important;
+  font-size: 0.9rem !important; /* 폰트 크기 줄임 */
+  white-space: nowrap !important;
 }
 
 .greedy-nav .visible-links a:hover {
   background: var(--pitbull-orange) !important;
   color: var(--pitbull-white) !important;
-  transform: translateY(-2px) !important;
+  transform: translateY(-1px) !important;
 }
 
 /* 페이지네이션 정렬 개선 */
@@ -455,7 +492,7 @@ body.single .author__avatar {
 /* 메인 콘텐츠 영역 조정 */
 #main {
   margin-left: 0 !important;
-  padding-top: 120px !important; /* 프로필사진 공간 확보 */
+  padding-top: 140px !important; /* 프로필사진 + 타이틀 공간 확보 */
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -528,31 +565,45 @@ body.single .author__avatar {
     left: 0.5rem !important;
   }
   
-  .greedy-nav .site-title {
-    margin-left: 70px !important;
-    font-size: 1.5rem !important;
+  .site-header-info {
+    left: 70px !important;
+    max-width: 250px !important;
+  }
+  
+  .site-title-main {
+    font-size: 1.4rem !important;
+  }
+  
+  .site-motto {
+    font-size: 0.8rem !important;
   }
   
   .greedy-nav .visible-links {
-    gap: 1rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  .greedy-nav .visible-links a {
+    padding: 0.2rem 0.5rem !important;
+    font-size: 0.8rem !important;
   }
   
   .masthead {
-    padding: 0.5rem 1rem !important;
+    padding: 0.5rem 1rem 0.5rem 80px !important;
+    min-height: 50px !important;
   }
   
   .page__inner-wrap {
     margin: 1rem !important;
-    padding: 2rem !important;
+    padding: 1rem !important;
   }
   
   .sidebar {
     margin: 1rem !important;
-    padding: 1.5rem !important;
+    padding: 1rem !important;
   }
   
   #main {
-    padding-top: 80px !important;
+    padding-top: 100px !important;
   }
 }
 
