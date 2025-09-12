@@ -12,7 +12,7 @@ layout: default
                 <div class="repo-header">
                     <div class="repo-title">
                         <h2><i class="fa fa-folder"></i> PitBull Terrier Devlog</h2>
-                        <p>만약 노력이 재능이라면 내 재능은 어딜가도 꿀리지 않는다.</p>
+                        <p>만약 노력이 재능이라면, 내 재능은 어딜가도 꿀리지 않는다.</p>
                     </div>
                 </div>
                 
@@ -24,6 +24,19 @@ layout: default
                                 <span class="breadcrumb-item">
                                     <i class="fa fa-home"></i> yoonbitnara.github.io
                                 </span>
+                                <span class="breadcrumb-separator">/</span>
+                                <a href="https://github.com/yoonbitnara" target="_blank" class="breadcrumb-item github-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </div>
+                            
+                            <!-- 검색 기능 -->
+                            <div class="search-container">
+                                <div class="search-box">
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" id="searchInput" placeholder="게시글 검색..." />
+                                </div>
+                                <div class="search-results" id="searchResults"></div>
                             </div>
                         </div>
                         
@@ -733,6 +746,132 @@ layout: default
 .breadcrumb {
     color: #8b949e;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb-item {
+    color: #8b949e;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item:hover {
+    color: #f0f6fc;
+}
+
+.github-link {
+    color: #f0f6fc !important;
+    font-weight: 600;
+}
+
+.github-link:hover {
+    color: #58a6ff !important;
+}
+
+.breadcrumb-separator {
+    color: #6e7681;
+    margin: 0 4px;
+}
+
+/* 검색 기능 스타일 */
+.search-container {
+    padding: 16px;
+    background: #21262d;
+    border-bottom: 1px solid #30363d;
+}
+
+.search-box {
+    position: relative;
+    max-width: 400px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8b949e;
+    font-size: 14px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #f0f6fc;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.search-box input:focus {
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.search-box input::placeholder {
+    color: #8b949e;
+}
+
+.search-results {
+    margin-top: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    display: none;
+}
+
+.search-result-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #21262d;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-result-item:hover {
+    background: #21262d;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-icon {
+    color: #8b949e;
+    font-size: 16px;
+}
+
+.search-result-content {
+    flex: 1;
+}
+
+.search-result-title {
+    color: #f0f6fc;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.search-result-category {
+    color: #8b949e;
+    font-size: 12px;
+}
+
+.search-result-date {
+    color: #6e7681;
+    font-size: 12px;
 }
 
 .breadcrumb-item i {
@@ -1076,6 +1215,48 @@ layout: default
             }
         }
 
+        // 검색 기능
+        function searchPosts(query) {
+            const results = [];
+            const allPosts = document.querySelectorAll('.file-item a[href*="/"]');
+            
+            allPosts.forEach(post => {
+                const title = post.textContent.toLowerCase();
+                const href = post.getAttribute('href');
+                const category = post.closest('.folder-contents')?.id?.replace('-contents', '') || 'unknown';
+                
+                if (title.includes(query.toLowerCase())) {
+                    results.push({
+                        title: post.textContent,
+                        url: href,
+                        category: category
+                    });
+                }
+            });
+            
+            return results;
+        }
+
+        function displaySearchResults(results) {
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="search-result-item">검색 결과가 없습니다.</div>';
+            } else {
+                resultsContainer.innerHTML = results.map(result => `
+                    <div class="search-result-item" onclick="window.location.href='${result.url}'">
+                        <i class="fa fa-file-text search-result-icon"></i>
+                        <div class="search-result-content">
+                            <div class="search-result-title">${result.title}</div>
+                            <div class="search-result-category">${result.category}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            resultsContainer.style.display = 'block';
+        }
+
         // 페이지 로드 시 초기화
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing folders');
@@ -1098,6 +1279,33 @@ layout: default
                     console.log('Folder clicked:', folderName);
                     toggleFolder(folderName);
                 });
+            });
+
+            // 검색 기능 초기화
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            
+            searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.trim();
+                
+                if (query.length === 0) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+                
+                if (query.length < 2) {
+                    return;
+                }
+                
+                const results = searchPosts(query);
+                displaySearchResults(results);
+            });
+
+            // 검색 결과 외부 클릭 시 숨기기
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container')) {
+                    searchResults.style.display = 'none';
+                }
             });
         });
         </script>
