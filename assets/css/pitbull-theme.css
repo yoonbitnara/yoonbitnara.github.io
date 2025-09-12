@@ -565,14 +565,26 @@ button[aria-label="Toggle menu"] + span,
   margin: 2rem 0 !important;
 }
 
-/* 상세페이지 페이지네이션을 별도 컨테이너로 분리 */
+/* 상세페이지 페이지네이션을 별도 영역으로 분리 */
 .single .page__pagination,
 .post .page__pagination {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  margin: 3rem auto 0 auto !important;
+  margin: 0 auto !important;
   width: 100% !important;
+}
+
+/* 상세페이지 페이지네이션 컨테이너 */
+.single .pagination,
+.post .pagination {
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 20px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  padding: 1.5rem 2rem !important;
+  margin: 0 !important;
 }
 
 /* 상세페이지 페이지네이션 버튼 스타일링 */
@@ -607,29 +619,46 @@ button[aria-label="Toggle menu"] + span,
   padding-bottom: 2rem !important;
 }
 
-/* 상세페이지 전체 레이아웃 개선 */
+/* 상세페이지 전체 레이아웃 개선 - 제목/날짜 → 내용 → 페이지네이션 */
 .single .page__inner-wrap,
 .post .page__inner-wrap {
   display: flex !important;
   flex-direction: column !important;
   max-width: 800px !important;
   margin: 0 auto !important;
-  padding: 2rem !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* 상세페이지 헤더 영역 (제목 + 날짜) */
+.single .page__header,
+.post .page__header {
   background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
   border-radius: 20px !important;
   border: 2px solid var(--pitbull-orange) !important;
   box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
   backdrop-filter: blur(10px) !important;
+  padding: 2rem !important;
+  margin-bottom: 2rem !important;
+  text-align: center !important;
 }
 
 /* 상세페이지 콘텐츠 영역 */
 .single .page__content,
 .post .page__content {
-  flex: 1 !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 20px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  padding: 2rem !important;
+  margin-bottom: 2rem !important;
 }
+
+/* 상세페이지 콘텐츠 영역 (중복 제거) */
 
 /* 상세페이지 본문 스타일링 */
 .single .page__content h1,
