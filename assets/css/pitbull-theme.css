@@ -528,22 +528,23 @@ button[aria-label="Toggle menu"] + span,
   width: 100% !important;
 }
 
-/* 상세페이지 Previous Next 맨 밑 중앙으로 이동 */
+/* 상세페이지 Previous Next 맨 밑 중앙으로 이동 - 게시글 가리지 않도록 수정 */
 .page__inner-wrap .pagination,
 .single .pagination,
 .post .pagination {
-  position: fixed !important;
-  bottom: 2rem !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  z-index: 1000 !important;
-  margin: 0 !important;
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  z-index: auto !important;
+  margin: 2rem auto !important;
+  text-align: center !important;
 }
 
 /* 상세페이지 메인 콘텐츠에 하단 여백 추가 */
 .single #main,
 .post #main {
-  padding-bottom: 100px !important;
+  padding-bottom: 2rem !important;
 }
 
 .pagination a,
