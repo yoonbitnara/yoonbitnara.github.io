@@ -229,6 +229,123 @@ a:hover {
   transform: translateY(-1px) !important;
 }
 
+/* 프로필사진 스타일 - 좌측상단 동그랗게 */
+.author__avatar {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 50% !important;
+  border: 3px solid var(--pitbull-orange) !important;
+  box-shadow: 
+    0 4px 15px rgba(255, 107, 53, 0.3),
+    0 0 0 2px var(--pitbull-gold) !important;
+  object-fit: cover !important;
+  transition: all 0.3s ease !important;
+  position: absolute !important;
+  top: 1rem !important;
+  left: 1rem !important;
+  z-index: 1001 !important;
+}
+
+.author__avatar:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 
+    0 6px 20px rgba(255, 107, 53, 0.5),
+    0 0 0 3px var(--pitbull-gold) !important;
+}
+
+/* 헤더 정렬 개선 */
+.masthead {
+  padding: 1rem 2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.masthead__inner-wrap {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.masthead__menu {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.greedy-nav {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  justify-content: space-between !important;
+}
+
+.greedy-nav .site-title {
+  margin-left: 100px !important; /* 프로필사진 공간 확보 */
+}
+
+.greedy-nav .visible-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+  margin-left: auto !important;
+}
+
+.greedy-nav .visible-links li {
+  list-style: none !important;
+}
+
+/* 푸터 정렬 개선 */
+.page__footer {
+  text-align: center !important;
+  padding: 2rem 0 !important;
+  margin-top: 4rem !important;
+}
+
+.page__footer-follow {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.page__footer-follow .social-icons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.page__footer-follow .social-icons li {
+  list-style: none !important;
+}
+
+.page__footer-copyright {
+  text-align: center !important;
+  color: var(--pitbull-gold) !important;
+  font-weight: 600 !important;
+  margin-top: 1rem !important;
+}
+
+/* 사이드바 정렬 개선 */
+.sidebar {
+  margin: 2rem 1rem !important;
+  padding: 2rem !important;
+  position: relative !important;
+}
+
+/* 메인 콘텐츠 영역 조정 */
+#main {
+  margin-left: 0 !important;
+  padding-top: 100px !important; /* 프로필사진 공간 확보 */
+}
+
 /* 핏불 테마 버튼 - 강렬하고 역동적 */
 #toTop {
   position: fixed !important;
@@ -265,4 +382,66 @@ a:hover {
     0 10px 30px rgba(255, 107, 53, 0.6),
     0 0 0 4px var(--pitbull-gold) !important;
   background: linear-gradient(135deg, var(--pitbull-red) 0%, var(--pitbull-orange) 100%) !important;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .author__avatar {
+    width: 60px !important;
+    height: 60px !important;
+    top: 0.5rem !important;
+    left: 0.5rem !important;
+  }
+  
+  .greedy-nav .site-title {
+    margin-left: 70px !important;
+    font-size: 1.5rem !important;
+  }
+  
+  .greedy-nav .visible-links {
+    gap: 1rem !important;
+  }
+  
+  .masthead {
+    padding: 0.5rem 1rem !important;
+  }
+  
+  .page__inner-wrap {
+    margin: 1rem !important;
+    padding: 2rem !important;
+  }
+  
+  .sidebar {
+    margin: 1rem !important;
+    padding: 1.5rem !important;
+  }
+  
+  #main {
+    padding-top: 80px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .author__avatar {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  .greedy-nav .site-title {
+    margin-left: 60px !important;
+    font-size: 1.2rem !important;
+  }
+  
+  .greedy-nav .visible-links {
+    gap: 0.5rem !important;
+  }
+  
+  .page__inner-wrap {
+    margin: 0.5rem !important;
+    padding: 1.5rem !important;
+  }
+  
+  #main {
+    padding-top: 70px !important;
+  }
 }
