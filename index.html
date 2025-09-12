@@ -2,32 +2,6 @@
 layout: default
 ---
 
-<!--header-->
-<header class="main-header clearfix" role="header">
-  <div class="logo">
-    <a href="/"><em>{{ site.title }}</em></a>
-  </div>
-  <a href="#menu" class="menu-link"></a>
-  <nav id="menu" class="main-nav" role="navigation">
-    <ul class="main-menu">
-      <li><a href="#section1">Home</a></li>
-      <li><a href="#section2">About</a></li>
-      <li><a href="#categories">Categories</a></li>
-      <li><a href="#section3">Posts</a></li>
-      <li><a href="https://github.com/yoonbitnara" target="_blank">GitHub</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- ***** Main Banner Area Start ***** -->
-<section class="section main-banner" id="top" data-section="section1">
-    <div class="video-overlay header-text">
-        <div class="caption">
-            <h2><em>{{ site.title }}</em></h2>
-            <p>{{ site.description }}</p>
-        </div>
-    </div>
-</section>
 
 <!-- ***** GitHub Style Repository View ***** -->
 <section class="section github-style-section" id="repository">
@@ -59,12 +33,127 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">Algorithm</div>
+                                <div class="file-name">algorithm</div>
                                 <div class="file-meta">15 files</div>
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="algorithm-contents">
-                                {% for post in site.categories.algorithm limit:5 %}
+                                {% for post in site.categories.algorithm limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Big Data 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('bigdata')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">bigdata</div>
+                                <div class="file-meta">12 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="bigdata-contents">
+                                {% for post in site.categories.bigdata limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Computer Structure 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('computerstructure')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">computerstructure</div>
+                                <div class="file-meta">7 files</div>
+                                <div class="file-date">1 year ago</div>
+                            </div>
+                            <div class="folder-contents" id="computerstructure-contents">
+                                {% for post in site.categories.computerstructure limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Discrete Mathematics 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('discretemathematics')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">discretemathematics</div>
+                                <div class="file-meta">6 files</div>
+                                <div class="file-date">1 year ago</div>
+                            </div>
+                            <div class="folder-contents" id="discretemathematics-contents">
+                                {% for post in site.categories.discretemathematics limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- HTML 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('html')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">html</div>
+                                <div class="file-meta">8 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="html-contents">
+                                {% for post in site.categories.html limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Internet 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('internet')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">internet</div>
+                                <div class="file-meta">9 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="internet-contents">
+                                {% for post in site.categories.internet limit:10 %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -82,12 +171,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">Java</div>
+                                <div class="file-name">java</div>
                                 <div class="file-meta">27 files</div>
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="java-contents">
-                                {% for post in site.categories.java limit:5 %}
+                                {% for post in site.categories.java limit:10 %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -100,40 +189,17 @@ layout: default
                                 {% endfor %}
                             </div>
                             
-                            <!-- Spring 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('spring')">
+                            <!-- JDBC 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('jdbc')">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">Spring</div>
-                                <div class="file-meta">69 files</div>
-                                <div class="file-date">1 year ago</div>
-                            </div>
-                            <div class="folder-contents" id="spring-contents">
-                                {% for post in site.categories.spring limit:5 %}
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="{{ post.url }}">{{ post.title }}</a>
-                                    </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                            
-                            <!-- MySQL 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('mysql')">
-                                <div class="file-icon">
-                                    <i class="fa fa-folder"></i>
-                                </div>
-                                <div class="file-name">MySQL</div>
-                                <div class="file-meta">22 files</div>
+                                <div class="file-name">jdbc</div>
+                                <div class="file-meta">6 files</div>
                                 <div class="file-date">2 years ago</div>
                             </div>
-                            <div class="folder-contents" id="mysql-contents">
-                                {% for post in site.categories.mysql limit:5 %}
+                            <div class="folder-contents" id="jdbc-contents">
+                                {% for post in site.categories.jdbc limit:10 %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -151,12 +217,150 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">JavaScript</div>
+                                <div class="file-name">js</div>
                                 <div class="file-meta">16 files</div>
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="js-contents">
-                                {% for post in site.categories.js limit:5 %}
+                                {% for post in site.categories.js limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Linux 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('linux')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">linux</div>
+                                <div class="file-meta">1 file</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="linux-contents">
+                                {% for post in site.categories.linux limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- MySQL 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('mysql')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">mysql</div>
+                                <div class="file-meta">22 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="mysql-contents">
+                                {% for post in site.categories.mysql limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Python 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('python')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">python</div>
+                                <div class="file-meta">4 files</div>
+                                <div class="file-date">1 year ago</div>
+                            </div>
+                            <div class="folder-contents" id="python-contents">
+                                {% for post in site.categories.python limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- R 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('r')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">r</div>
+                                <div class="file-meta">4 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="r-contents">
+                                {% for post in site.categories.r limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Servlet 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('servlet')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">servlet</div>
+                                <div class="file-meta">22 files</div>
+                                <div class="file-date">2 years ago</div>
+                            </div>
+                            <div class="folder-contents" id="servlet-contents">
+                                {% for post in site.categories.servlet limit:10 %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Spring 폴더 -->
+                            <div class="file-item folder-item" onclick="toggleFolder('spring')">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">spring</div>
+                                <div class="file-meta">69 files</div>
+                                <div class="file-date">1 year ago</div>
+                            </div>
+                            <div class="folder-contents" id="spring-contents">
+                                {% for post in site.categories.spring limit:10 %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -174,12 +378,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">TIL</div>
+                                <div class="file-name">til</div>
                                 <div class="file-meta">23 files</div>
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="til-contents">
-                                {% for post in site.categories.til limit:5 %}
+                                {% for post in site.categories.til limit:10 %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -478,9 +682,9 @@ layout: default
 
 /* GitHub 스타일 레이아웃 */
 .github-style-section {
-    padding: 120px 0 40px 0;
+    padding: 20px 0 40px 0;
     background: #0d1117;
-    min-height: calc(100vh - 200px);
+    min-height: 100vh;
 }
 
 .repo-header {
