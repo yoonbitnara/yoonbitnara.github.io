@@ -29,7 +29,7 @@ layout: default
                         
                         <div class="file-list">
                             <!-- Algorithm 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('algorithm')">
+                            <div class="file-item folder-item" data-folder="algorithm">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -52,7 +52,7 @@ layout: default
                             </div>
                             
                             <!-- Big Data 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('bigdata')">
+                            <div class="file-item folder-item" data-folder="bigdata">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -75,7 +75,7 @@ layout: default
                             </div>
                             
                             <!-- Computer Structure 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('computerstructure')">
+                            <div class="file-item folder-item" data-folder="computerstructure">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -98,7 +98,7 @@ layout: default
                             </div>
                             
                             <!-- Discrete Mathematics 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('discretemathematics')">
+                            <div class="file-item folder-item" data-folder="discretemathematics">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -121,7 +121,7 @@ layout: default
                             </div>
                             
                             <!-- HTML 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('html')">
+                            <div class="file-item folder-item" data-folder="html">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -144,7 +144,7 @@ layout: default
                             </div>
                             
                             <!-- Internet 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('internet')">
+                            <div class="file-item folder-item" data-folder="internet">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -167,7 +167,7 @@ layout: default
                             </div>
                             
                             <!-- Java 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('java')">
+                            <div class="file-item folder-item" data-folder="java">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -190,7 +190,7 @@ layout: default
                             </div>
                             
                             <!-- JDBC 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('jdbc')">
+                            <div class="file-item folder-item" data-folder="jdbc">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -213,7 +213,7 @@ layout: default
                             </div>
                             
                             <!-- JavaScript 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('js')">
+                            <div class="file-item folder-item" data-folder="js">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -236,7 +236,7 @@ layout: default
                             </div>
                             
                             <!-- Linux 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('linux')">
+                            <div class="file-item folder-item" data-folder="linux">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -259,7 +259,7 @@ layout: default
                             </div>
                             
                             <!-- MySQL 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('mysql')">
+                            <div class="file-item folder-item" data-folder="mysql">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -282,7 +282,7 @@ layout: default
                             </div>
                             
                             <!-- Python 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('python')">
+                            <div class="file-item folder-item" data-folder="python">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -305,7 +305,7 @@ layout: default
                             </div>
                             
                             <!-- R 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('r')">
+                            <div class="file-item folder-item" data-folder="r">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -328,7 +328,7 @@ layout: default
                             </div>
                             
                             <!-- Servlet 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('servlet')">
+                            <div class="file-item folder-item" data-folder="servlet">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -351,7 +351,7 @@ layout: default
                             </div>
                             
                             <!-- Spring 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('spring')">
+                            <div class="file-item folder-item" data-folder="spring">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -374,7 +374,7 @@ layout: default
                             </div>
                             
                             <!-- TIL 폴더 -->
-                            <div class="file-item folder-item" onclick="toggleFolder('til')">
+                            <div class="file-item folder-item" data-folder="til">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
@@ -1057,7 +1057,7 @@ layout: default
         function toggleFolder(folderName) {
             console.log('Toggling folder:', folderName);
             const contents = document.getElementById(folderName + '-contents');
-            const folder = event.currentTarget;
+            const folder = document.querySelector(`[data-folder="${folderName}"]`);
             const icon = folder.querySelector('.file-icon i');
             
             if (!contents) {
@@ -1093,7 +1093,8 @@ layout: default
             folders.forEach(folder => {
                 folder.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const folderName = this.querySelector('.file-name').textContent.trim();
+                    e.stopPropagation();
+                    const folderName = this.getAttribute('data-folder');
                     console.log('Folder clicked:', folderName);
                     toggleFolder(folderName);
                 });
