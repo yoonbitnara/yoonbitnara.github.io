@@ -465,7 +465,22 @@ button[aria-label="Toggle menu"] + span,
 .sidebar h3,
 .sidebar h4,
 .sidebar h5,
-.sidebar h6 {
+.sidebar h6,
+.sidebar .nav__sub-title {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 사이드바에서 "Toggle menu" 텍스트 강제 제거 */
+.sidebar *:contains("Toggle menu"),
+.sidebar *:contains("toggle"),
+.sidebar *:contains("menu") {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -523,8 +538,8 @@ button[aria-label="Toggle menu"] + span,
   justify-content: center !important;
   align-items: center !important;
   gap: 0.2rem !important;
-  margin: 1rem auto !important;
-  padding: 0.5rem 1rem !important;
+  margin: 2rem auto 3rem auto !important;
+  padding: 1rem 2rem !important;
   background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
   border-radius: 25px !important;
   border: 2px solid var(--pitbull-orange) !important;
@@ -533,6 +548,9 @@ button[aria-label="Toggle menu"] + span,
   max-width: 400px !important;
   width: fit-content !important;
   overflow-x: auto !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
 }
 
 /* 페이지네이션 리스트 강제 가로형 */
@@ -996,19 +1014,29 @@ button[aria-label="Toggle menu"] + span,
   width: 100% !important;
 }
 
+/* 게시글 목록 그리드 컨테이너 */
+.archive {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem !important;
+  margin-bottom: 3rem !important;
+  padding: 0 1rem !important;
+}
+
 /* 포스트 목록 강제 표시 - 카드챕터식 */
 .archive__item {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  margin-bottom: 1.5rem !important;
-  padding: 1rem !important;
+  margin-bottom: 0 !important;
+  padding: 1.5rem !important;
   background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 10px !important;
-  border: 1px solid var(--pitbull-orange) !important;
-  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.15) !important;
+  border-radius: 15px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
   transition: all 0.3s ease !important;
   cursor: pointer !important;
+  height: fit-content !important;
 }
 
 .archive__item:hover {
@@ -1135,6 +1163,20 @@ button[aria-label="Toggle menu"] + span,
   #main {
     padding-top: 100px !important;
     flex-direction: column !important;
+  }
+  
+  /* 모바일에서 2열 그리드 */
+  .archive {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 모바일에서 1열 그리드 */
+  .archive {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
   
   .page__inner-wrap {
