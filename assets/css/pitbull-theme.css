@@ -428,6 +428,29 @@ button[aria-label="Toggle menu"] + span,
   display: none !important;
 }
 
+/* 사이드바에서 모든 불필요한 요소 숨기기 */
+.sidebar .author__avatar,
+.sidebar .author-profile,
+.sidebar .author-profile-custom-links,
+.sidebar .greedy-nav__toggle,
+.sidebar .greedy-nav__toggle-wrapper,
+.sidebar .greedy-nav__toggle-text,
+.sidebar button[aria-label="Toggle menu"],
+.sidebar button[aria-label="Menu"],
+.sidebar .site-title,
+.sidebar .site-subtitle,
+.sidebar .masthead,
+.sidebar .greedy-nav {
+  display: none !important;
+}
+
+/* 사이드바에서 "menu" 텍스트 숨기기 */
+.sidebar h3:contains("menu"),
+.sidebar .menu-text,
+.sidebar .toggle-menu-text {
+  display: none !important;
+}
+
 .greedy-nav .visible-links {
   display: flex !important;
   align-items: center !important;
@@ -462,6 +485,7 @@ button[aria-label="Toggle menu"] + span,
 /* 페이지네이션 정렬 개선 - 1 2 3 4 5 > 형식 */
 .pagination {
   display: flex !important;
+  flex-direction: row !important;
   justify-content: center !important;
   align-items: center !important;
   gap: 0.2rem !important;
@@ -477,12 +501,49 @@ button[aria-label="Toggle menu"] + span,
   overflow-x: auto !important;
 }
 
+/* 페이지네이션 리스트 강제 가로형 */
+.pagination ul,
+.pagination ol {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.2rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.pagination li {
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 /* 페이지네이션 컨테이너 강제 가로형 */
 .pagination-wrapper,
 .pagination-container {
   display: flex !important;
   justify-content: center !important;
   width: 100% !important;
+}
+
+/* 상세페이지 Previous Next 맨 밑 중앙으로 이동 */
+.page__inner-wrap .pagination,
+.single .pagination,
+.post .pagination {
+  position: fixed !important;
+  bottom: 2rem !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 1000 !important;
+  margin: 0 !important;
+}
+
+/* 상세페이지 메인 콘텐츠에 하단 여백 추가 */
+.single #main,
+.post #main {
+  padding-bottom: 100px !important;
 }
 
 .pagination a,
