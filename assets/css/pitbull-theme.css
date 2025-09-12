@@ -400,7 +400,16 @@ button[aria-label="Menu"] {
 /* 사이드바 Toggle menu 숨기기 */
 .sidebar .greedy-nav__toggle,
 .sidebar button[aria-label="Toggle menu"],
-.sidebar button[aria-label="Menu"] {
+.sidebar button[aria-label="Menu"],
+.sidebar .greedy-nav__toggle-wrapper,
+.sidebar .greedy-nav__toggle-text {
+  display: none !important;
+}
+
+/* Toggle menu 텍스트 완전 숨기기 */
+.greedy-nav__toggle-text,
+button[aria-label="Toggle menu"] + span,
+.greedy-nav__toggle + span {
   display: none !important;
 }
 
@@ -441,16 +450,24 @@ button[aria-label="Menu"] {
   justify-content: center !important;
   align-items: center !important;
   gap: 0.3rem !important;
-  margin: 1rem 0 !important;
+  margin: 1rem auto !important;
   padding: 0.5rem 1rem !important;
   background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
   border-radius: 25px !important;
   border: 2px solid var(--pitbull-orange) !important;
   box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
-  flex-wrap: wrap !important;
-  max-width: 600px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  flex-wrap: nowrap !important;
+  max-width: 500px !important;
+  width: fit-content !important;
+  overflow-x: auto !important;
+}
+
+/* 페이지네이션 컨테이너 강제 가로형 */
+.pagination-wrapper,
+.pagination-container {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
 }
 
 .pagination a,
@@ -527,39 +544,75 @@ button[aria-label="Menu"] {
   margin-top: 1rem !important;
 }
 
-/* 사이드바 정렬 개선 - 컴팩트 */
+/* 사이드바 정렬 개선 - 컴팩트 (제거됨, 위에서 재정의) */
+
+/* 메인 콘텐츠 영역 조정 - 레이아웃 수정 */
+#main {
+  margin-left: 0 !important;
+  padding-top: 80px !important; /* 프로필사진 + 타이틀 공간 확보 */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-top: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+/* 사이드바와 메인 콘텐츠를 나란히 배치 */
+.page__inner-wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+  gap: 2rem !important;
+}
+
+/* 사이드바 영역 */
 .sidebar {
-  margin: 1rem !important;
-  padding: 1.5rem !important;
-  position: relative !important;
+  flex: 0 0 250px !important;
   width: 250px !important;
   max-width: 250px !important;
+  margin: 0 !important;
+  padding: 1.5rem !important;
   background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
   border-radius: 15px !important;
   border: 2px solid var(--pitbull-orange) !important;
   box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
   backdrop-filter: blur(10px) !important;
+  height: fit-content !important;
 }
 
-/* 메인 콘텐츠 영역 조정 */
-#main {
-  margin-left: 280px !important; /* 사이드바 공간 확보 */
-  padding-top: 80px !important; /* 프로필사진 + 타이틀 공간 확보 */
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-top: 0 !important;
-  width: calc(100% - 280px) !important;
-  max-width: none !important;
+/* 메인 콘텐츠 영역 */
+.page__content {
+  flex: 1 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* 메인 콘텐츠 영역 강제 표시 */
 .page__inner-wrap {
-  display: block !important;
+  display: flex !important;
+  flex-direction: row !important;
   visibility: visible !important;
   opacity: 1 !important;
   width: 100% !important;
   margin: 0 !important;
-  padding: 2rem !important;
+  padding: 1rem !important;
+  background: transparent !important;
+  gap: 2rem !important;
+}
+
+/* 게시물 목록 컨테이너 강제 표시 */
+.archive,
+.posts-list,
+.entries-list {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
 }
 
 /* 포스트 목록 강제 표시 */
@@ -680,14 +733,24 @@ button[aria-label="Menu"] {
   
   #main {
     padding-top: 100px !important;
-    margin-left: 0 !important;
-    width: 100% !important;
+    flex-direction: column !important;
+  }
+  
+  .page__inner-wrap {
+    flex-direction: column !important;
+    gap: 1rem !important;
   }
   
   .sidebar {
+    flex: none !important;
     width: 100% !important;
     max-width: 100% !important;
-    margin: 1rem 0 !important;
+    margin: 0 !important;
+  }
+  
+  .page__content {
+    flex: 1 !important;
+    width: 100% !important;
   }
 }
 
