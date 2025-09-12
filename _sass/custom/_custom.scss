@@ -217,3 +217,28 @@ a {
     padding: 4rem;
   }
 }
+
+// 광고 차단 CSS
+[id*="bannerAd"],
+[id*="banner"],
+[class*="advertisement"],
+[class*="ad-"],
+[class*="sponsor"],
+[class*="promotion"],
+iframe[src*="doubleclick"],
+iframe[src*="googlesyndication"],
+iframe[src*="googleads"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+// 외부 광고 차단을 위한 일반적인 선택자들
+div[style*="position: fixed"],
+div[style*="position:absolute"],
+div[style*="z-index: 999"],
+div[style*="z-index:9999"] {
+  display: none !important;
+}
