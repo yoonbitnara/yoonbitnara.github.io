@@ -2,101 +2,402 @@
 layout: default
 ---
 
-{% if page.header.overlay_color or page.header.overlay_image or page.header.image %} {% include page__hero.html %} {%
-elsif page.header.video.id and page.header.video.provider %} {% include page__hero_video.html %} {% endif %} {% assign
-breadcrumbs_enabled = site.breadcrumbs %} {% if page.breadcrumbs != null %} {% assign breadcrumbs_enabled =
-page.breadcrumbs %} {% endif %} {% if page.url != "/" and breadcrumbs_enabled %} {% unless paginator %} {% include
-breadcrumbs.html %} {% endunless %} {% endif %}
+<!-- ***** Post Detail Section Start ***** -->
+<section class="section post-detail-section" id="post-detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Post Header -->
+                <div class="post-detail-header">
+                    <div class="post-category">
+                        {% if page.categories %}
+                            {% for category in page.categories limit:1 %}
+                                <span class="category-tag">{{ category | upcase }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <h1 class="post-title">{{ page.title }}</h1>
+                    <div class="post-meta">
+                        <span class="post-date">
+                            <i class="fa fa-calendar"></i> {{ page.date | date: "%Y년 %m월 %d일" }}
+                        </span>
+                        {% if page.tags %}
+                            <div class="post-tags">
+                                {% for tag in page.tags %}
+                                    <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
 
-<div id="main" role="main">
-  {% include sidebar.html %}
+                <!-- Post Content -->
+                <div class="post-detail-content">
+                    {{ content }}
+                </div>
 
-  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    {% if page.title %}<meta
-      itemprop="headline"
-      content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}"
-    />{% endif %} {% if page.excerpt %}<meta
-      itemprop="description"
-      content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}"
-    />{% endif %} {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}" />{%
-    endif %} {% if page.last_modified_at %}<meta
-      itemprop="dateModified"
-      content="{{ page.last_modified_at | date_to_xmlschema }}"
-    />{% endif %}
-
-    <div class="page__inner-wrap">
-      {% unless page.header.overlay_color or page.header.overlay_image %}
-      <header>
-        {% if page.title %}
-        <h1 id="page-title" class="page__title p-name" itemprop="headline">
-          <a href="{{ page.url | absolute_url }}" class="u-url" itemprop="url"
-            >{{ page.title | markdownify | remove: "
-            <p>" | remove: "</p>
-            " }}</a
-          >
-        </h1>
-        {% endif %} {% include page__meta.html %}
-      </header>
-      {% endunless %}
-
-      <section class="page__content e-content" itemprop="text">
-        {% if page.toc %}
-        <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
-          <nav class="toc">
-            <header>
-              <h4 class="nav__title">
-                <i class="fas fa-{{ page.toc_icon | default: 'rocket' }}"></i> {{ page.toc_label | default:
-                site.data.ui-text[site.locale].toc_label | default: "On this page" }}
-              </h4>
-            </header>
-            <div class="toc__wrap">
-              <div class="toc__line"></div>
-              {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" skip_no_ids=true %}
+                <!-- Post Navigation -->
+                <div class="post-navigation">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% if page.previous.url %}
+                                <a href="{{ page.previous.url }}" class="nav-btn prev-btn">
+                                    <i class="fa fa-arrow-left"></i>
+                                    <div class="nav-content">
+                                        <span class="nav-label">이전 글</span>
+                                        <span class="nav-title">{{ page.previous.title | truncate: 30 }}</span>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {% if page.next.url %}
+                                <a href="{{ page.next.url }}" class="nav-btn next-btn">
+                                    <div class="nav-content">
+                                        <span class="nav-label">다음 글</span>
+                                        <span class="nav-title">{{ page.next.title | truncate: 30 }}</span>
+                                    </div>
+                                    <i class="fa fa-arrow-right"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </nav>
-        </aside>
-        {% endif %} {{ content }} {% if page.link %}
-        <div>
-          <a href="{{ page.link }}" class="btn btn--primary"
-            >{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a
-          >
         </div>
-        {% endif %}
-      </section>
-
-      <footer class="page__meta">
-        {% if site.data.ui-text[site.locale].meta_label %}
-        <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
-        {% endif %} {% include page__taxonomy.html %} {% include page__date.html %}
-      </footer>
-
-      {% if page.share %}{% include social-share.html %}{% endif %} {% include post_pagination.html %}
     </div>
+</section>
 
-    {% if jekyll.environment == 'production' and site.comments.provider and page.comments %} {% include comments.html %}
-    {% endif %}
-  </article>
+<style>
+/* 핏불테리어 상세글 스타일 */
+:root {
+    --pitbull-orange: #ff6b35;
+    --pitbull-red: #d63031;
+    --pitbull-gold: #fdcb6e;
+    --pitbull-dark: #2d3436;
+    --pitbull-white: #ffffff;
+    --pitbull-gray: #636e72;
+}
 
-  {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %} {% if page.id and
-  page.related and site.related_posts.size > 0 %}
-  <div class="page__related">
-    <h2 class="page__related-title">
-      {{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}
-    </h2>
-    <div class="grid__wrapper">
-      {% for post in site.related_posts limit:4 %} {% include archive-single.html type="grid" %} {% endfor %}
-    </div>
-  </div>
-  {% comment %}<!-- otherwise show recent posts if no related when `related: true` -->{% endcomment %} {% elsif page.id
-  and page.related %}
-  <div class="page__related">
-    <h2 class="page__related-title">
-      {{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}
-    </h2>
-    <div class="grid__wrapper">
-      {% for post in site.posts limit:4 %} {% if post.id == page.id %} {% continue %} {% endif %} {% include
-      archive-single.html type="grid" %} {% endfor %}
-    </div>
-  </div>
-  {% endif %}
-</div>
+.post-detail-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%);
+    min-height: 100vh;
+}
+
+.post-detail-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(253, 203, 110, 0.1) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(255, 107, 53, 0.2);
+}
+
+.post-detail-header .category-tag {
+    background: var(--pitbull-orange);
+    color: var(--pitbull-white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.post-title {
+    color: var(--pitbull-orange);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.post-date {
+    color: var(--pitbull-gold);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.post-date i {
+    margin-right: 8px;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.tag {
+    background: rgba(255, 107, 53, 0.2);
+    color: var(--pitbull-gold);
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid var(--pitbull-orange);
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: var(--pitbull-orange);
+    color: var(--pitbull-white);
+    transform: translateY(-2px);
+}
+
+.post-detail-content {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 마크다운 콘텐츠 스타일링 */
+.post-detail-content h1,
+.post-detail-content h2,
+.post-detail-content h3,
+.post-detail-content h4,
+.post-detail-content h5,
+.post-detail-content h6 {
+    color: var(--pitbull-orange);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.post-detail-content h1 {
+    font-size: 2.2rem;
+    border-bottom: 3px solid var(--pitbull-orange);
+    padding-bottom: 10px;
+}
+
+.post-detail-content h2 {
+    font-size: 1.8rem;
+    border-left: 4px solid var(--pitbull-orange);
+    padding-left: 15px;
+}
+
+.post-detail-content h3 {
+    font-size: 1.5rem;
+    color: var(--pitbull-gold);
+}
+
+.post-detail-content p {
+    color: var(--pitbull-white);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.post-detail-content ul,
+.post-detail-content ol {
+    color: var(--pitbull-white);
+    margin-bottom: 20px;
+    padding-left: 25px;
+}
+
+.post-detail-content li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.post-detail-content blockquote {
+    border-left: 4px solid var(--pitbull-gold);
+    background: rgba(253, 203, 110, 0.1);
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 10px 10px 0;
+    color: var(--pitbull-white);
+    font-style: italic;
+}
+
+.post-detail-content code {
+    background: rgba(255, 107, 53, 0.2);
+    color: var(--pitbull-gold);
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    border: 1px solid var(--pitbull-orange);
+}
+
+.post-detail-content pre {
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    overflow-x: auto;
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+}
+
+.post-detail-content pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--pitbull-white);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.post-detail-content a {
+    color: var(--pitbull-orange);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.post-detail-content a:hover {
+    color: var(--pitbull-gold);
+    border-bottom-color: var(--pitbull-gold);
+    text-shadow: 0 0 10px rgba(253, 203, 110, 0.5);
+}
+
+.post-detail-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    margin: 20px 0;
+}
+
+.post-detail-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.post-detail-content th,
+.post-detail-content td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 107, 53, 0.3);
+    color: var(--pitbull-white);
+}
+
+.post-detail-content th {
+    background: var(--pitbull-orange);
+    color: var(--pitbull-white);
+    font-weight: 700;
+}
+
+/* Post Navigation */
+.post-navigation {
+    margin-top: 50px;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(253, 203, 110, 0.1) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--pitbull-white);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(135deg, var(--pitbull-orange), var(--pitbull-red));
+    color: var(--pitbull-white);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
+}
+
+.prev-btn {
+    text-align: left;
+}
+
+.next-btn {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.nav-content {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.nav-label {
+    display: block;
+    font-size: 12px;
+    color: var(--pitbull-gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.nav-title {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--pitbull-white);
+}
+
+.nav-btn i {
+    font-size: 20px;
+    color: var(--pitbull-orange);
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover i {
+    color: var(--pitbull-white);
+    transform: scale(1.2);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .post-title {
+        font-size: 2rem;
+    }
+    
+    .post-detail-content {
+        padding: 25px;
+    }
+    
+    .post-detail-header {
+        padding: 25px;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-btn {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .nav-title {
+        font-size: 14px;
+    }
+}
+</style>

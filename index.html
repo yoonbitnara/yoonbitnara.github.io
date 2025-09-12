@@ -44,14 +44,22 @@ layout: default
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="service-item">
-                                <img src="{{ site.avatar }}" alt="Profile Picture" class="profile-image">
+                            <div class="service-item profile-section">
+                                <img src="{{ site.avatar }}" alt="PitBull Terrier Profile" class="profile-image">
+                                <h4>{{ site.name }}</h4>
+                                <p>{{ site.bio }}</p>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="service-item">
-                                <h4>{{ site.name }}</h4>
-                                <p>{{ site.bio }}</p>
+                            <div class="service-item skills-section">
+                                <h4>🔥 핏불테리어 개발자</h4>
+                                <ul class="skills-list">
+                                    <li>💪 <strong>Java</strong> - 객체지향의 달인</li>
+                                    <li>⚡ <strong>Spring</strong> - 프레임워크 마스터</li>
+                                    <li>🌐 <strong>Web Development</strong> - 풀스택 개발자</li>
+                                    <li>📊 <strong>Big Data</strong> - 데이터 분석 전문가</li>
+                                    <li>🎯 <strong>Algorithm</strong> - 문제해결의 달인</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -75,124 +83,356 @@ layout: default
                 <div class="row">
                     {% for post in site.posts limit:6 %}
                     <div class="col-lg-4 col-md-6">
-                        <div class="service-item">
-                            <div class="icon">
-                                <img src="{{ site.avatar }}" alt="Post" style="width: 50px; height: 50px; border-radius: 50%;">
+                        <div class="post-card">
+                            <div class="post-header">
+                                <div class="post-category">
+                                    {% if post.categories %}
+                                        {% for category in post.categories limit:1 %}
+                                            <span class="category-tag">{{ category | upcase }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="post-date">{{ post.date | date: "%Y.%m.%d" }}</div>
                             </div>
-                            <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-                            <p>{{ post.excerpt | truncate: 100 }}</p>
-                            <div class="text-button">
-                                <a href="{{ post.url }}">Read More <i class="fa fa-arrow-right"></i></a>
+                            <div class="post-content">
+                                <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                                <p>{{ post.excerpt | truncate: 120 }}</p>
+                                <div class="post-tags">
+                                    {% if post.tags %}
+                                        {% for tag in post.tags limit:3 %}
+                                            <span class="tag">{{ tag }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="post-footer">
+                                <a href="{{ post.url }}" class="read-more-btn">
+                                    <i class="fa fa-arrow-right"></i> Read More
+                                </a>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
+                
+                <!-- 페이지네이션 -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pagination-wrapper">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ***** Contact Section Start ***** -->
-<section class="section" id="section4">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>Contact Me</h2>
-                    <span>Let's connect!</span>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="contact-info">
-                            <h4>Get in touch</h4>
-                            <p>{{ site.bio }}</p>
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> {{ site.email }}</li>
-                                <li><i class="fa fa-map-marker"></i> {{ site.location }}</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="contact-form">
-                            <h4>Send Message</h4>
-                            <form id="contact" action="" method="post">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <fieldset>
-                                            <input name="name" type="text" id="name" placeholder="Your Name" required="">
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <fieldset>
-                                            <input name="email" type="text" id="email" placeholder="Your Email" required="">
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <fieldset>
-                                            <textarea name="message" rows="6" id="message" placeholder="Your Message" required=""></textarea>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <fieldset>
-                                            <button type="submit" id="form-submit" class="main-button">Send Message Now</button>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <style>
-.profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #ff6b35;
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-    object-fit: cover;
-    margin: 0 auto;
-    display: block;
+/* 핏불테리어 강렬한 스타일 */
+:root {
+    --pitbull-orange: #ff6b35;
+    --pitbull-red: #d63031;
+    --pitbull-gold: #fdcb6e;
+    --pitbull-dark: #2d3436;
+    --pitbull-white: #ffffff;
 }
 
-.service-item {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid var(--pitbull-orange);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+    object-fit: cover;
+    margin: 0 auto 20px auto;
+    display: block;
     transition: all 0.3s ease;
 }
 
-.service-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
 }
 
-.service-item h4 a {
-    color: #ff6b35;
-    text-decoration: none;
+.profile-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(253, 203, 110, 0.1) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.skills-section {
+    background: linear-gradient(135deg, rgba(214, 48, 49, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+    border: 2px solid var(--pitbull-red);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+.skills-list li {
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--pitbull-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skills-list li:last-child {
+    border-bottom: none;
+}
+
+/* 게시물 카드 스타일 */
+.post-card {
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pitbull-orange), var(--pitbull-gold), var(--pitbull-orange));
+    border-radius: 20px 20px 0 0;
+}
+
+.post-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+    border-color: var(--pitbull-gold);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-tag {
+    background: var(--pitbull-orange);
+    color: var(--pitbull-white);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.service-item h4 a:hover {
-    color: #fdcb6e;
-}
-
-.text-button a {
-    color: #ff6b35;
-    text-decoration: none;
+.post-date {
+    color: var(--pitbull-gold);
+    font-size: 14px;
     font-weight: 600;
 }
 
-.text-button a:hover {
-    color: #fdcb6e;
+.post-content {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.post-content h4 {
+    margin-bottom: 15px;
+}
+
+.post-content h4 a {
+    color: var(--pitbull-orange);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    transition: all 0.3s ease;
+}
+
+.post-content h4 a:hover {
+    color: var(--pitbull-gold);
+    text-shadow: 0 0 10px rgba(253, 203, 110, 0.5);
+}
+
+.post-content p {
+    color: var(--pitbull-white);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.post-tags {
+    margin-top: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background: rgba(255, 107, 53, 0.2);
+    color: var(--pitbull-gold);
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 1px solid var(--pitbull-orange);
+}
+
+.post-footer {
+    margin-top: auto;
+}
+
+.read-more-btn {
+    background: linear-gradient(135deg, var(--pitbull-orange), var(--pitbull-red));
+    color: var(--pitbull-white);
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+.read-more-btn:hover {
+    background: linear-gradient(135deg, var(--pitbull-gold), var(--pitbull-orange));
+    color: var(--pitbull-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(253, 203, 110, 0.4);
+    border-color: var(--pitbull-orange);
+}
+
+/* 섹션 헤더 스타일 */
+.section-heading h2 {
+    color: var(--pitbull-orange);
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-heading span {
+    color: var(--pitbull-gold);
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* 페이지네이션 스타일 */
+.pagination-wrapper {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+}
+
+.pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(45, 52, 54, 0.8);
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-link {
+    display: block;
+    padding: 12px 16px;
+    color: var(--pitbull-white);
+    text-decoration: none;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 45px;
+    text-align: center;
+}
+
+.page-link:hover {
+    color: var(--pitbull-orange);
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--pitbull-orange);
+    transform: translateY(-2px);
+}
+
+.page-item.active .page-link {
+    background: linear-gradient(135deg, var(--pitbull-orange), var(--pitbull-red));
+    color: var(--pitbull-white);
+    border-color: var(--pitbull-orange);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+.page-item.active .page-link:hover {
+    background: linear-gradient(135deg, var(--pitbull-gold), var(--pitbull-orange));
+    color: var(--pitbull-dark);
+    transform: translateY(-2px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .post-card {
+        padding: 20px;
+    }
+    
+    .section-heading h2 {
+        font-size: 2rem;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .page-link {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-width: 35px;
+    }
 }
 </style>
