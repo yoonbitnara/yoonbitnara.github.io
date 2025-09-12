@@ -820,10 +820,27 @@ layout: default
     background: #0d1117;
     border-left: 2px solid #30363d;
     margin-left: 20px;
+    padding-left: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
 .folder-contents.show {
     display: block;
+    max-height: 1000px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 1000px;
+        opacity: 1;
+    }
 }
 
 .folder-contents .file-item {
@@ -1035,29 +1052,51 @@ layout: default
 }
 </style>
 
-<script>
-// 폴더 토글 기능
-function toggleFolder(folderName) {
-    const contents = document.getElementById(folderName + '-contents');
-    const folder = event.currentTarget;
-    const icon = folder.querySelector('.file-icon i');
-    
-    if (contents.classList.contains('show')) {
-        contents.classList.remove('show');
-        icon.className = 'fa fa-folder';
-    } else {
-        contents.classList.add('show');
-        icon.className = 'fa fa-folder-open';
-    }
-}
+        <script>
+        // 폴더 토글 기능
+        function toggleFolder(folderName) {
+            console.log('Toggling folder:', folderName);
+            const contents = document.getElementById(folderName + '-contents');
+            const folder = event.currentTarget;
+            const icon = folder.querySelector('.file-icon i');
+            
+            if (!contents) {
+                console.error('Contents not found for:', folderName);
+                return;
+            }
+            
+            if (contents.classList.contains('show')) {
+                contents.classList.remove('show');
+                icon.className = 'fa fa-folder';
+                console.log('Folder closed:', folderName);
+            } else {
+                contents.classList.add('show');
+                icon.className = 'fa fa-folder-open';
+                console.log('Folder opened:', folderName);
+            }
+        }
 
-// 페이지 로드 시 초기화
-document.addEventListener('DOMContentLoaded', function() {
-    // 모든 폴더를 닫힌 상태로 초기화
-    const folders = document.querySelectorAll('.folder-item');
-    folders.forEach(folder => {
-        const icon = folder.querySelector('.file-icon i');
-        icon.className = 'fa fa-folder';
-    });
-});
-</script>
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing folders');
+            // 모든 폴더를 닫힌 상태로 초기화
+            const folders = document.querySelectorAll('.folder-item');
+            console.log('Found folders:', folders.length);
+            folders.forEach(folder => {
+                const icon = folder.querySelector('.file-icon i');
+                if (icon) {
+                    icon.className = 'fa fa-folder';
+                }
+            });
+            
+            // 폴더 클릭 이벤트 리스너 추가
+            folders.forEach(folder => {
+                folder.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const folderName = this.querySelector('.file-name').textContent.trim();
+                    console.log('Folder clicked:', folderName);
+                    toggleFolder(folderName);
+                });
+            });
+        });
+        </script>
