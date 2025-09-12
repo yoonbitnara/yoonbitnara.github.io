@@ -13,7 +13,7 @@ layout: default
       <li><a href="#section1">Home</a></li>
       <li><a href="#section2">About</a></li>
       <li><a href="#section3">Posts</a></li>
-      <li><a href="#section4">Contact</a></li>
+      <li><a href="https://github.com/yoonbitnara" target="_blank">GitHub</a></li>
     </ul>
   </nav>
 </header>
@@ -51,15 +51,9 @@ layout: default
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="service-item skills-section">
-                                <h4>🔥 핏불테리어 개발자</h4>
-                                <ul class="skills-list">
-                                    <li>💪 <strong>Java</strong> - 객체지향의 달인</li>
-                                    <li>⚡ <strong>Spring</strong> - 프레임워크 마스터</li>
-                                    <li>🌐 <strong>Web Development</strong> - 풀스택 개발자</li>
-                                    <li>📊 <strong>Big Data</strong> - 데이터 분석 전문가</li>
-                                    <li>🎯 <strong>Algorithm</strong> - 문제해결의 달인</li>
-                                </ul>
+                            <div class="service-item">
+                                <h4>{{ site.name }}</h4>
+                                <p>{{ site.bio }}</p>
                             </div>
                         </div>
                     </div>
@@ -409,6 +403,65 @@ layout: default
     transform: translateY(-2px);
 }
 
+/* 메뉴 스타일 */
+.main-header {
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--pitbull-orange);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.logo a {
+    color: var(--pitbull-orange);
+    font-size: 24px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--pitbull-gold);
+    text-shadow: 0 0 10px rgba(253, 203, 110, 0.5);
+}
+
+.main-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.main-menu li a {
+    color: var(--pitbull-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.main-menu li a:hover {
+    color: var(--pitbull-orange);
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--pitbull-orange);
+    transform: translateY(-2px);
+}
+
+.menu-link {
+    display: none;
+    color: var(--pitbull-orange);
+    font-size: 24px;
+    text-decoration: none;
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .profile-image {
@@ -433,6 +486,15 @@ layout: default
         padding: 8px 12px;
         font-size: 12px;
         min-width: 35px;
+    }
+    
+    .main-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .menu-link {
+        display: block;
     }
 }
 </style>
