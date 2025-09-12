@@ -43,7 +43,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: "default"
+      layout: "single"
       author: "pitbull terrier"
       comments: true
       share: true
