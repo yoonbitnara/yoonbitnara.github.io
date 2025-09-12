@@ -51,7 +51,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="algorithm-contents">
-                                {% for post in site.categories.Algorithm %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Algorithm' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -61,6 +62,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -74,7 +76,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="bigdata-contents">
-                                {% for post in site.categories.Bigdata %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Bigdata' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -84,6 +87,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -97,7 +101,8 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="computerstructure-contents">
-                                {% for post in site.categories.ComputerStructure %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'ComputerStructure' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -107,6 +112,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -120,7 +126,8 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="discretemathematics-contents">
-                                {% for post in site.categories.DiscreteMathematics %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'DiscreteMathematics' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -130,6 +137,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -143,7 +151,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="html-contents">
-                                {% for post in site.categories.HtmlCss %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'HtmlCss' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -153,6 +162,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -166,7 +176,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="internet-contents">
-                                {% for post in site.categories.Internet %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Internet' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -176,6 +187,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -189,7 +201,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="java-contents">
-                                {% for post in site.categories.Java %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Java' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -199,6 +212,8 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -212,7 +227,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="jdbc-contents">
-                                {% for post in site.categories.Jdbc %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Jdbc' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -222,6 +238,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -235,7 +252,8 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="js-contents">
-                                {% for post in site.categories.Js %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Js' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -245,6 +263,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -258,7 +277,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="linux-contents">
-                                {% for post in site.categories.Linux %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Linux' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -268,6 +288,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -281,7 +302,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="mysql-contents">
-                                {% for post in site.categories.Mysql %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Mysql' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -291,6 +313,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -304,7 +327,8 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="python-contents">
-                                {% for post in site.categories.Python %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Python' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -314,6 +338,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -327,7 +352,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="r-contents">
-                                {% for post in site.categories.R %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'R' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -337,6 +363,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -350,7 +377,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="servlet-contents">
-                                {% for post in site.categories.Servlet %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Servlet' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -360,6 +388,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -373,7 +402,8 @@ layout: default
                                 <div class="file-date">1 year ago</div>
                             </div>
                             <div class="folder-contents" id="spring-contents">
-                                {% for post in site.categories.Spring %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Spring' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -383,6 +413,8 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                             
@@ -396,7 +428,8 @@ layout: default
                                 <div class="file-date">2 years ago</div>
                             </div>
                             <div class="folder-contents" id="til-contents">
-                                {% for post in site.categories.Til %}
+                                {% for post in site.posts %}
+                                    {% if post.categories contains 'Til' %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -406,6 +439,7 @@ layout: default
                                     </div>
                                     <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
                                 </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
