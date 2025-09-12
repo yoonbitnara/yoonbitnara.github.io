@@ -80,8 +80,8 @@ layout: default
 }
 
 .post-detail-section {
-    padding: 60px 0;
-    background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%);
+    padding: 20px 0;
+    background: #0d1117; /* GitHub 스타일과 동일한 배경색 */
     min-height: 100vh;
 }
 
@@ -163,13 +163,12 @@ layout: default
 }
 
 .post-detail-content {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 107, 53, 0.3);
-    border-radius: 20px;
+    background: #161b22; /* GitHub 스타일과 동일한 콘텐츠 배경색 */
+    border: 1px solid #30363d;
+    border-radius: 6px;
     padding: 40px;
     margin-bottom: 50px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* 마크다운 콘텐츠 스타일링 */
@@ -232,33 +231,97 @@ layout: default
 }
 
 .post-detail-content code {
-    background: rgba(255, 107, 53, 0.2);
-    color: var(--pitbull-gold);
+    background: #21262d;
+    color: #f0f6fc;
     padding: 3px 8px;
-    border-radius: 5px;
-    font-family: 'Courier New', monospace;
+    border-radius: 6px;
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
     font-size: 14px;
-    border: 1px solid var(--pitbull-orange);
+    border: 1px solid #30363d;
 }
 
 .post-detail-content pre {
-    background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%);
-    border: 2px solid var(--pitbull-orange);
-    border-radius: 15px;
-    padding: 25px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 16px;
     margin: 25px 0;
     overflow-x: auto;
-    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .post-detail-content pre code {
     background: none;
     border: none;
     padding: 0;
-    color: var(--pitbull-white);
+    color: #f0f6fc;
     font-size: 14px;
     line-height: 1.6;
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
 }
+
+/* 코드 하이라이팅 개선 - Rouge 하이라이터용 */
+.post-detail-content pre code .k { color: #ff7b72; } /* 키워드 */
+.post-detail-content pre code .s { color: #a5d6ff; } /* 문자열 */
+.post-detail-content pre code .c { color: #8b949e; } /* 주석 */
+.post-detail-content pre code .c1 { color: #8b949e; } /* 주석 */
+.post-detail-content pre code .cm { color: #8b949e; } /* 주석 */
+.post-detail-content pre code .m { color: #79c0ff; } /* 숫자 */
+.post-detail-content pre code .mi { color: #79c0ff; } /* 정수 */
+.post-detail-content pre code .mf { color: #79c0ff; } /* 실수 */
+.post-detail-content pre code .nf { color: #d2a8ff; } /* 함수 */
+.post-detail-content pre code .nc { color: #ffa657; } /* 클래스 */
+.post-detail-content pre code .nv { color: #ffa657; } /* 변수 */
+.post-detail-content pre code .o { color: #ff7b72; } /* 연산자 */
+.post-detail-content pre code .p { color: #f0f6fc; } /* 구두점 */
+.post-detail-content pre code .cp { color: #8b949e; } /* 전처리기 */
+.post-detail-content pre code .cpf { color: #8b949e; } /* 전처리기 */
+.post-detail-content pre code .c1 { color: #8b949e; } /* 주석 */
+.post-detail-content pre code .cs { color: #8b949e; } /* 주석 */
+.post-detail-content pre code .gd { color: #f85149; } /* 삭제된 텍스트 */
+.post-detail-content pre code .ge { font-style: italic; } /* 강조 */
+.post-detail-content pre code .gr { color: #f85149; } /* 에러 */
+.post-detail-content pre code .gh { color: #8b949e; } /* 헤더 */
+.post-detail-content pre code .gi { color: #7ee787; } /* 삽입된 텍스트 */
+.post-detail-content pre code .go { color: #8b949e; } /* 출력 */
+.post-detail-content pre code .gp { color: #8b949e; } /* 프롬프트 */
+.post-detail-content pre code .gs { font-weight: bold; } /* 강조 */
+.post-detail-content pre code .gu { color: #8b949e; } /* 사용자 */
+.post-detail-content pre code .gt { color: #f85149; } /* 추적 */
+.post-detail-content pre code .kc { color: #ff7b72; } /* 키워드 상수 */
+.post-detail-content pre code .kd { color: #ff7b72; } /* 키워드 선언 */
+.post-detail-content pre code .kn { color: #ff7b72; } /* 키워드 네임스페이스 */
+.post-detail-content pre code .kp { color: #ff7b72; } /* 키워드 프리프로세서 */
+.post-detail-content pre code .kr { color: #ff7b72; } /* 키워드 예약어 */
+.post-detail-content pre code .kt { color: #ff7b72; } /* 키워드 타입 */
+.post-detail-content pre code .ld { color: #a5d6ff; } /* 리터럴 날짜 */
+.post-detail-content pre code .mh { color: #79c0ff; } /* 숫자 헥사 */
+.post-detail-content pre code .il { color: #79c0ff; } /* 숫자 롱 */
+.post-detail-content pre code .mo { color: #79c0ff; } /* 숫자 옥탈 */
+.post-detail-content pre code .na { color: #ffa657; } /* 이름 속성 */
+.post-detail-content pre code .nb { color: #ffa657; } /* 이름 빌트인 */
+.post-detail-content pre code .nc { color: #ffa657; } /* 이름 클래스 */
+.post-detail-content pre code .no { color: #ffa657; } /* 이름 상수 */
+.post-detail-content pre code .nd { color: #d2a8ff; } /* 이름 데코레이터 */
+.post-detail-content pre code .ni { color: #ffa657; } /* 이름 엔티티 */
+.post-detail-content pre code .ne { color: #ffa657; } /* 이름 예외 */
+.post-detail-content pre code .nf { color: #d2a8ff; } /* 이름 함수 */
+.post-detail-content pre code .nl { color: #ffa657; } /* 이름 라벨 */
+.post-detail-content pre code .nn { color: #ffa657; } /* 이름 네임스페이스 */
+.post-detail-content pre code .nx { color: #ffa657; } /* 이름 기타 */
+.post-detail-content pre code .py { color: #ffa657; } /* 이름 프로퍼티 */
+.post-detail-content pre code .nt { color: #ff7b72; } /* 이름 태그 */
+.post-detail-content pre code .nv { color: #ffa657; } /* 이름 변수 */
+.post-detail-content pre code .ow { color: #ff7b72; } /* 연산자 워드 */
+.post-detail-content pre code .w { color: #8b949e; } /* 공백 */
+.post-detail-content pre code .mb { color: #79c0ff; } /* 숫자 바이너리 */
+.post-detail-content pre code .mx { color: #79c0ff; } /* 숫자 헥사 */
+.post-detail-content pre code .ss { color: #a5d6ff; } /* 문자열 심볼 */
+.post-detail-content pre code .bp { color: #ffa657; } /* 이름 빌트인 프세우도 */
+.post-detail-content pre code .vc { color: #ffa657; } /* 이름 변수 클래스 */
+.post-detail-content pre code .vg { color: #ffa657; } /* 이름 변수 글로벌 */
+.post-detail-content pre code .vi { color: #ffa657; } /* 이름 변수 인스턴스 */
+.post-detail-content pre code .vm { color: #ffa657; } /* 이름 변수 모듈 */
 
 .post-detail-content a {
     color: var(--pitbull-orange);
