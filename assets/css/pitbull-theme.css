@@ -1,0 +1,268 @@
+/* 핏불테리어 테마 - 강렬하고 열정적인 디자인 */
+:root {
+  --pitbull-orange: #ff6b35;
+  --pitbull-red: #d63031;
+  --pitbull-dark: #2d3436;
+  --pitbull-gold: #fdcb6e;
+  --pitbull-white: #ffffff;
+  --pitbull-gray: #636e72;
+  --pitbull-light: #f8f9fa;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
+  line-height: 1.6 !important;
+  background: linear-gradient(135deg, #2d3436 0%, #636e72 50%, #ff6b35 100%) !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
+  color: var(--pitbull-white) !important;
+  overflow-x: hidden !important;
+}
+
+/* 핏불 테마 배경 패턴 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(214, 48, 49, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(253, 203, 110, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 핏불 테마 사이트 타이틀 - 강렬하고 열정적 */
+.site-title {
+  font-weight: 900 !important;
+  font-size: 2rem !important;
+  letter-spacing: -0.03em !important;
+  background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-red), var(--pitbull-gold)) !important;
+  background-size: 200% 200% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: pitbullGlow 3s ease-in-out infinite !important;
+  text-shadow: 0 0 20px rgba(255, 107, 53, 0.3) !important;
+  position: relative !important;
+}
+
+.site-title::after {
+  content: '🐕';
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  animation: bounce 2s infinite;
+}
+
+@keyframes pitbullGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(-50%); }
+  40% { transform: translateY(-60%); }
+  60% { transform: translateY(-55%); }
+}
+
+.site-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--pitbull-gold) !important;
+  margin-top: 0.5rem !important;
+  display: block !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 핏불 테마 카드 스타일 - 강렬하고 모던 */
+.page__inner-wrap {
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: 20px !important;
+  border: 2px solid transparent !important;
+  background-clip: padding-box !important;
+  box-shadow: 
+    0 8px 32px rgba(255, 107, 53, 0.2),
+    0 0 0 1px rgba(255, 107, 53, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  margin: 2rem !important;
+  padding: 3rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.page__inner-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pitbull-orange), var(--pitbull-red), var(--pitbull-gold));
+  border-radius: 20px 20px 0 0;
+}
+
+.page__inner-wrap:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 
+    0 15px 40px rgba(255, 107, 53, 0.3),
+    0 0 0 1px rgba(255, 107, 53, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 핏불 테마 태그 스타일 - 강렬하고 역동적 */
+.page__taxonomy-item-tag {
+  display: inline-block !important;
+  margin-right: 10px !important;
+  margin-bottom: 10px !important;
+  padding: 8px 16px !important;
+  background: linear-gradient(135deg, var(--pitbull-orange) 0%, var(--pitbull-red) 100%) !important;
+  color: var(--pitbull-white) !important;
+  border-radius: 25px !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid transparent !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.page__taxonomy-item-tag:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 
+    0 8px 20px rgba(255, 107, 53, 0.4),
+    0 0 0 2px var(--pitbull-gold) !important;
+  color: var(--pitbull-white) !important;
+  text-decoration: none !important;
+}
+
+/* 핏불 테마 네비게이션 - 강렬하고 모던 */
+.masthead {
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 3px solid var(--pitbull-orange) !important;
+  box-shadow: 
+    0 4px 20px rgba(255, 107, 53, 0.2),
+    0 0 0 1px rgba(255, 107, 53, 0.1) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+
+.greedy-nav a {
+  font-weight: 700 !important;
+  color: var(--pitbull-white) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.greedy-nav a:hover {
+  color: var(--pitbull-gold) !important;
+  transform: translateY(-2px) !important;
+  text-shadow: 0 0 10px rgba(253, 203, 110, 0.5) !important;
+}
+
+/* 핏불 테마 포스트 카드 - 강렬하고 역동적 */
+.archive__item {
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 15px !important;
+  border: 2px solid transparent !important;
+  box-shadow: 
+    0 4px 15px rgba(255, 107, 53, 0.1),
+    0 0 0 1px rgba(255, 107, 53, 0.05) !important;
+  transition: all 0.4s ease !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.archive__item:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 
+    0 15px 35px rgba(255, 107, 53, 0.3),
+    0 0 0 2px var(--pitbull-orange) !important;
+  border-color: var(--pitbull-gold) !important;
+}
+
+.archive__item-title {
+  font-weight: 800 !important;
+  color: var(--pitbull-white) !important;
+  font-size: 1.2rem !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.archive__item-title a {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.archive__item-title a:hover {
+  color: var(--pitbull-gold) !important;
+  text-shadow: 0 0 10px rgba(253, 203, 110, 0.5) !important;
+}
+
+/* 핏불 테마 링크 - 강렬하고 역동적 */
+a {
+  color: var(--pitbull-orange) !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  position: relative !important;
+}
+
+a:hover {
+  color: var(--pitbull-gold) !important;
+  text-shadow: 0 0 8px rgba(253, 203, 110, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 핏불 테마 버튼 - 강렬하고 역동적 */
+#toTop {
+  position: fixed !important;
+  width: 60px !important;
+  height: 60px !important;
+  background: linear-gradient(135deg, var(--pitbull-orange) 0%, var(--pitbull-red) 100%) !important;
+  color: var(--pitbull-white) !important;
+  border-radius: 50% !important;
+  right: 2rem !important;
+  bottom: 2rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 1000 !important;
+  cursor: pointer !important;
+  box-shadow: 
+    0 6px 20px rgba(255, 107, 53, 0.4),
+    0 0 0 3px rgba(255, 107, 53, 0.2) !important;
+  transition: all 0.4s ease !important;
+  border: 2px solid var(--pitbull-gold) !important;
+  font-weight: 900 !important;
+  font-size: 1.2rem !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+#toTop::before {
+  content: '🐕';
+  animation: bounce 2s infinite;
+}
+
+#toTop:hover {
+  transform: translateY(-5px) scale(1.1) !important;
+  box-shadow: 
+    0 10px 30px rgba(255, 107, 53, 0.6),
+    0 0 0 4px var(--pitbull-gold) !important;
+  background: linear-gradient(135deg, var(--pitbull-red) 0%, var(--pitbull-orange) 100%) !important;
+}
