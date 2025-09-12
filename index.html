@@ -29,99 +29,53 @@ layout: default
     </div>
 </section>
 
-<!-- ***** About Section Start ***** -->
-<section class="section" id="section2">
+<!-- ***** Main Content Section Start ***** -->
+<section class="section main-content-section" id="main-content">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="left-text-content">
+            <!-- 카테고리 사이드바 -->
+            <div class="col-lg-3 col-md-4">
+                <div class="sidebar-categories">
+                    <h3>Categories</h3>
+                    <div class="category-list">
+                        <a href="/categories/java" class="category-item">
+                            <i class="fa fa-code"></i>
+                            <span>Java</span>
+                        </a>
+                        <a href="/categories/mysql" class="category-item">
+                            <i class="fa fa-database"></i>
+                            <span>MySQL</span>
+                        </a>
+                        <a href="/categories/spring" class="category-item">
+                            <i class="fa fa-cogs"></i>
+                            <span>Spring</span>
+                        </a>
+                        <a href="/categories/algorithm" class="category-item">
+                            <i class="fa fa-brain"></i>
+                            <span>Algorithm</span>
+                        </a>
+                        <a href="/categories/js" class="category-item">
+                            <i class="fa fa-js"></i>
+                            <span>JavaScript</span>
+                        </a>
+                        <a href="/categories/python" class="category-item">
+                            <i class="fa fa-python"></i>
+                            <span>Python</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 게시글 메인 영역 -->
+            <div class="col-lg-9 col-md-8">
+                <div class="posts-main">
                     <div class="section-heading">
-                        <h2>About Me</h2>
+                        <h2>Recent Posts</h2>
+                        <span>개발자의 성장 스토리</span>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="service-item profile-section">
-                                <img src="{{ site.avatar }}" alt="PitBull Terrier Profile" class="profile-image">
-                                <h4>{{ site.name }}</h4>
-                                <p>{{ site.bio }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ***** Categories Section Start ***** -->
-<section class="section" id="categories">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>Categories</h2>
-                    <span>주요 카테고리</span>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fa fa-code"></i>
-                            </div>
-                            <h4><a href="/categories/java">Java</a></h4>
-                            <p>Java 프로그래밍과 Spring Framework</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fa fa-database"></i>
-                            </div>
-                            <h4><a href="/categories/mysql">MySQL</a></h4>
-                            <p>데이터베이스 설계와 관리</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fa fa-cogs"></i>
-                            </div>
-                            <h4><a href="/categories/spring">Spring</a></h4>
-                            <p>Spring Boot와 웹 개발</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="category-card">
-                            <div class="category-icon">
-                                <i class="fa fa-brain"></i>
-                            </div>
-                            <h4><a href="/categories/algorithm">Algorithm</a></h4>
-                            <p>알고리즘과 문제해결</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ***** Categories Section End ***** -->
-
-<!-- ***** Posts Section Start ***** -->
-<section class="section" id="section3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>Recent Posts</h2>
-                    <span>개발자의 성장 스토리</span>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="row">
-                    {% for post in site.posts limit:6 %}
-                    <div class="col-lg-4 col-md-6">
+                    
+                    <div class="posts-grid">
+                        {% for post in site.posts limit:6 %}
                         <div class="post-card">
                             <div class="post-header">
                                 <div class="post-category">
@@ -150,50 +104,46 @@ layout: default
                                 </a>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
-                
-                <!-- 페이지네이션 -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="pagination-wrapper">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                    {% if paginator.previous_page %}
+                    
+                    <!-- 페이지네이션 -->
+                    <div class="pagination-wrapper">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                {% if paginator.previous_page %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ paginator.previous_page_path }}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                
+                                {% for page_num in (1..paginator.total_pages) %}
+                                    {% if page_num == paginator.page %}
+                                        <li class="page-item active">
+                                            <a class="page-link" href="#">{{ page_num }}</a>
+                                        </li>
+                                    {% elsif page_num == 1 %}
                                         <li class="page-item">
-                                            <a class="page-link" href="{{ paginator.previous_page_path }}" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
+                                            <a class="page-link" href="/">{{ page_num }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ site.paginate_path | replace: ':num', page_num }}">{{ page_num }}</a>
                                         </li>
                                     {% endif %}
-                                    
-                                    {% for page_num in (1..paginator.total_pages) %}
-                                        {% if page_num == paginator.page %}
-                                            <li class="page-item active">
-                                                <a class="page-link" href="#">{{ page_num }}</a>
-                                            </li>
-                                        {% elsif page_num == 1 %}
-                                            <li class="page-item">
-                                                <a class="page-link" href="/">{{ page_num }}</a>
-                                            </li>
-                                        {% else %}
-                                            <li class="page-item">
-                                                <a class="page-link" href="{{ site.paginate_path | replace: ':num', page_num }}">{{ page_num }}</a>
-                                            </li>
-                                        {% endif %}
-                                    {% endfor %}
-                                    
-                                    {% if paginator.next_page %}
-                                        <li class="page-item">
-                                            <a class="page-link" href="{{ paginator.next_page_path }}" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                </ul>
-                            </nav>
-                        </div>
+                                {% endfor %}
+                                
+                                {% if paginator.next_page %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ paginator.next_page_path }}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -464,61 +414,82 @@ layout: default
     transform: translateY(-2px);
 }
 
-/* 카테고리 카드 스타일 */
-.category-card {
+/* 메인 콘텐츠 레이아웃 */
+.main-content-section {
+    padding: 40px 0;
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%);
+    min-height: calc(100vh - 200px);
+}
+
+/* 카테고리 사이드바 */
+.sidebar-categories {
     background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%);
     border: 2px solid var(--pitbull-orange);
     border-radius: 20px;
-    padding: 30px;
-    text-align: center;
+    padding: 25px;
+    position: sticky;
+    top: 100px;
     margin-bottom: 30px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    height: 100%;
+}
+
+.sidebar-categories h3 {
+    color: var(--pitbull-orange);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--pitbull-orange);
+    padding-bottom: 10px;
+}
+
+.category-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 10px;
 }
 
-.category-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
-    border-color: var(--pitbull-gold);
-}
-
-.category-icon {
-    font-size: 48px;
-    color: var(--pitbull-orange);
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-.category-card:hover .category-icon {
-    color: var(--pitbull-gold);
-    transform: scale(1.2);
-}
-
-.category-card h4 {
-    margin-bottom: 15px;
-}
-
-.category-card h4 a {
-    color: var(--pitbull-orange);
+.category-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid var(--pitbull-orange);
+    border-radius: 10px;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 20px;
-    transition: all 0.3s ease;
-}
-
-.category-card h4 a:hover {
-    color: var(--pitbull-gold);
-    text-shadow: 0 0 10px rgba(253, 203, 110, 0.5);
-}
-
-.category-card p {
     color: var(--pitbull-white);
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 0;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.category-item:hover {
+    background: var(--pitbull-orange);
+    color: var(--pitbull-white);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+.category-item i {
+    font-size: 18px;
+    margin-right: 12px;
+    color: var(--pitbull-gold);
+    width: 20px;
+    text-align: center;
+}
+
+.category-item:hover i {
+    color: var(--pitbull-white);
+}
+
+/* 게시글 메인 영역 */
+.posts-main {
+    padding-left: 20px;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
 }
 
 /* 메뉴 스타일 */
@@ -582,9 +553,22 @@ layout: default
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-    .profile-image {
-        width: 150px;
-        height: 150px;
+    .main-content-section {
+        padding: 20px 0;
+    }
+    
+    .sidebar-categories {
+        position: static;
+        margin-bottom: 30px;
+    }
+    
+    .posts-main {
+        padding-left: 0;
+    }
+    
+    .posts-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .post-card {
@@ -613,6 +597,16 @@ layout: default
     
     .menu-link {
         display: block;
+    }
+    
+    .category-item {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .category-item i {
+        font-size: 16px;
+        margin-right: 10px;
     }
 }
 </style>
