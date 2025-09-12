@@ -306,6 +306,9 @@ body.single .author__avatar {
   left: 100px !important; /* 프로필사진 옆 */
   z-index: 1000 !important;
   max-width: 400px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .site-title-main {
@@ -346,14 +349,17 @@ button[aria-label="Menu"] {
 
 /* 헤더 정렬 개선 - 깔끔하고 가로형 */
 .masthead {
-  padding: 1rem 2rem 1rem 500px !important; /* 프로필사진 + 타이틀 공간 확보 */
+  padding: 0.8rem 2rem 0.8rem 500px !important; /* 프로필사진 + 타이틀 공간 확보 */
   display: flex !important;
   align-items: center !important;
   justify-content: flex-end !important; /* 네비게이션을 오른쪽으로 */
-  min-height: 60px !important; /* 높이 줄임 */
+  min-height: 50px !important; /* 높이 더 줄임 */
   background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%) !important;
   backdrop-filter: blur(10px) !important;
   border-bottom: 2px solid var(--pitbull-orange) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
 }
 
 .masthead__inner-wrap {
@@ -404,13 +410,16 @@ button[aria-label="Menu"] {
 }
 
 .greedy-nav .visible-links a {
-  padding: 0.3rem 0.8rem !important; /* 패딩 줄임 */
-  border-radius: 15px !important;
-  background: rgba(255, 107, 53, 0.1) !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 20px !important;
+  background: rgba(255, 107, 53, 0.15) !important;
   border: 1px solid var(--pitbull-orange) !important;
   transition: all 0.3s ease !important;
-  font-size: 0.9rem !important; /* 폰트 크기 줄임 */
+  font-size: 0.9rem !important;
   white-space: nowrap !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
 }
 
 .greedy-nav .visible-links a:hover {
@@ -419,18 +428,22 @@ button[aria-label="Menu"] {
   transform: translateY(-1px) !important;
 }
 
-/* 페이지네이션 정렬 개선 */
+/* 페이지네이션 정렬 개선 - 가로형 */
 .pagination {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 0.5rem !important;
-  margin: 2rem 0 !important;
-  padding: 1rem !important;
+  gap: 0.3rem !important;
+  margin: 1rem 0 !important;
+  padding: 0.5rem 1rem !important;
   background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
-  border-radius: 15px !important;
+  border-radius: 25px !important;
   border: 2px solid var(--pitbull-orange) !important;
   box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
+  flex-wrap: wrap !important;
+  max-width: 600px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .pagination a,
@@ -438,15 +451,16 @@ button[aria-label="Menu"] {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-width: 40px !important;
-  height: 40px !important;
-  padding: 0.5rem 1rem !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  padding: 0.3rem 0.6rem !important;
   background: rgba(255, 107, 53, 0.1) !important;
   color: var(--pitbull-white) !important;
   text-decoration: none !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   border: 1px solid var(--pitbull-orange) !important;
   font-weight: 600 !important;
+  font-size: 0.9rem !important;
   transition: all 0.3s ease !important;
 }
 
@@ -516,7 +530,7 @@ button[aria-label="Menu"] {
 /* 메인 콘텐츠 영역 조정 */
 #main {
   margin-left: 0 !important;
-  padding-top: 100px !important; /* 프로필사진 + 타이틀 공간 확보 */
+  padding-top: 80px !important; /* 프로필사진 + 타이틀 공간 확보 */
   padding-left: 0 !important;
   padding-right: 0 !important;
   margin-top: 0 !important;
