@@ -1,7 +1,198 @@
 ---
-layout: home
-sidebar_main: true
-author_profile: true
-entries_layout: grid
-classes: wide
+layout: default
 ---
+
+<!--header-->
+<header class="main-header clearfix" role="header">
+  <div class="logo">
+    <a href="/"><em>{{ site.title }}</em></a>
+  </div>
+  <a href="#menu" class="menu-link"></a>
+  <nav id="menu" class="main-nav" role="navigation">
+    <ul class="main-menu">
+      <li><a href="#section1">Home</a></li>
+      <li><a href="#section2">About</a></li>
+      <li><a href="#section3">Posts</a></li>
+      <li><a href="#section4">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ***** Main Banner Area Start ***** -->
+<section class="section main-banner" id="top" data-section="section1">
+    <div class="video-overlay header-text">
+        <div class="caption">
+            <h6>{{ site.subtitle }}</h6>
+            <h2><em>{{ site.title }}</em></h2>
+            <p>{{ site.description }}</p>
+            <div class="main-button">
+                <div class="scroll-to-section"><a href="#section3">View Posts</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ***** About Section Start ***** -->
+<section class="section" id="section2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="left-text-content">
+                    <div class="section-heading">
+                        <h2>About Me</h2>
+                        <span>{{ site.description }}</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="service-item">
+                                <img src="{{ site.avatar }}" alt="Profile Picture" class="profile-image">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="service-item">
+                                <h4>{{ site.name }}</h4>
+                                <p>{{ site.bio }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ***** Posts Section Start ***** -->
+<section class="section" id="section3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Recent Posts</h2>
+                    <span>개발자의 성장 스토리</span>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    {% for post in site.posts limit:6 %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-item">
+                            <div class="icon">
+                                <img src="{{ site.avatar }}" alt="Post" style="width: 50px; height: 50px; border-radius: 50%;">
+                            </div>
+                            <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                            <p>{{ post.excerpt | truncate: 100 }}</p>
+                            <div class="text-button">
+                                <a href="{{ post.url }}">Read More <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ***** Contact Section Start ***** -->
+<section class="section" id="section4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Contact Me</h2>
+                    <span>Let's connect!</span>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="contact-info">
+                            <h4>Get in touch</h4>
+                            <p>{{ site.bio }}</p>
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> {{ site.email }}</li>
+                                <li><i class="fa fa-map-marker"></i> {{ site.location }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact-form">
+                            <h4>Send Message</h4>
+                            <form id="contact" action="" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <fieldset>
+                                            <input name="name" type="text" id="name" placeholder="Your Name" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <fieldset>
+                                            <input name="email" type="text" id="email" placeholder="Your Email" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <textarea name="message" rows="6" id="message" placeholder="Your Message" required=""></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="main-button">Send Message Now</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #ff6b35;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.service-item {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+}
+
+.service-item h4 a {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.service-item h4 a:hover {
+    color: #fdcb6e;
+}
+
+.text-button a {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.text-button a:hover {
+    color: #fdcb6e;
+}
+</style>
