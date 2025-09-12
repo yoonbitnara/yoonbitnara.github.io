@@ -244,6 +244,14 @@ a:hover {
   top: 1rem !important;
   left: 1rem !important;
   z-index: 1001 !important;
+  display: block !important;
+}
+
+.author__avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
 }
 
 .author__avatar:hover {
@@ -278,6 +286,17 @@ a:hover {
 
 .author__avatar:hover::after {
   opacity: 1;
+}
+
+/* 메인 페이지에서 프로필사진 강제 표시 */
+body.home .author__avatar,
+body.archive .author__avatar,
+body.single .author__avatar {
+  display: block !important;
+  position: fixed !important;
+  top: 1rem !important;
+  left: 1rem !important;
+  z-index: 1001 !important;
 }
 
 /* 헤더 정렬 개선 - 사용자 친화적 */
