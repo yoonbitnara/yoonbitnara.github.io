@@ -477,6 +477,27 @@ button[aria-label="Toggle menu"] + span,
   overflow: hidden !important;
 }
 
+/* 사이드바에서 "Toggle menu" 텍스트 강제 제거 - 더 강력한 규칙 */
+.sidebar *:contains("Toggle menu"),
+.sidebar *:contains("toggle"),
+.sidebar *:contains("menu"),
+.sidebar h3:contains("Toggle menu"),
+.sidebar h4:contains("Toggle menu"),
+.sidebar h5:contains("Toggle menu"),
+.sidebar h6:contains("Toggle menu") {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-indent: -9999px !important;
+}
+
 /* 사이드바에서 "Toggle menu" 텍스트 강제 제거 */
 .sidebar *:contains("Toggle menu"),
 .sidebar *:contains("toggle"),
@@ -550,8 +571,14 @@ button[aria-label="Toggle menu"] + span,
   transform: translateY(-1px) !important;
 }
 
-/* 페이지네이션 정렬 개선 - 1 2 3 4 5 > 형식 */
-.pagination {
+/* 페이지네이션 정렬 개선 - 1 2 3 4 5 > 형식 - 강력한 규칙 */
+.pagination,
+#main .pagination,
+.home .pagination,
+.archive-taxonomy .pagination,
+body .pagination,
+html .pagination,
+.page .pagination {
   display: flex !important;
   flex-direction: row !important;
   justify-content: center !important;
@@ -1042,16 +1069,43 @@ button[aria-label="Toggle menu"] + span,
   width: 100% !important;
 }
 
-/* 게시글 목록 그리드 컨테이너 */
+/* 게시글 목록 그리드 컨테이너 - 강력한 규칙 */
 .archive,
 #main .archive,
 .home .archive,
-.archive-taxonomy .archive {
+.archive-taxonomy .archive,
+body .archive,
+html .archive,
+.page .archive,
+.archive .archive {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 2rem !important;
   margin-bottom: 3rem !important;
   padding: 0 1rem !important;
+  width: 100% !important;
+  max-width: none !important;
+  grid-auto-rows: minmax(200px, auto) !important;
+}
+
+/* 게시글 목록 강제 그리드 적용 */
+.archive__item,
+.archive .archive__item,
+#main .archive__item,
+.home .archive__item,
+.archive-taxonomy .archive__item {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-bottom: 0 !important;
+  padding: 1.5rem !important;
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%) !important;
+  border-radius: 15px !important;
+  border: 2px solid var(--pitbull-orange) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  height: fit-content !important;
   width: 100% !important;
   max-width: none !important;
 }
