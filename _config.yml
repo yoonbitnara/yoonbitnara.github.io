@@ -12,6 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
+<<<<<<< HEAD
 minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
@@ -19,6 +20,15 @@ locale: "en-US"
 title: "Pitbull terrier Devlog"
 title_separator: "|"
 subtitle: "만약 노력도 재능이면 내 재능은 어딜 가도 꿀리지 않는다." # site tagline that appears below site title in masthead
+=======
+minimal_mistakes_skin: "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
+# Site Settings
+locale: "en-US"
+title: "Pitbull Devlog"
+title_separator: "|"
+subtitle: "개발자의 성장 스토리" # site tagline that appears below site title in masthead
+>>>>>>> df64d992 (디자인변경)
 name: "pitbull terrier"
 description: "A website for organizing what I have learned."
 url: "https://yoonbitnara.github.io"
