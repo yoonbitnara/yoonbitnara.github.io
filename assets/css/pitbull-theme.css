@@ -102,13 +102,31 @@
   border-color: var(--pitbull-gold) !important;
 }
 
-/* 토글 메뉴 숨기기 */
+/* 토글 메뉴 숨기기 - 강력한 규칙 */
 .greedy-nav__toggle,
 .greedy-nav__toggle-wrapper,
 .greedy-nav__toggle-text,
 button[aria-label="Toggle menu"],
-button[aria-label="Menu"] {
+button[aria-label="Menu"],
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6,
+.sidebar .nav__sub-title,
+.sidebar .nav__title,
+.sidebar *[class*="toggle"],
+.sidebar *[class*="menu"] {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-indent: -9999px !important;
 }
 
 /* 사이드바 스타일 */
@@ -159,8 +177,14 @@ button[aria-label="Menu"] {
   padding: 1rem !important;
 }
 
-/* 게시글 목록 그리드 */
-.archive {
+/* 게시글 목록 그리드 - 강력한 규칙 */
+.archive,
+#main .archive,
+.home .archive,
+.archive-taxonomy .archive,
+body .archive,
+html .archive,
+.page .archive {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 2rem !important;
@@ -168,6 +192,7 @@ button[aria-label="Menu"] {
   padding: 0 1rem !important;
   width: 100% !important;
   max-width: none !important;
+  grid-auto-rows: minmax(200px, auto) !important;
 }
 
 /* 게시글 카드 스타일 */
