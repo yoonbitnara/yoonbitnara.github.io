@@ -491,6 +491,25 @@ button[aria-label="Toggle menu"] + span,
   overflow: hidden !important;
 }
 
+/* 사이드바에서 모든 텍스트 노드 강제 제거 */
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6,
+.sidebar .nav__sub-title,
+.sidebar .nav__title {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
 /* 사이드바는 오직 카테고리 목록만 표시 */
 .sidebar .nav__list,
 .sidebar .nav__sub-title,
@@ -958,6 +977,15 @@ button[aria-label="Toggle menu"] + span,
   flex-direction: row !important;
 }
 
+/* 메인페이지 컨텐츠 영역 강제 설정 */
+.home #main,
+.archive-taxonomy #main {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
 /* 사이드바와 메인 콘텐츠를 나란히 배치 */
 .page__inner-wrap {
   display: flex !important;
@@ -1015,12 +1043,17 @@ button[aria-label="Toggle menu"] + span,
 }
 
 /* 게시글 목록 그리드 컨테이너 */
-.archive {
+.archive,
+#main .archive,
+.home .archive,
+.archive-taxonomy .archive {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 2rem !important;
   margin-bottom: 3rem !important;
   padding: 0 1rem !important;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 /* 포스트 목록 강제 표시 - 카드챕터식 */
