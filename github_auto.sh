@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 사용자 본인이 입력해야 됨.
-REPO_OWNER="yoonbitnara"
+REPO_OWNER="ybnr92"
 REPO_NAME="yoonbitnara.github.io"
 ACCESS_TOKEN="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"
 
