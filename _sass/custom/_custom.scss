@@ -774,7 +774,7 @@ div[style*="z-index:9999"] {
   border-radius: 10px;
   margin-left: 8px;
   box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
-  animation: pulse 2s infinite;
+  animation: newBadgeAnimation 2s infinite;
   text-shadow: none;
   min-width: 18px;
   text-align: center;
@@ -784,20 +784,41 @@ div[style*="z-index:9999"] {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-@keyframes pulse {
+.new-badge:hover {
+  animation-play-state: paused;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.6);
+}
+
+@keyframes newBadgeAnimation {
   0% {
-    transform: scale(1);
+    transform: translateY(-50%) scale(1);
     box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-red));
+  }
+  25% {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.6);
+    background: linear-gradient(45deg, var(--pitbull-red), var(--pitbull-orange));
   }
   50% {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.6);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.8);
+    background: linear-gradient(45deg, var(--pitbull-gold), var(--pitbull-orange));
+  }
+  75% {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.6);
+    background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-red));
   }
   100% {
-    transform: scale(1);
+    transform: translateY(-50%) scale(1);
     box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-red));
   }
 }
 

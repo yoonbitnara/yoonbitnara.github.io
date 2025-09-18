@@ -473,8 +473,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">linux</div>
-                                <div class="file-meta">1 file</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.Linux.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Linux.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="linux-contents">
 {% for post in site.categories.Linux %}
