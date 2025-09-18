@@ -5,6 +5,14 @@ layout: default
 <!-- ***** Post Detail Section Start ***** -->
 <section class="section post-detail-section" id="post-detail">
     <div class="container">
+        <!-- 메인으로 돌아가기 버튼 -->
+        <div class="back-to-main">
+            <a href="/" class="back-btn">
+                <i class="fa fa-home"></i>
+                <span>메인으로 돌아가기</span>
+            </a>
+        </div>
+        
         <div class="row">
             <div class="col-lg-12">
                 <!-- Post Header -->
@@ -83,6 +91,44 @@ layout: default
     padding: 20px 0;
     background: #0d1117; /* GitHub 스타일과 동일한 배경색 */
     min-height: 100vh;
+}
+
+/* 메인으로 돌아가기 버튼 */
+.back-to-main {
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(253, 203, 110, 0.1) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 25px;
+    color: var(--pitbull-orange);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+}
+
+.back-btn:hover {
+    background: linear-gradient(135deg, var(--pitbull-orange), var(--pitbull-red));
+    color: var(--pitbull-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+    text-decoration: none;
+}
+
+.back-btn i {
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover i {
+    transform: scale(1.1);
 }
 
 .post-detail-header {
@@ -437,6 +483,15 @@ layout: default
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
+    .back-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .back-btn i {
+        font-size: 14px;
+    }
+    
     .post-title {
         font-size: 2rem;
     }
