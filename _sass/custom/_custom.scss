@@ -762,3 +762,48 @@ div[style*="z-index: 999"],
 div[style*="z-index:9999"] {
   display: none !important;
 }
+
+// 신규 글 뱃지 스타일
+.new-badge {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-red));
+  color: var(--pitbull-white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+  animation: pulse 2s infinite;
+  text-shadow: none;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+  }
+}
+
+// 네비게이션 링크에 뱃지가 있을 때 스타일 조정
+.nav__items a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  .new-badge {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+}

@@ -2,6 +2,10 @@
 
 {% assign sum = site.posts | size %}
 
+<!-- 최근 7일 내 글 수를 계산하는 변수들 -->
+{% assign now = 'now' | date: '%s' %}
+{% assign seven_days_ago = now | minus: 604800 %}
+
 <nav class="nav__list">
   <input id="ac-toc" name="accordion-toc" type="checkbox" />
   <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
@@ -19,7 +23,18 @@
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "Java" %}
-                        <li><a href="/categories/java" class="">JAVA ({{category[1].size}})</a></li>
+                        {% assign recent_posts = 0 %}
+                        {% for post in category[1] %}
+                            {% assign post_date = post.date | date: '%s' %}
+                            {% if post_date >= seven_days_ago %}
+                                {% assign recent_posts = recent_posts | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <li><a href="/categories/java" class="">JAVA ({{category[1].size}})
+                            {% if recent_posts > 0 %}
+                                <span class="new-badge">{{recent_posts}}</span>
+                            {% endif %}
+                        </a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -55,14 +70,36 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Js" %}
-                        <li><a href="/categories/js" class="">JavaScript  ({{category[1].size}})</a></li>
+                        {% assign recent_posts = 0 %}
+                        {% for post in category[1] %}
+                            {% assign post_date = post.date | date: '%s' %}
+                            {% if post_date >= seven_days_ago %}
+                                {% assign recent_posts = recent_posts | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <li><a href="/categories/js" class="">JavaScript ({{category[1].size}})
+                            {% if recent_posts > 0 %}
+                                <span class="new-badge">{{recent_posts}}</span>
+                            {% endif %}
+                        </a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Spring" %}
-                        <li><a href="/categories/spring" class="">SPRING ({{category[1].size}})</a></li>
+                        {% assign recent_posts = 0 %}
+                        {% for post in category[1] %}
+                            {% assign post_date = post.date | date: '%s' %}
+                            {% if post_date >= seven_days_ago %}
+                                {% assign recent_posts = recent_posts | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <li><a href="/categories/spring" class="">SPRING ({{category[1].size}})
+                            {% if recent_posts > 0 %}
+                                <span class="new-badge">{{recent_posts}}</span>
+                            {% endif %}
+                        </a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -123,7 +160,18 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Algorithm" %}
-                        <li><a href="/categories/algorithm" class="">알고리즘 문제 (with JAVA) ({{category[1].size}})</a></li>
+                        {% assign recent_posts = 0 %}
+                        {% for post in category[1] %}
+                            {% assign post_date = post.date | date: '%s' %}
+                            {% if post_date >= seven_days_ago %}
+                                {% assign recent_posts = recent_posts | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <li><a href="/categories/algorithm" class="">알고리즘 문제 (with JAVA) ({{category[1].size}})
+                            {% if recent_posts > 0 %}
+                                <span class="new-badge">{{recent_posts}}</span>
+                            {% endif %}
+                        </a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
