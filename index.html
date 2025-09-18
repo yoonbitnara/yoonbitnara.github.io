@@ -44,12 +44,12 @@ layout: default
 }
 </style>
 
-<!-- 최근 3일 이내 글 수 계산 -->
+<!-- 간단한 뱃지 로직 - 테스트용 -->
 {% assign recent_js_posts = 0 %}
 {% assign recent_algorithm_posts = 0 %}
 {% assign recent_bigdata_posts = 0 %}
 {% assign recent_computerstructure_posts = 0 %}
-{% assign recent_discretemathematics_posts = 0 %}
+{% assign recent_discretemathematics_posts = 1 %}
 {% assign recent_html_posts = 0 %}
 {% assign recent_internet_posts = 0 %}
 {% assign recent_java_posts = 0 %}
@@ -61,63 +61,6 @@ layout: default
 {% assign recent_servlet_posts = 0 %}
 {% assign recent_spring_posts = 0 %}
 {% assign recent_til_posts = 0 %}
-
-{% for post in site.posts limit: 20 %}
-    {% assign post_date = post.date | date: '%s' %}
-    {% assign now = site.time | date: '%s' %}
-    {% assign three_days_ago = now | minus: 259200 %}
-    
-    {% if post_date > three_days_ago %}
-        {% if post.categories contains 'Js' %}
-            {% assign recent_js_posts = recent_js_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Algorithm' %}
-            {% assign recent_algorithm_posts = recent_algorithm_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Bigdata' %}
-            {% assign recent_bigdata_posts = recent_bigdata_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'ComputerStructure' %}
-            {% assign recent_computerstructure_posts = recent_computerstructure_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'DiscreteMathematics' %}
-            {% assign recent_discretemathematics_posts = recent_discretemathematics_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'HtmlCss' %}
-            {% assign recent_html_posts = recent_html_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Internet' %}
-            {% assign recent_internet_posts = recent_internet_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Java' %}
-            {% assign recent_java_posts = recent_java_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Jdbc' %}
-            {% assign recent_jdbc_posts = recent_jdbc_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Linux' %}
-            {% assign recent_linux_posts = recent_linux_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Mysql' %}
-            {% assign recent_mysql_posts = recent_mysql_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Python' %}
-            {% assign recent_python_posts = recent_python_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'R' %}
-            {% assign recent_r_posts = recent_r_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Servlet' %}
-            {% assign recent_servlet_posts = recent_servlet_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Spring' %}
-            {% assign recent_spring_posts = recent_spring_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Til' %}
-            {% assign recent_til_posts = recent_til_posts | plus: 1 %}
-        {% endif %}
-    {% endif %}
-{% endfor %}
 
 
 <!-- ***** GitHub Style Repository View ***** -->
