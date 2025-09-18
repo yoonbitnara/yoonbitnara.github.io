@@ -61,6 +61,7 @@ layout: default
 {% assign recent_servlet_posts = 0 %}
 {% assign recent_spring_posts = 0 %}
 {% assign recent_til_posts = 0 %}
+{% assign recent_mathematical_trading_posts = 0 %}
 
 {% assign today = 'now' | date: '%Y-%m-%d' %}
 {% assign three_days_ago = 'now' | date: '%s' | minus: 259200 | date: '%Y-%m-%d' %}
@@ -115,6 +116,9 @@ layout: default
         {% endif %}
         {% if post.categories contains 'Til' %}
             {% assign recent_til_posts = recent_til_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Mathematical-Trading' %}
+            {% assign recent_mathematical_trading_posts = recent_mathematical_trading_posts | plus: 1 %}
         {% endif %}
     {% endif %}
 {% endfor %}
@@ -962,6 +966,57 @@ layout: default
                             </div>
                             <div class="folder-contents" id="til-contents">
 {% for post in site.categories.Til %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- 수학적 트레이딩 폴더 -->
+                            <div class="file-item folder-item" data-folder="mathematical-trading">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                        </div>
+                                <div class="file-name">
+                                    수학적 트레이딩
+                                    {% if recent_mathematical_trading_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                    </div>
+                                <div class="file-meta">{{site.categories.Mathematical-Trading.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Mathematical-Trading.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                </div>
+            </div>
+                            <div class="folder-contents" id="mathematical-trading-contents">
+{% for post in site.categories.Mathematical-Trading %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
