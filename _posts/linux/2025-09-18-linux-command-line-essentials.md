@@ -6,7 +6,7 @@ tags: [linux, command-line, terminal, development, server]
 author: pitbull terrier
 ---
 
-# 리눅스 명령어 완전 정복: 개발자가 알아야 할 필수 명령어들
+# 개발자가 알아야 할 필수 명령어들
 
 리눅스 명령어를 모르면 개발자라고 할 수 없다. 나도 처음에는 GUI만 쓰다가 서버 작업을 하면서 명령어의 필요성을 깨달았다. 터미널에서 몇 줄만 입력하면 되는 일을 GUI로는 몇 번의 클릭이 필요했다.
 

@@ -6,7 +6,7 @@ tags: [python, data-science, pandas, numpy, matplotlib, machine-learning]
 author: pitbull terrier
 ---
 
-# 파이썬 데이터 사이언스 완전 정복: 판다스부터 머신러닝까지
+# 판다스부터 머신러닝까지
 
 파이썬을 처음 배웠을 때는 그냥 간단한 스크립트 정도로만 생각했다. 하지만 데이터 사이언스 라이브러리들을 만나고 나서야 파이썬의 진짜 힘을 알게 됐다. 이제는 복잡한 데이터 분석도 몇 줄의 코드로 해결할 수 있다.
 

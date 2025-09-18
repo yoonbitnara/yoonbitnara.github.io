@@ -6,7 +6,7 @@ tags: [algorithm, coding-test, problem-solving, data-structure, java]
 author: pitbull terrier
 ---
 
-# 알고리즘 문제 해결 전략: 코딩테스트 완전 정복하기
+# 코딩테스트 완전 정복하기
 
 알고리즘 문제를 처음 봤을 때는 정말 막막했다. 문제를 읽어도 무슨 말인지 모르겠고, 코드를 어떻게 짜야 할지도 감이 안 왔다. 하지만 체계적으로 접근하니까 점점 풀 수 있는 문제가 늘어났다.
 

@@ -6,7 +6,7 @@ tags: [java, spring-boot, web-development, rest-api, database, jpa]
 author: pitbull terrier
 ---
 
-# 자바와 스프링 부트 완전 정복: 현대적 웹 개발의 모든 것
+# 현대적 웹 개발의 모든 것
 
 자바를 처음 배웠을 때는 그냥 "Hello World" 출력하는 게 전부였다. 하지만 스프링 부트를 만나고 나서야 자바의 진짜 매력을 알게 됐다. 이제는 웹 애플리케이션을 몇 시간 만에 뚝딱 만들 수 있다.
 
