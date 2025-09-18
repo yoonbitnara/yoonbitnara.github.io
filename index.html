@@ -26,14 +26,93 @@ layout: default
     opacity: 0.3;
   }
 }
+
+.new-badge {
+  display: inline-block;
+  background: linear-gradient(45deg, #ff6b35, #d63031);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
 </style>
 
 <!-- 최근 글 수 계산 -->
-{% assign recent_posts = 0 %}
 {% assign recent_site_posts = site.posts | sort: 'date' | reverse | limit: 5 %}
+
+<!-- 각 카테고리별 최근 글 수 계산 -->
+{% assign recent_js_posts = 0 %}
+{% assign recent_algorithm_posts = 0 %}
+{% assign recent_bigdata_posts = 0 %}
+{% assign recent_computerstructure_posts = 0 %}
+{% assign recent_discretemathematics_posts = 0 %}
+{% assign recent_html_posts = 0 %}
+{% assign recent_internet_posts = 0 %}
+{% assign recent_java_posts = 0 %}
+{% assign recent_jdbc_posts = 0 %}
+{% assign recent_linux_posts = 0 %}
+{% assign recent_mysql_posts = 0 %}
+{% assign recent_python_posts = 0 %}
+{% assign recent_r_posts = 0 %}
+{% assign recent_servlet_posts = 0 %}
+{% assign recent_spring_posts = 0 %}
+{% assign recent_til_posts = 0 %}
+
 {% for recent_post in recent_site_posts %}
     {% if recent_post.categories contains 'Js' %}
-        {% assign recent_posts = recent_posts | plus: 1 %}
+        {% assign recent_js_posts = recent_js_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Algorithm' %}
+        {% assign recent_algorithm_posts = recent_algorithm_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Bigdata' %}
+        {% assign recent_bigdata_posts = recent_bigdata_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'ComputerStructure' %}
+        {% assign recent_computerstructure_posts = recent_computerstructure_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'DiscreteMathematics' %}
+        {% assign recent_discretemathematics_posts = recent_discretemathematics_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'HtmlCss' %}
+        {% assign recent_html_posts = recent_html_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Internet' %}
+        {% assign recent_internet_posts = recent_internet_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Java' %}
+        {% assign recent_java_posts = recent_java_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Jdbc' %}
+        {% assign recent_jdbc_posts = recent_jdbc_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Linux' %}
+        {% assign recent_linux_posts = recent_linux_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Mysql' %}
+        {% assign recent_mysql_posts = recent_mysql_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Python' %}
+        {% assign recent_python_posts = recent_python_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'R' %}
+        {% assign recent_r_posts = recent_r_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Servlet' %}
+        {% assign recent_servlet_posts = recent_servlet_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Spring' %}
+        {% assign recent_spring_posts = recent_spring_posts | plus: 1 %}
+    {% endif %}
+    {% if recent_post.categories contains 'Til' %}
+        {% assign recent_til_posts = recent_til_posts | plus: 1 %}
     {% endif %}
 {% endfor %}
 
@@ -81,7 +160,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">algorithm</div>
+                                <div class="file-name">
+                                    algorithm
+                                    {% if recent_algorithm_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Algorithm.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Algorithm.first.date %}
@@ -127,7 +211,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">bigdata</div>
+                                <div class="file-name">
+                                    bigdata
+                                    {% if recent_bigdata_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Bigdata.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Bigdata.first.date %}
@@ -173,7 +262,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">computerstructure</div>
+                                <div class="file-name">
+                                    computerstructure
+                                    {% if recent_computerstructure_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.ComputerStructure.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.ComputerStructure.first.date %}
@@ -219,7 +313,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">discretemathematics</div>
+                                <div class="file-name">
+                                    discretemathematics
+                                    {% if recent_discretemathematics_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.DiscreteMathematics.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.DiscreteMathematics.first.date %}
@@ -265,7 +364,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">html</div>
+                                <div class="file-name">
+                                    html
+                                    {% if recent_html_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.HtmlCss.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.HtmlCss.first.date %}
@@ -311,7 +415,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">internet</div>
+                                <div class="file-name">
+                                    internet
+                                    {% if recent_internet_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Internet.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Internet.first.date %}
@@ -357,7 +466,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">java</div>
+                                <div class="file-name">
+                                    java
+                                    {% if recent_java_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Java.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Java.first.date %}
@@ -403,7 +517,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">jdbc</div>
+                                <div class="file-name">
+                                    jdbc
+                                    {% if recent_jdbc_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Jdbc.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Jdbc.first.date %}
@@ -449,10 +568,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">js</div>
-                                {% if recent_posts > 0 %}
-                                    <div class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</div>
-                                {% endif %}
+                                <div class="file-name">
+                                    js
+                                    {% if recent_js_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Js.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Js.first.date %}
@@ -498,7 +619,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">linux</div>
+                                <div class="file-name">
+                                    linux
+                                    {% if recent_linux_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Linux.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Linux.first.date %}
@@ -544,7 +670,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">mysql</div>
+                                <div class="file-name">
+                                    mysql
+                                    {% if recent_mysql_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Mysql.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Mysql.first.date %}
@@ -590,7 +721,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">python</div>
+                                <div class="file-name">
+                                    python
+                                    {% if recent_python_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Python.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Python.first.date %}
@@ -636,7 +772,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">r</div>
+                                <div class="file-name">
+                                    r
+                                    {% if recent_r_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.R.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.R.first.date %}
@@ -682,7 +823,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">servlet</div>
+                                <div class="file-name">
+                                    servlet
+                                    {% if recent_servlet_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Servlet.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Servlet.first.date %}
@@ -728,7 +874,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">spring</div>
+                                <div class="file-name">
+                                    spring
+                                    {% if recent_spring_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Spring.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Spring.first.date %}
@@ -774,7 +925,12 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">til</div>
+                                <div class="file-name">
+                                    til
+                                    {% if recent_til_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
                                 <div class="file-meta">{{site.categories.Til.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Til.first.date %}
