@@ -45,7 +45,9 @@ layout: default
 </style>
 
 <!-- 최근 3일 이내 글 수 계산 -->
-{% assign recent_posts = site.posts | where_exp: "post", "post.date > site.time | date: '%s' | minus: 259200" %}
+{% assign now = site.time | date: '%s' %}
+{% assign three_days_ago = now | minus: 259200 %}
+{% assign recent_posts = site.posts | where_exp: "post", "post.date > three_days_ago" %}
 
 <!-- 각 카테고리별 최근 글 수 계산 -->
 {% assign recent_js_posts = 0 %}
