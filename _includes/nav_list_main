@@ -76,9 +76,7 @@
                             {% endif %}
                         {% endfor %}
                         <li><a href="/categories/js" class="">JavaScript ({{category[1].size}})
-                            {% if recent_posts > 0 %}
-                                <span class="new-badge">{{recent_posts}}</span>
-                            {% endif %}
+                            <span class="new-badge">TEST</span>
                         </a></li>
                     {% endif %}
                 {% endfor %}
