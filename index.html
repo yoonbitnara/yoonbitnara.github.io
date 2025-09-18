@@ -239,12 +239,10 @@ layout: default
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
-                                <div class="file-name">
-                                    js
-                                    {% if recent_posts > 0 %}
-                                        <span class="new-badge">{{recent_posts}}</span>
-                                    {% endif %}
-                                </div>
+                                <div class="file-name">js</div>
+                                {% if recent_posts > 0 %}
+                                    <div class="new-badge">{{recent_posts}}</div>
+                                {% endif %}
                                 <div class="file-meta">16 files</div>
                                 <div class="file-date">1 year ago</div>
                             </div>
@@ -903,6 +901,7 @@ layout: default
     padding: 8px 16px;
     border-bottom: 1px solid #21262d;
     cursor: pointer;
+    position: relative;
     transition: background-color 0.2s;
     color: #c9d1d9;
 }

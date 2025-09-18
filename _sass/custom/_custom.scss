@@ -780,8 +780,10 @@ div[style*="z-index:9999"] {
   text-align: center;
   line-height: 1.2;
   vertical-align: middle;
-  position: relative;
-  top: -2px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @keyframes pulse {
