@@ -56,8 +56,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">algorithm</div>
-                                <div class="file-meta">15 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.Algorithm.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Algorithm.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="algorithm-contents">
                                 {% for post in site.categories.Algorithm %}
@@ -79,8 +102,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">bigdata</div>
-                                <div class="file-meta">12 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.Bigdata.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Bigdata.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="bigdata-contents">
 {% for post in site.categories.Bigdata %}
@@ -102,8 +148,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">computerstructure</div>
-                                <div class="file-meta">7 files</div>
-                                <div class="file-date">1 year ago</div>
+                                <div class="file-meta">{{site.categories.ComputerStructure.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.ComputerStructure.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="computerstructure-contents">
 {% for post in site.categories.ComputerStructure %}
@@ -125,8 +194,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">discretemathematics</div>
-                                <div class="file-meta">6 files</div>
-                                <div class="file-date">1 year ago</div>
+                                <div class="file-meta">{{site.categories.DiscreteMathematics.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.DiscreteMathematics.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="discretemathematics-contents">
 {% for post in site.categories.DiscreteMathematics %}
@@ -148,8 +240,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">html</div>
-                                <div class="file-meta">8 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.HtmlCss.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.HtmlCss.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="html-contents">
 {% for post in site.categories.HtmlCss %}
@@ -171,8 +286,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">internet</div>
-                                <div class="file-meta">9 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.Internet.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Internet.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="internet-contents">
 {% for post in site.categories.Internet %}
@@ -194,7 +332,7 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">java</div>
-                                <div class="file-meta">{{site.categories.Java.size}} files</div>
+                                <div class="file-meta">{{site.categories.Java.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Java.first.date %}
                                     {% assign now = 'now' | date: '%s' %}
@@ -240,8 +378,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">jdbc</div>
-                                <div class="file-meta">6 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.Jdbc.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Jdbc.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="jdbc-contents">
 {% for post in site.categories.Jdbc %}
@@ -266,7 +427,7 @@ layout: default
                                 {% if recent_posts > 0 %}
                                     <div class="new-badge">N</div>
                                 {% endif %}
-                                <div class="file-meta">{{site.categories.Js.size}} files</div>
+                                <div class="file-meta">{{site.categories.Js.size}} 게시물</div>
                                 <div class="file-date">
                                     {% assign latest_date = site.categories.Js.first.date %}
                                     {% assign now = 'now' | date: '%s' %}
@@ -335,8 +496,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">mysql</div>
-                                <div class="file-meta">22 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.Mysql.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Mysql.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="mysql-contents">
 {% for post in site.categories.Mysql %}
@@ -358,8 +542,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">python</div>
-                                <div class="file-meta">4 files</div>
-                                <div class="file-date">1 year ago</div>
+                                <div class="file-meta">{{site.categories.Python.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Python.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="python-contents">
 {% for post in site.categories.Python %}
@@ -381,8 +588,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">r</div>
-                                <div class="file-meta">4 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.R.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.R.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="r-contents">
 {% for post in site.categories.R %}
@@ -404,8 +634,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">servlet</div>
-                                <div class="file-meta">22 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.Servlet.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Servlet.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="servlet-contents">
 {% for post in site.categories.Servlet %}
@@ -427,8 +680,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">spring</div>
-                                <div class="file-meta">69 files</div>
-                                <div class="file-date">1 year ago</div>
+                                <div class="file-meta">{{site.categories.Spring.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Spring.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="spring-contents">
                                 {% for post in site.categories.Spring %}
@@ -450,8 +726,31 @@ layout: default
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">til</div>
-                                <div class="file-meta">23 files</div>
-                                <div class="file-date">2 years ago</div>
+                                <div class="file-meta">{{site.categories.Til.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Til.first.date %}
+                                    {% assign now = 'now' | date: '%s' %}
+                                    {% assign post_date = latest_date | date: '%s' %}
+                                    {% assign diff_seconds = now | minus: post_date %}
+                                    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                    
+                                    {% if diff_days == 0 %}
+                                        오늘
+                                    {% elsif diff_days == 1 %}
+                                        어제
+                                    {% elsif diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="folder-contents" id="til-contents">
 {% for post in site.categories.Til %}
