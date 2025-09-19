@@ -210,7 +210,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="algorithm-contents">
-                                {% for post in site.categories.Algorithm %}
+                                {% assign sorted_algorithm_posts = site.categories.Algorithm | sort: 'date' | reverse %}
+                                {% for post in sorted_algorithm_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -267,7 +268,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="bigdata-contents">
-{% for post in site.categories.Bigdata %}
+{% assign sorted_bigdata_posts = site.categories.Bigdata | sort: 'date' | reverse %}
+{% for post in sorted_bigdata_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -324,7 +326,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="code-quality-contents">
-{% for post in site.categories['Code-Quality'] %}
+{% assign sorted_posts = site.categories['Code-Quality'] | sort: 'date' | reverse %}
+{% for post in sorted_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -381,7 +384,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="computerstructure-contents">
-{% for post in site.categories.ComputerStructure %}
+{% assign sorted_computerstructure_posts = site.categories.ComputerStructure | sort: 'date' | reverse %}
+{% for post in sorted_computerstructure_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -438,7 +442,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="discretemathematics-contents">
-{% for post in site.categories.DiscreteMathematics %}
+{% assign sorted_discretemathematics_posts = site.categories.DiscreteMathematics | sort: 'date' | reverse %}
+{% for post in sorted_discretemathematics_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -495,7 +500,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="html-contents">
-{% for post in site.categories.HtmlCss %}
+{% assign sorted_htmlcss_posts = site.categories.HtmlCss | sort: 'date' | reverse %}
+{% for post in sorted_htmlcss_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -552,7 +558,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="internet-contents">
-{% for post in site.categories.Internet %}
+{% assign sorted_internet_posts = site.categories.Internet | sort: 'date' | reverse %}
+{% for post in sorted_internet_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -609,7 +616,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="java-contents">
-{% for post in site.categories.Java %}
+{% assign sorted_java_posts = site.categories.Java | sort: 'date' | reverse %}
+{% for post in sorted_java_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -666,7 +674,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="jdbc-contents">
-{% for post in site.categories.Jdbc %}
+{% assign sorted_jdbc_posts = site.categories.Jdbc | sort: 'date' | reverse %}
+{% for post in sorted_jdbc_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -723,7 +732,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="js-contents">
-{% for post in site.categories.Js %}
+{% assign sorted_js_posts = site.categories.Js | sort: 'date' | reverse %}
+{% for post in sorted_js_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -780,7 +790,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="linux-contents">
-{% for post in site.categories.Linux %}
+{% assign sorted_linux_posts = site.categories.Linux | sort: 'date' | reverse %}
+{% for post in sorted_linux_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -837,7 +848,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="mysql-contents">
-{% for post in site.categories.Mysql %}
+{% assign sorted_mysql_posts = site.categories.Mysql | sort: 'date' | reverse %}
+{% for post in sorted_mysql_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -894,7 +906,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="python-contents">
-{% for post in site.categories.Python %}
+{% assign sorted_python_posts = site.categories.Python | sort: 'date' | reverse %}
+{% for post in sorted_python_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -951,7 +964,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="r-contents">
-{% for post in site.categories.R %}
+{% assign sorted_r_posts = site.categories.R | sort: 'date' | reverse %}
+{% for post in sorted_r_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -1008,7 +1022,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="servlet-contents">
-{% for post in site.categories.Servlet %}
+{% assign sorted_servlet_posts = site.categories.Servlet | sort: 'date' | reverse %}
+{% for post in sorted_servlet_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -1065,7 +1080,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="spring-contents">
-                                {% for post in site.categories.Spring %}
+                                {% assign sorted_spring_posts = site.categories.Spring | sort: 'date' | reverse %}
+                                {% for post in sorted_spring_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -1122,7 +1138,8 @@ layout: default
                                 </div>
                             </div>
                             <div class="folder-contents" id="til-contents">
-{% for post in site.categories.Til %}
+{% assign sorted_til_posts = site.categories.Til | sort: 'date' | reverse %}
+{% for post in sorted_til_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -1179,7 +1196,8 @@ layout: default
                 </div>
             </div>
                             <div class="folder-contents" id="mathematical-trading-contents">
-{% for post in site.categories.Mathematical-Trading %}
+{% assign sorted_mathematical_trading_posts = site.categories.Mathematical-Trading | sort: 'date' | reverse %}
+{% for post in sorted_mathematical_trading_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
