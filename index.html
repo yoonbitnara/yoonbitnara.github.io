@@ -48,6 +48,7 @@ layout: default
 {% assign recent_js_posts = 0 %}
 {% assign recent_algorithm_posts = 0 %}
 {% assign recent_bigdata_posts = 0 %}
+{% assign recent_code_quality_posts = 0 %}
 {% assign recent_computerstructure_posts = 0 %}
 {% assign recent_discretemathematics_posts = 0 %}
 {% assign recent_html_posts = 0 %}
@@ -77,6 +78,9 @@ layout: default
         {% endif %}
         {% if post.categories contains 'Bigdata' %}
             {% assign recent_bigdata_posts = recent_bigdata_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Code-Quality' %}
+            {% assign recent_code_quality_posts = recent_code_quality_posts | plus: 1 %}
         {% endif %}
         {% if post.categories contains 'ComputerStructure' %}
             {% assign recent_computerstructure_posts = recent_computerstructure_posts | plus: 1 %}
@@ -264,6 +268,63 @@ layout: default
                             </div>
                             <div class="folder-contents" id="bigdata-contents">
 {% for post in site.categories.Bigdata %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Code Quality 폴더 -->
+                            <div class="file-item folder-item" data-folder="code-quality">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    코드 품질
+                                    {% if recent_code_quality_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories['Code-Quality'].size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories['Code-Quality'].first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="code-quality-contents">
+{% for post in site.categories['Code-Quality'] %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
