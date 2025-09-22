@@ -65,9 +65,19 @@ layout: default
 {% assign recent_mathematical_trading_posts = 0 %}
 
 {% assign today = 'now' | date: '%Y-%m-%d' %}
+{% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
 {% assign two_days_ago = 'now' | date: '%s' | minus: 172800 | date: '%Y-%m-%d' %}
+{% assign one_week_ago = 'now' | date: '%s' | minus: 604800 | date: '%Y-%m-%d' %}
+{% assign one_month_ago = 'now' | date: '%s' | minus: 2592000 | date: '%Y-%m-%d' %}
+{% assign three_months_ago = 'now' | date: '%s' | minus: 7776000 | date: '%Y-%m-%d' %}
+{% assign six_months_ago = 'now' | date: '%s' | minus: 15552000 | date: '%Y-%m-%d' %}
+{% assign one_year_ago = 'now' | date: '%s' | minus: 31536000 | date: '%Y-%m-%d' %}
+{% assign two_years_ago = 'now' | date: '%s' | minus: 63072000 | date: '%Y-%m-%d' %}
+{% assign three_years_ago = 'now' | date: '%s' | minus: 94608000 | date: '%Y-%m-%d' %}
+{% assign current_year = 'now' | date: '%Y' %}
+{% assign current_month = 'now' | date: '%m' %}
 
-{% for post in site.posts limit: 50 %}
+{% for post in site.posts %}
     {% assign post_date = post.date | date: '%Y-%m-%d' %}
     {% if post_date >= two_days_ago %}
         {% if post.categories contains 'Js' %}
@@ -219,7 +229,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -277,7 +315,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -335,7 +401,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -393,7 +487,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -451,7 +573,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -509,7 +659,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -567,7 +745,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -625,7 +831,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -683,7 +917,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -741,7 +1003,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -799,7 +1089,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -857,7 +1175,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -915,7 +1261,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -973,7 +1347,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -1031,7 +1433,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -1089,7 +1519,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -1147,7 +1605,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -1205,7 +1691,35 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
