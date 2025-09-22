@@ -1,9 +1,9 @@
 ---
-layout: single
-title: "4시간만 일하세요."
+title: "4시간만 일하세요"
 date: 2025-09-22
-categories: TIL
+categories: Til
 tags: [TIL, 자기개발, 시간관리, 업무효율성]
+author: pitbull terrier
 ---
 
 # 하루 8시간 중 4시간은 자기개발, 4시간만 업무하는데 왜 더 효율적일까?
