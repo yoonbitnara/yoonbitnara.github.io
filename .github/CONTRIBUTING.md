@@ -1,23 +1,24 @@
 # Contributing
 
-Found a typo in the documentation or interested in [fixing a bug](https://github.com/mmistakes/minimal-mistakes/issues)? Then by all means [submit an issue](https://github.com/mmistakes/minimal-mistakes/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/). If this is your first pull request, it may be helpful to read up on the [GitHub Flow](https://guides.github.com/introduction/flow/) first.
+이 레포는 개인 블로그 소스코드임.  
+크게 외부 기여 받는 구조 아님. 그래도 뭔가 수정이나 개선 제안하고 싶으면 아래 참고하면 됨.  
 
-For help with using the theme or general Jekyll support questions, please use the [Jekyll Talk forums](https://talk.jekyllrb.com/).
+---
 
-Minimal Mistakes has been designed as a base for you to customize and fit your 
-site's unique needs. Please keep this in mind when requesting features and/or 
-submitting pull requests. If it's not something that most people will use, I 
-probably won't consider it. When in doubt ask.
+## 원칙
+- 코드 포맷 깨지지 않게 할 것  
+- 불필요한 라이브러리 추가하지 말 것  
+- 주석은 최소한으로, 내용만 남길 것  
 
-This goes for author sidebar links and "share button" additions -- I have no 
-intention of merging in every possibly option, the essentials are there to get 
-you started :smile:.
+---
 
-## Pull Requests
-
-When submitting a pull request:
-
-1. Clone the repo.
-2. Create a branch off of `master` and give it a meaningful name (e.g. 
-   `my-awesome-new-feature`) and describe the feature or fix.
-3. Open a pull request on GitHub.
+## 글 추가
+- `_posts/` 폴더에 Markdown 파일 생성  
+- 파일명 규칙: `YYYY-MM-DD-title.md`  
+- front matter(제일 위 `---` 블록) 꼭 넣을 것  
+  ```yaml
+  ---
+  layout: single
+  title: "글 제목"
+  categories: [카테고리]
+  ---
