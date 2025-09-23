@@ -3,264 +3,2627 @@ layout: default
 ---
 
 <style>
-/* ====== NEW BADGE ====== */
 @keyframes newBadgeAnimation {
-  0%   { transform: translateY(-50%) scale(1);   background: #ff6b35; }
-  50%  { transform: translateY(-50%) scale(1.3); background: #d63031; }
-  100% { transform: translateY(-50%) scale(1);   background: #ff6b35; }
-}
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%,100%{ opacity: .3; }
-}
-.new-badge{
-  display:inline-block;background:linear-gradient(45deg,#ff6b35,#d63031);color:#fff;
-  font-size:.6rem;font-weight:700;padding:2px 6px;border-radius:10px;margin-left:8px;
-  box-shadow:0 2px 8px rgba(255,107,53,.4);vertical-align:middle;cursor:pointer;
-  transition:all .3s ease;z-index:10;animation:newBadgeAnimation 1s infinite ease-in-out, blink .3s infinite !important;
+  0% {
+    transform: translateY(-50%) scale(1);
+    background: #ff6b35;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.3);
+    background: #d63031;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    background: #ff6b35;
+  }
 }
 
-/* ====== REPO-LIKE LAYOUT (원본 스타일 클래스 유지) ====== */
-.section.github-style-section .repo-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.section.github-style-section .repo-title h2{margin:0 0 4px 0}
-.file-explorer{border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}
-.explorer-header{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 16px;background:#fafafa;border-bottom:1px solid #eee}
-.breadcrumb{display:flex;gap:8px;align-items:center}
-.breadcrumb-item{font-weight:600}
-.search-container{min-width:280px;max-width:420px;width:100%}
-.search-box{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
-.search-box input{border:none;outline:none;width:100%}
-.file-list{padding:8px}
-.file-item{display:grid;grid-template-columns:24px 1fr auto auto;gap:12px;align-items:center;padding:10px 12px;border-bottom:1px solid #f1f5f9}
-.file-item:last-child{border-bottom:none}
-.file-item .file-icon{display:flex;justify-content:center}
-.folder-item{background:#fff}
-.folder-contents{display:none;background:#fcfcfc}
-.folder-item.open + .folder-contents{display:block}
-.file-name a{text-decoration:none;font-weight:600}
-.file-meta{color:#6b7280;font-size:.9rem}
-.file-date{color:#64748b;font-size:.9rem;white-space:nowrap}
-.toggle{cursor:pointer}
-.badge{display:inline-block;padding:2px 6px;border-radius:8px;background:#eef2ff;color:#3730a3;font-size:.72rem;margin-left:8px}
-.empty{color:#94a3b8}
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
+
+.new-badge {
+  display: inline-block;
+  background: linear-gradient(45deg, #ff6b35, #d63031);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
 </style>
 
-{%- comment -%}
-  공통 유틸: 날짜 차이 계산 (초 → 일)
-  - today_days: 오늘 0시 기준(UTC→KST는 _config.yml timezone으로 해결)
-  - post_days: 게시글 날짜를 일 단위로 바꿈
-  - diff_days = today_days - post_days
-{%- endcomment -%}
-{%- assign __today_days = 'now' | date: '%s' | divided_by: 86400 | floor -%}
+<!-- 최근 3일 이내 글 수 계산 -->
+{% assign recent_js_posts = 0 %}
+{% assign recent_algorithm_posts = 0 %}
+{% assign recent_bigdata_posts = 0 %}
+{% assign recent_code_quality_posts = 0 %}
+{% assign recent_computerstructure_posts = 0 %}
+{% assign recent_discretemathematics_posts = 0 %}
+{% assign recent_html_posts = 0 %}
+{% assign recent_internet_posts = 0 %}
+{% assign recent_java_posts = 0 %}
+{% assign recent_jdbc_posts = 0 %}
+{% assign recent_linux_posts = 0 %}
+{% assign recent_mysql_posts = 0 %}
+{% assign recent_python_posts = 0 %}
+{% assign recent_r_posts = 0 %}
+{% assign recent_servlet_posts = 0 %}
+{% assign recent_spring_posts = 0 %}
+{% assign recent_til_posts = 0 %}
+{% assign recent_mathematical_trading_posts = 0 %}
 
-{%- comment -%}
-  label_for_date: diff_days를 한국어 라벨로 변환
-{%- endcomment -%}
-{% capture label_for_date %}
-{%- assign __diff = diff_days -%}
-{%- if __diff == 0 -%}오늘
-{%- elsif __diff == 1 -%}어제
-{%- elsif __diff < 7 -%}{{ __diff }}일 전
-{%- elsif __diff < 30 -%}{% assign __weeks = __diff | divided_by: 7 %}{{ __weeks }}주 전
-{%- elsif __diff < 365 -%}{% assign __months = __diff | divided_by: 30 %}{{ __months }}개월 전
-{%- else -%}{% assign __years = __diff | divided_by: 365 %}{{ __years }}년 전
-{%- endif -%}
-{% endcapture %}
+{% assign today = 'now' | date: '%Y-%m-%d' %}
+{% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+{% assign two_days_ago = 'now' | date: '%s' | minus: 172800 | date: '%Y-%m-%d' %}
+{% assign one_week_ago = 'now' | date: '%s' | minus: 604800 | date: '%Y-%m-%d' %}
+{% assign one_month_ago = 'now' | date: '%s' | minus: 2592000 | date: '%Y-%m-%d' %}
+{% assign three_months_ago = 'now' | date: '%s' | minus: 7776000 | date: '%Y-%m-%d' %}
+{% assign six_months_ago = 'now' | date: '%s' | minus: 15552000 | date: '%Y-%m-%d' %}
+{% assign one_year_ago = 'now' | date: '%s' | minus: 31536000 | date: '%Y-%m-%d' %}
+{% assign two_years_ago = 'now' | date: '%s' | minus: 63072000 | date: '%Y-%m-%d' %}
+{% assign three_years_ago = 'now' | date: '%s' | minus: 94608000 | date: '%Y-%m-%d' %}
+{% assign current_year = 'now' | date: '%Y' %}
+{% assign current_month = 'now' | date: '%m' %}
 
-{%- comment -%}
-  함수 흉내 1: 카테고리 최신일 라벨
-{%- endcomment -%}
-{% assign all_categories = "Algorithm|Bigdata|Code-Quality|ComputerStructure|DiscreteMathematics|HtmlCss|Internet|Java|Jdbc|Js|Linux|Mysql|Python|R|Servlet|Spring|Til|Mathematical-Trading" | split: "|" %}
+{% for post in site.posts %}
+    {% assign post_date = post.date | date: '%Y-%m-%d' %}
+    {% if post_date >= two_days_ago %}
+        {% if post.categories contains 'Js' %}
+            {% assign recent_js_posts = recent_js_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Algorithm' %}
+            {% assign recent_algorithm_posts = recent_algorithm_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Bigdata' %}
+            {% assign recent_bigdata_posts = recent_bigdata_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Code-Quality' %}
+            {% assign recent_code_quality_posts = recent_code_quality_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'ComputerStructure' %}
+            {% assign recent_computerstructure_posts = recent_computerstructure_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'DiscreteMathematics' %}
+            {% assign recent_discretemathematics_posts = recent_discretemathematics_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'HtmlCss' %}
+            {% assign recent_html_posts = recent_html_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Internet' %}
+            {% assign recent_internet_posts = recent_internet_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Java' %}
+            {% assign recent_java_posts = recent_java_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Jdbc' %}
+            {% assign recent_jdbc_posts = recent_jdbc_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Linux' %}
+            {% assign recent_linux_posts = recent_linux_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Mysql' %}
+            {% assign recent_mysql_posts = recent_mysql_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Python' %}
+            {% assign recent_python_posts = recent_python_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'R' %}
+            {% assign recent_r_posts = recent_r_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Servlet' %}
+            {% assign recent_servlet_posts = recent_servlet_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Spring' %}
+            {% assign recent_spring_posts = recent_spring_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Til' %}
+            {% assign recent_til_posts = recent_til_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Mathematical-Trading' %}
+            {% assign recent_mathematical_trading_posts = recent_mathematical_trading_posts | plus: 1 %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
 
-{%- comment -%}
-  검색/필터 UI + 깃헙 뷰
-{%- endcomment -%}
+
+<!-- ***** GitHub Style Repository View ***** -->
 <section class="section github-style-section" id="repository">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-
-        <div class="repo-header">
-          <div class="repo-title">
-            <h2><i class="fa fa-folder"></i> PitBull Terrier Devlog</h2>
-            <p>만약 노력이 재능이라면, 내 재능은 어딜가도 꿀리지 않는다.</p>
-          </div>
-        </div>
-
-        <div class="repo-content">
-          <div class="file-explorer">
-
-            <div class="explorer-header">
-              <div class="breadcrumb">
-                <span class="breadcrumb-item"><i class="fa fa-home"></i> 윤 빛 나 라</span>
-                <span class="breadcrumb-separator">/</span>
-                <a href="https://github.com/yoonbitnara" target="_blank" class="breadcrumb-item github-link">
-                  <i class="fab fa-github"></i> GitHub
-                </a>
-              </div>
-
-              <div class="search-container">
-                <div class="search-box">
-                  <i class="fa fa-search"></i>
-                  <input type="text" id="searchInput" placeholder="게시글 검색 (제목/카테고리)..." />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Repository Header -->
+                <div class="repo-header">
+                    <div class="repo-title">
+                        <h2><i class="fa fa-folder"></i> PitBull Terrier Devlog</h2>
+                        <p>만약 노력이 재능이라면, 내 재능은 어딜가도 꿀리지 않는다.</p>
+                    </div>
                 </div>
-                <div class="search-results" id="searchResults"></div>
-              </div>
+                
+                <!-- Repository Content -->
+                <div class="repo-content">
+                    <div class="file-explorer">
+                        <div class="explorer-header">
+                            <div class="breadcrumb">
+                                <span class="breadcrumb-item">
+                                    <i class="fa fa-home"></i> 윤 빛 나 라
+                                </span>
+                                <span class="breadcrumb-separator">/</span>
+                                <a href="https://github.com/yoonbitnara" target="_blank" class="breadcrumb-item github-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </div>
+                            
+                            <!-- 검색 기능 -->
+                            <div class="search-container">
+                                <div class="search-box">
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" id="searchInput" placeholder="게시글 검색..." />
+                                </div>
+                                <div class="search-results" id="searchResults"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="file-list">
+                            <!-- Algorithm 폴더 -->
+                            <div class="file-item folder-item" data-folder="algorithm">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    알고리즘
+                                    {% if recent_algorithm_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Algorithm.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Algorithm.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="algorithm-contents">
+                                {% assign sorted_algorithm_posts = site.categories.Algorithm | sort: 'date' | reverse %}
+                                {% for post in sorted_algorithm_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Big Data 폴더 -->
+                            <div class="file-item folder-item" data-folder="bigdata">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    빅데이터
+                                    {% if recent_bigdata_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Bigdata.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Bigdata.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="bigdata-contents">
+{% assign sorted_bigdata_posts = site.categories.Bigdata | sort: 'date' | reverse %}
+{% for post in sorted_bigdata_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Code Quality 폴더 -->
+                            <div class="file-item folder-item" data-folder="code-quality">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    Code Quality
+                                    {% if recent_code_quality_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories['Code-Quality'].size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories['Code-Quality'].first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="code-quality-contents">
+{% assign sorted_posts = site.categories['Code-Quality'] | sort: 'date' | reverse %}
+{% for post in sorted_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Computer Structure 폴더 -->
+                            <div class="file-item folder-item" data-folder="computerstructure">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    컴퓨터구조
+                                    {% if recent_computerstructure_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.ComputerStructure.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.ComputerStructure.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="computerstructure-contents">
+{% assign sorted_computerstructure_posts = site.categories.ComputerStructure | sort: 'date' | reverse %}
+{% for post in sorted_computerstructure_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Discrete Mathematics 폴더 -->
+                            <div class="file-item folder-item" data-folder="discretemathematics">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    이산수학
+                                    {% if recent_discretemathematics_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.DiscreteMathematics.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.DiscreteMathematics.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="discretemathematics-contents">
+{% assign sorted_discretemathematics_posts = site.categories.DiscreteMathematics | sort: 'date' | reverse %}
+{% for post in sorted_discretemathematics_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- HTML 폴더 -->
+                            <div class="file-item folder-item" data-folder="html">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    html
+                                    {% if recent_html_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.HtmlCss.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.HtmlCss.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="html-contents">
+{% assign sorted_htmlcss_posts = site.categories.HtmlCss | sort: 'date' | reverse %}
+{% for post in sorted_htmlcss_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Internet 폴더 -->
+                            <div class="file-item folder-item" data-folder="internet">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    인터넷
+                                    {% if recent_internet_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Internet.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Internet.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="internet-contents">
+{% assign sorted_internet_posts = site.categories.Internet | sort: 'date' | reverse %}
+{% for post in sorted_internet_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Java 폴더 -->
+                            <div class="file-item folder-item" data-folder="java">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    java
+                                    {% if recent_java_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Java.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Java.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="java-contents">
+{% assign sorted_java_posts = site.categories.Java | sort: 'date' | reverse %}
+{% for post in sorted_java_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- JDBC 폴더 -->
+                            <div class="file-item folder-item" data-folder="jdbc">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    jdbc
+                                    {% if recent_jdbc_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Jdbc.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Jdbc.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="jdbc-contents">
+{% assign sorted_jdbc_posts = site.categories.Jdbc | sort: 'date' | reverse %}
+{% for post in sorted_jdbc_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- JavaScript 폴더 -->
+                            <div class="file-item folder-item" data-folder="js">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    js
+                                    {% if recent_js_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Js.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Js.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="js-contents">
+{% assign sorted_js_posts = site.categories.Js | sort: 'date' | reverse %}
+{% for post in sorted_js_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Linux 폴더 -->
+                            <div class="file-item folder-item" data-folder="linux">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    리눅스
+                                    {% if recent_linux_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Linux.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Linux.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="linux-contents">
+{% assign sorted_linux_posts = site.categories.Linux | sort: 'date' | reverse %}
+{% for post in sorted_linux_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- MySQL 폴더 -->
+                            <div class="file-item folder-item" data-folder="mysql">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    sql
+                                    {% if recent_mysql_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Mysql.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Mysql.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="mysql-contents">
+{% assign sorted_mysql_posts = site.categories.Mysql | sort: 'date' | reverse %}
+{% for post in sorted_mysql_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Python 폴더 -->
+                            <div class="file-item folder-item" data-folder="python">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    python
+                                    {% if recent_python_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Python.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Python.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="python-contents">
+{% assign sorted_python_posts = site.categories.Python | sort: 'date' | reverse %}
+{% for post in sorted_python_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- R 폴더 -->
+                            <div class="file-item folder-item" data-folder="r">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    r
+                                    {% if recent_r_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.R.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.R.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="r-contents">
+{% assign sorted_r_posts = site.categories.R | sort: 'date' | reverse %}
+{% for post in sorted_r_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Servlet 폴더 -->
+                            <div class="file-item folder-item" data-folder="servlet">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    서블릿
+                                    {% if recent_servlet_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Servlet.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Servlet.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="servlet-contents">
+{% assign sorted_servlet_posts = site.categories.Servlet | sort: 'date' | reverse %}
+{% for post in sorted_servlet_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Spring 폴더 -->
+                            <div class="file-item folder-item" data-folder="spring">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    spring
+                                    {% if recent_spring_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Spring.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Spring.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="spring-contents">
+                                {% assign sorted_spring_posts = site.categories.Spring | sort: 'date' | reverse %}
+                                {% for post in sorted_spring_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- TIL 폴더 -->
+                            <div class="file-item folder-item" data-folder="til">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                                </div>
+                                <div class="file-name">
+                                    TIL
+                                    {% if recent_til_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                                </div>
+                                <div class="file-meta">{{site.categories.Til.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Til.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="folder-contents" id="til-contents">
+{% assign sorted_til_posts = site.categories.Til | sort: 'date' | reverse %}
+{% for post in sorted_til_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- 수학적 트레이딩 폴더 -->
+                            <div class="file-item folder-item" data-folder="mathematical-trading">
+                                <div class="file-icon">
+                                    <i class="fa fa-folder"></i>
+                        </div>
+                                <div class="file-name">
+                                    수학적 트레이딩
+                                    {% if recent_mathematical_trading_posts > 0 %}
+                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
+                                    {% endif %}
+                    </div>
+                                <div class="file-meta">{{site.categories.Mathematical-Trading.size}} 게시물</div>
+                                <div class="file-date">
+                                    {% assign latest_date = site.categories.Mathematical-Trading.first.date %}
+                                    {% assign today = 'now' | date: '%Y-%m-%d' %}
+                                    {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
+                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
+                                    
+                                    {% if post_date == today %}
+                                        오늘
+                                    {% elsif post_date == yesterday %}
+                                        어제
+                                    {% else %}
+                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign post_seconds = latest_date | date: '%s' %}
+                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                        
+                                        {% if diff_days < 7 %}
+                                        {{diff_days}}일 전
+                                    {% elsif diff_days < 30 %}
+                                        {% assign weeks = diff_days | divided_by: 7 %}
+                                        {{weeks}}주 전
+                                    {% elsif diff_days < 365 %}
+                                        {% assign months = diff_days | divided_by: 30 %}
+                                        {{months}}개월 전
+                                    {% else %}
+                                        {% assign years = diff_days | divided_by: 365 %}
+                                        {{years}}년 전
+                                        {% endif %}
+                                    {% endif %}
+                </div>
             </div>
-
-            <div class="file-list" id="fileList">
-
-              {%- comment -%}
-                폴더 렌더러:
-                - 각 카테고리 최신 포스트일 기준 라벨
-                - 최근 2일 이내 새 글 있으면 N 뱃지
-                - 내부 글 리스트는 최신순
-              {%- endcomment -%}
-
-              {%- for cat in all_categories -%}
-                {%- assign cat_handle = cat -%}
-                {%- assign posts_in_cat = site.categories[cat_handle] | sort: 'date' | reverse -%}
-
-                {%- if posts_in_cat and posts_in_cat.size > 0 -%}
-                  {%- assign latest_post = posts_in_cat.first -%}
-                  {%- assign __post_days = latest_post.date | date: '%s' | divided_by: 86400 | floor -%}
-                  {%- assign diff_days = __today_days | minus: __post_days -%}
-                  {%- assign latest_label = label_for_date | strip -%}
-
-                  {%- comment -%} 최근 2일 이내 새 글 수 계산 {%- endcomment -%}
-                  {%- assign recent_count = 0 -%}
-                  {%- for p in posts_in_cat -%}
-                    {%- assign __p_days = p.date | date: '%s' | divided_by: 86400 | floor -%}
-                    {%- assign __d = __today_days | minus: __p_days -%}
-                    {%- if __d <= 2 -%}
-                      {%- assign recent_count = recent_count | plus: 1 -%}
-                    {%- endif -%}
-                  {%- endfor -%}
-
-                  <div class="file-item folder-item toggle" data-folder="{{ cat_handle | downcase }}">
-                    <div class="file-icon"><i class="fa fa-folder"></i></div>
-                    <div class="file-name">
-                      {%- case cat_handle -%}
-                        {%- when 'Algorithm' -%}알고리즘
-                        {%- when 'Bigdata' -%}빅데이터
-                        {%- when 'Code-Quality' -%}Code Quality
-                        {%- when 'ComputerStructure' -%}컴퓨터구조
-                        {%- when 'DiscreteMathematics' -%}이산수학
-                        {%- when 'HtmlCss' -%}html
-                        {%- when 'Internet' -%}인터넷
-                        {%- when 'Java' -%}java
-                        {%- when 'Jdbc' -%}jdbc
-                        {%- when 'Js' -%}js
-                        {%- when 'Linux' -%}리눅스
-                        {%- when 'Mysql' -%}sql
-                        {%- when 'Python' -%}python
-                        {%- when 'R' -%}r
-                        {%- when 'Servlet' -%}서블릿
-                        {%- when 'Spring' -%}spring
-                        {%- when 'Til' -%}TIL
-                        {%- when 'Mathematical-Trading' -%}수학적 트레이딩
-                        {%- else -%}{{ cat_handle }}
-                      {%- endcase -%}
-                      {%- if recent_count > 0 -%}
-                        <span class="new-badge">N</span>
-                      {%- endif -%}
-                    </div>
-                    <div class="file-meta">{{ posts_in_cat.size }} 게시물</div>
-                    <div class="file-date">{{ latest_label }}</div>
-                  </div>
-
-                  <div class="folder-contents" id="{{ cat_handle | downcase }}-contents">
-                    {%- for post in posts_in_cat -%}
-                      {%- assign __this_days = post.date | date: '%s' | divided_by: 86400 | floor -%}
-                      {%- assign diff_days = __today_days | minus: __this_days -%}
-                      {%- capture row_label -%}{{ label_for_date | strip }}{%- endcapture -%}
-
-                      <div class="file-item">
-                        <div class="file-icon"><i class="fa fa-file-text"></i></div>
-                        <div class="file-name">
-                          <a href="{{ post.url }}">{{ post.title }}</a>
-                          {%- if diff_days <= 2 -%}<span class="badge">최근</span>{%- endif -%}
+                            <div class="folder-contents" id="mathematical-trading-contents">
+{% assign sorted_mathematical_trading_posts = site.categories.Mathematical-Trading | sort: 'date' | reverse %}
+{% for post in sorted_mathematical_trading_posts %}
+                                <div class="file-item file-item">
+                                    <div class="file-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </div>
+                                    <div class="file-meta">
+                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
+                                        {% assign post_year = post.date | date: '%Y' %}
+                                        {% assign post_month = post.date | date: '%m' %}
+                                        {% if post_date == today %}
+                                            오늘
+                                        {% elsif post_date == yesterday %}
+                                            어제
+                                        {% elsif post_date >= two_days_ago %}
+                                            이번주
+                                        {% elsif post_date >= one_week_ago %}
+                                            지난주
+                                        {% elsif post_date >= one_month_ago %}
+                                            이번달
+                                        {% elsif post_date >= three_months_ago %}
+                                            몇달전
+                                        {% elsif post_date >= six_months_ago %}
+                                            반년전
+                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
+                                            1년전
+                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
+                                            2년전
+                                        {% elsif post_date >= three_years_ago %}
+                                            {% assign years_ago = current_year | minus: post_year %}
+                                            {{ years_ago }}년전
+                                        {% else %}
+                                            {{ post.date | date: "%Y-%m-%d" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div class="file-meta">
-                          {{ post.categories | join: ", " }}
-                        </div>
-                        <div class="file-date">{{ row_label }}</div>
-                      </div>
-                    {%- endfor -%}
-                  </div>
-
-                {%- else -%}
-                  <div class="file-item folder-item">
-                    <div class="file-icon"><i class="fa fa-folder"></i></div>
-                    <div class="file-name">
-                      {{ cat_handle }} <span class="badge empty">게시물 없음</span>
                     </div>
-                    <div class="file-meta">0 게시물</div>
-                    <div class="file-date">—</div>
-                  </div>
-                {%- endif -%}
-
-              {%- endfor -%}
-
-            </div><!-- /file-list -->
-          </div><!-- /file-explorer -->
-
-        </div><!-- /repo-content -->
-      </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<script>
-/* 펼치기/접기 + 검색(화살표 함수 사용 안 함) */
-(function(){
-  function qs(sel){ return document.querySelector(sel); }
-  function qsa(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
-  function toggleFolder(e){
-    var item = e.target.closest('.folder-item');
-    if(!item) return;
-    if(!item.classList.contains('toggle')) return;
+<style>
+/* 핏불테리어 강렬한 스타일 */
+:root {
+    --pitbull-orange: #ff6b35;
+    --pitbull-red: #d63031;
+    --pitbull-gold: #fdcb6e;
+    --pitbull-dark: #2d3436;
+    --pitbull-white: #ffffff;
+}
 
-    var isOpen = item.classList.contains('open');
-    // 같은 그룹 접기 방지 없이 개별 토글
-    if(isOpen){ item.classList.remove('open'); }
-    else { item.classList.add('open'); }
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid var(--pitbull-orange);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+    object-fit: cover;
+    margin: 0 auto 20px auto;
+    display: block;
+    transition: all 0.3s ease;
+}
 
-    var id = item.getAttribute('data-folder');
-    var content = qs('#' + id + '-contents');
-    if(content){
-      if(isOpen){ content.style.display = 'none'; }
-      else { content.style.display = 'block'; }
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
+}
+
+.profile-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(253, 203, 110, 0.1) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.skills-section {
+    background: linear-gradient(135deg, rgba(214, 48, 49, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+    border: 2px solid var(--pitbull-red);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+.skills-list li {
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--pitbull-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skills-list li:last-child {
+    border-bottom: none;
+}
+
+/* 게시물 카드 스타일 */
+.post-card {
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pitbull-orange), var(--pitbull-gold), var(--pitbull-orange));
+    border-radius: 20px 20px 0 0;
+}
+
+.post-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+    border-color: var(--pitbull-gold);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-tag {
+    background: var(--pitbull-orange);
+    color: var(--pitbull-white);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.post-date {
+    color: var(--pitbull-gold);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.post-content {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.post-content h4 {
+    margin-bottom: 15px;
+}
+
+.post-content h4 a {
+    color: var(--pitbull-orange);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    transition: all 0.3s ease;
+}
+
+.post-content h4 a:hover {
+    color: var(--pitbull-gold);
+    text-shadow: 0 0 10px rgba(253, 203, 110, 0.5);
+}
+
+.post-content p {
+    color: var(--pitbull-white);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.post-tags {
+    margin-top: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background: rgba(255, 107, 53, 0.2);
+    color: var(--pitbull-gold);
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 1px solid var(--pitbull-orange);
+}
+
+.post-footer {
+    margin-top: auto;
+}
+
+.read-more-btn {
+    background: linear-gradient(135deg, var(--pitbull-orange), var(--pitbull-red));
+    color: var(--pitbull-white);
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+.read-more-btn:hover {
+    background: linear-gradient(135deg, var(--pitbull-gold), var(--pitbull-orange));
+    color: var(--pitbull-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(253, 203, 110, 0.4);
+    border-color: var(--pitbull-orange);
+}
+
+/* 섹션 헤더 스타일 */
+.section-heading h2 {
+    color: var(--pitbull-orange);
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, var(--pitbull-orange), var(--pitbull-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-heading span {
+    color: var(--pitbull-gold);
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* 페이지네이션 스타일 */
+.pagination-wrapper {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+}
+
+.pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(45, 52, 54, 0.8);
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-link {
+    display: block;
+    padding: 12px 16px;
+    color: var(--pitbull-white);
+    text-decoration: none;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 45px;
+    text-align: center;
+}
+
+.page-link:hover {
+    color: var(--pitbull-orange);
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--pitbull-orange);
+    transform: translateY(-2px);
+}
+
+.page-item.active .page-link {
+    background: linear-gradient(135deg, var(--pitbull-orange), var(--pitbull-red));
+    color: var(--pitbull-white);
+    border-color: var(--pitbull-orange);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+.page-item.active .page-link:hover {
+    background: linear-gradient(135deg, var(--pitbull-gold), var(--pitbull-orange));
+    color: var(--pitbull-dark);
+    transform: translateY(-2px);
+}
+
+.page-item.disabled .page-link {
+    color: var(--pitbull-gray);
+    background: transparent;
+    border-color: transparent;
+    cursor: not-allowed;
+}
+
+.page-item.disabled .page-link:hover {
+    color: var(--pitbull-gray);
+    background: transparent;
+    border-color: transparent;
+    transform: none;
+}
+
+/* GitHub 스타일 레이아웃 */
+.github-style-section {
+    padding: 20px 0 40px 0;
+    background: #0d1117;
+    min-height: 100vh;
+}
+
+.repo-header {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px 6px 0 0;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.repo-title h2 {
+    color: var(--pitbull-orange);
+    font-size: 1.5rem;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.repo-title h2 i {
+    margin-right: 10px;
+    color: #7c3aed;
+}
+
+.repo-title p {
+    color: #8b949e;
+    margin: 0;
+    font-size: 14px;
+}
+
+.repo-content {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+}
+
+.file-explorer {
+    background: #0d1117;
+}
+
+.explorer-header {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 12px 16px;
+}
+
+.breadcrumb {
+    color: #8b949e;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb-item {
+    color: #8b949e;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item:hover {
+    color: #f0f6fc;
+}
+
+.github-link {
+    color: #f0f6fc !important;
+    font-weight: 600;
+}
+
+.github-link:hover {
+    color: #58a6ff !important;
+}
+
+.breadcrumb-separator {
+    color: #6e7681;
+    margin: 0 4px;
+}
+
+/* 검색 기능 스타일 */
+.search-container {
+    padding: 16px;
+    background: #21262d;
+    border-bottom: 1px solid #30363d;
+}
+
+.search-box {
+    position: relative;
+    max-width: 400px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8b949e;
+    font-size: 14px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #f0f6fc;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.search-box input:focus {
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.search-box input::placeholder {
+    color: #8b949e;
+}
+
+.search-results {
+    margin-top: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    display: none;
+}
+
+.search-result-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #21262d;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-result-item:hover {
+    background: #21262d;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-icon {
+    color: #8b949e;
+    font-size: 16px;
+}
+
+.search-result-content {
+    flex: 1;
+}
+
+.search-result-title {
+    color: #f0f6fc;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.search-result-category {
+    color: #8b949e;
+    font-size: 12px;
+}
+
+.search-result-date {
+    color: #6e7681;
+    font-size: 12px;
+}
+
+.breadcrumb-item i {
+    margin-right: 8px;
+    color: var(--pitbull-orange);
+}
+
+.file-list {
+    background: #0d1117;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid #21262d;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s;
+    color: #c9d1d9;
+}
+
+.file-item:hover {
+    background: #161b22;
+}
+
+.folder-item {
+    font-weight: 600;
+    color: #58a6ff;
+}
+
+.folder-item:hover {
+    background: #161b22;
+}
+
+.file-icon {
+    width: 20px;
+    margin-right: 12px;
+    text-align: center;
+}
+
+.file-icon i {
+    font-size: 16px;
+}
+
+.folder-item .file-icon i {
+    color: #7c3aed;
+}
+
+.file-item .file-icon i {
+    color: #8b949e;
+}
+
+.file-name {
+    flex: 1;
+    font-size: 14px;
+}
+
+.file-name a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.file-name a:hover {
+    color: var(--pitbull-orange);
+    text-decoration: underline;
+}
+
+.file-meta {
+    color: #8b949e;
+    font-size: 12px;
+    margin-right: 16px;
+    min-width: 60px;
+    text-align: right;
+}
+
+.file-date {
+    color: #8b949e;
+    font-size: 12px;
+    min-width: 80px;
+    text-align: right;
+}
+
+.folder-contents {
+    display: none;
+    background: #0d1117;
+    border-left: 2px solid #30363d;
+    margin-left: 20px;
+    padding-left: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.folder-contents.show {
+    display: block;
+    max-height: none;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+        opacity: 0;
     }
-  }
-
-  function handleSearch(){
-    var keyword = qs('#searchInput').value.trim().toLowerCase();
-    var items = qsa('.file-item');
-    if(keyword.length === 0){
-      // 초기 상태: 폴더만 표시 (컨텐츠는 상태 유지)
-      items.forEach(function(el){
-        // 아무 것도 안 함 (현재 펼침 상태 유지)
-        el.style.display = '';
-      });
-      return;
+    to {
+        max-height: 1000px;
+        opacity: 1;
     }
-    // 제목/카테고리/라벨 텍스트에서 검색
-    items.forEach(function(el){
-      var nameEl = el.querySelector('.file-name');
-      var metaEl = el.querySelector('.file-meta');
-      var text = '';
-      if(nameEl) text += nameEl.textContent.toLowerCase() + ' ';
-      if(metaEl) text += metaEl.textContent.toLowerCase();
-      el.style.display = text.indexOf(keyword) > -1 ? '' : 'none';
-    });
-  }
+}
 
-  document.addEventListener('click', toggleFolder);
-  var si = qs('#searchInput');
-  if(si){
-    si.addEventListener('input', handleSearch);
-  }
-})();
-</script>
+.folder-contents .file-item {
+    padding-left: 32px;
+    font-size: 13px;
+    color: #8b949e;
+}
+
+.folder-contents .file-item:hover {
+    background: #161b22;
+    color: #c9d1d9;
+}
+
+/* 카테고리 사이드바 */
+.sidebar-categories {
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.9) 0%, rgba(99, 110, 114, 0.8) 100%);
+    border: 2px solid var(--pitbull-orange);
+    border-radius: 20px;
+    padding: 25px;
+    position: sticky;
+    top: 100px;
+    margin-bottom: 30px;
+}
+
+.sidebar-categories h3 {
+    color: var(--pitbull-orange);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--pitbull-orange);
+    padding-bottom: 10px;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid var(--pitbull-orange);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--pitbull-white);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    justify-content: center;
+}
+
+.category-item:hover {
+    background: var(--pitbull-orange);
+    color: var(--pitbull-white);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+.category-item i {
+    font-size: 18px;
+    margin-right: 12px;
+    color: var(--pitbull-gold);
+    width: 20px;
+    text-align: center;
+}
+
+.category-item:hover i {
+    color: var(--pitbull-white);
+}
+
+/* 게시글 메인 영역 */
+.posts-main {
+    padding-left: 20px;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* 메뉴 스타일 */
+.main-header {
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(99, 110, 114, 0.9) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--pitbull-orange);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.logo a {
+    color: var(--pitbull-orange);
+    font-size: 24px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--pitbull-gold);
+    text-shadow: 0 0 10px rgba(253, 203, 110, 0.5);
+}
+
+.main-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.main-menu li a {
+    color: var(--pitbull-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.main-menu li a:hover {
+    color: var(--pitbull-orange);
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--pitbull-orange);
+    transform: translateY(-2px);
+}
+
+.menu-link {
+    display: none;
+    color: var(--pitbull-orange);
+    font-size: 24px;
+    text-decoration: none;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .main-content-section {
+        padding: 20px 0;
+    }
+    
+    .sidebar-categories {
+        position: static;
+        margin-bottom: 30px;
+    }
+    
+    .posts-main {
+        padding-left: 0;
+    }
+    
+    .posts-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .post-card {
+        padding: 20px;
+    }
+    
+    .section-heading h2 {
+        font-size: 2rem;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .page-link {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-width: 35px;
+    }
+    
+    .main-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .menu-link {
+        display: block;
+    }
+    
+    .category-list {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    
+    .category-item {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .category-item i {
+        font-size: 14px;
+        margin-right: 8px;
+    }
+}
+</style>
+
+        <script>
+        // 폴더 토글 기능
+        function toggleFolder(folderName) {
+            console.log('Toggling folder:', folderName);
+            const contents = document.getElementById(folderName + '-contents');
+            const folder = document.querySelector(`[data-folder="${folderName}"]`);
+            const icon = folder.querySelector('.file-icon i');
+            
+            if (!contents) {
+                console.error('Contents not found for:', folderName);
+                return;
+            }
+            
+            if (contents.classList.contains('show')) {
+                contents.classList.remove('show');
+                icon.className = 'fa fa-folder';
+                console.log('Folder closed:', folderName);
+            } else {
+                contents.classList.add('show');
+                icon.className = 'fa fa-folder-open';
+                console.log('Folder opened:', folderName);
+                
+            }
+        }
+        
+
+        // 검색 기능
+        function searchPosts(query) {
+            const results = [];
+            const allPosts = document.querySelectorAll('.file-item a[href*="/"]');
+            
+            allPosts.forEach(post => {
+                const title = post.textContent.toLowerCase();
+                const href = post.getAttribute('href');
+                const category = post.closest('.folder-contents')?.id?.replace('-contents', '') || 'unknown';
+                
+                if (title.includes(query.toLowerCase())) {
+                    results.push({
+                        title: post.textContent,
+                        url: href,
+                        category: category
+                    });
+                }
+            });
+            
+            return results;
+        }
+
+        function displaySearchResults(results) {
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="search-result-item">검색 결과가 없습니다.</div>';
+            } else {
+                resultsContainer.innerHTML = results.map(result => `
+                    <div class="search-result-item" onclick="window.location.href='${result.url}'">
+                        <i class="fa fa-file-text search-result-icon"></i>
+                        <div class="search-result-content">
+                            <div class="search-result-title">${result.title}</div>
+                            <div class="search-result-category">${result.category}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            resultsContainer.style.display = 'block';
+        }
+
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing folders');
+            // 모든 폴더를 닫힌 상태로 초기화
+            const folders = document.querySelectorAll('.folder-item');
+            console.log('Found folders:', folders.length);
+            folders.forEach(folder => {
+                const icon = folder.querySelector('.file-icon i');
+                if (icon) {
+                    icon.className = 'fa fa-folder';
+                }
+            });
+            
+            // 폴더 클릭 이벤트 리스너 추가
+            folders.forEach(folder => {
+                folder.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const folderName = this.getAttribute('data-folder');
+                    console.log('Folder clicked:', folderName);
+                    toggleFolder(folderName);
+                });
+            });
+
+            // 검색 기능 초기화
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            
+            searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.trim();
+                
+                if (query.length === 0) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+                
+                if (query.length < 2) {
+                    return;
+                }
+                
+                const results = searchPosts(query);
+                displaySearchResults(results);
+            });
+
+            // 검색 결과 외부 클릭 시 숨기기
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container')) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        });
+        </script>
