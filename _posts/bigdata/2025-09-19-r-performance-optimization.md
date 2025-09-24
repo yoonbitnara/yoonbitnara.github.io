@@ -1,7 +1,7 @@
 ---
 title: "R 코드 성능 최적화"
 date: 2025-09-19
-categories: BigData
+categories: Bigdata
 tags: [r, performance, optimization, 벡터화, 데이터처리, 성능튜닝]
 author: pitbull terrier
 ---
