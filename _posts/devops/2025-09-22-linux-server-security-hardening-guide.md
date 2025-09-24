@@ -2,7 +2,7 @@
 layout: single
 title: "Linux 서버 보안에 대하여"
 date: 2025-09-22
-categories: Linux
+categories: DevOps
 tags: [Linux, 보안, 서버, 시스템관리, 실무]
 ---
 

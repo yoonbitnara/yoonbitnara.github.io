@@ -1,7 +1,7 @@
 ---
 title: "개발자가 알아야 할 필수 명령어들"
 date: 2025-09-18
-categories: Linux
+categories: DevOps
 tags: [linux, command-line, terminal, development, server]
 author: pitbull terrier
 ---

@@ -55,7 +55,7 @@ layout: default
 {% assign recent_internet_posts = 0 %}
 {% assign recent_java_posts = 0 %}
 {% assign recent_database_posts = 0 %}
-{% assign recent_linux_posts = 0 %}
+{% assign recent_devops_posts = 0 %}
 {% assign recent_python_posts = 0 %}
 <!-- {% assign recent_r_posts = 0 %} -->
 <!-- {% assign recent_servlet_posts = 0 %} -->
@@ -109,8 +109,8 @@ layout: default
         {% if post.categories contains 'Database' %}
             {% assign recent_database_posts = recent_database_posts | plus: 1 %}
         {% endif %}
-        {% if post.categories contains 'Linux' %}
-            {% assign recent_linux_posts = recent_linux_posts | plus: 1 %}
+        {% if post.categories contains 'DevOps' %}
+            {% assign recent_devops_posts = recent_devops_posts | plus: 1 %}
         {% endif %}
         {% if post.categories contains 'Python' %}
             {% assign recent_python_posts = recent_python_posts | plus: 1 %}
@@ -1019,20 +1019,20 @@ layout: default
                                 {% endfor %}
                             </div>
                             
-                            <!-- Linux 폴더 -->
-                            <div class="file-item folder-item" data-folder="linux">
+                            <!-- DevOps 폴더 -->
+                            <div class="file-item folder-item" data-folder="devops">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">
-                                    리눅스
-                                    {% if recent_linux_posts > 0 %}
+                                    DevOps
+                                    {% if recent_devops_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
-                                <div class="file-meta">{{site.categories.Linux.size}} 게시물</div>
+                                <div class="file-meta">{{site.categories.DevOps.size}} 게시물</div>
                                 <div class="file-date">
-                                    {% assign latest_date = site.categories.Linux.first.date %}
+                                    {% assign latest_date = site.categories.DevOps.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
                                     {% if post_date == today %}
@@ -1060,9 +1060,9 @@ layout: default
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="folder-contents" id="linux-contents">
-{% assign sorted_linux_posts = site.categories.Linux | sort: 'date' | reverse %}
-{% for post in sorted_linux_posts %}
+                            <div class="folder-contents" id="devops-contents">
+{% assign sorted_devops_posts = site.categories.DevOps | sort: 'date' | reverse %}
+{% for post in sorted_devops_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
