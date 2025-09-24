@@ -57,7 +57,7 @@ layout: default
 {% assign recent_database_posts = 0 %}
 {% assign recent_linux_posts = 0 %}
 {% assign recent_python_posts = 0 %}
-{% assign recent_r_posts = 0 %}
+<!-- {% assign recent_r_posts = 0 %} -->
 <!-- {% assign recent_servlet_posts = 0 %} -->
 {% assign recent_spring_posts = 0 %}
 {% assign recent_til_posts = 0 %}
@@ -115,9 +115,9 @@ layout: default
         {% if post.categories contains 'Python' %}
             {% assign recent_python_posts = recent_python_posts | plus: 1 %}
         {% endif %}
-        {% if post.categories contains 'R' %}
+        <!-- {% if post.categories contains 'R' %}
             {% assign recent_r_posts = recent_r_posts | plus: 1 %}
-        {% endif %}
+        {% endif %} -->
         <!-- {% if post.categories contains 'Servlet' %}
             {% assign recent_servlet_posts = recent_servlet_posts | plus: 1 %}
         {% endif %} -->
@@ -1188,7 +1188,8 @@ layout: default
                                 {% endfor %}
                             </div>
                             
-                            <!-- R 폴더 -->
+                            <!-- R 폴더 (숨김 처리) -->
+                            <!--
                             <div class="file-item folder-item" data-folder="r">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
@@ -1271,6 +1272,7 @@ layout: default
                                 </div>
                                 {% endfor %}
                             </div>
+                            -->
                             
                             <!-- Servlet 폴더 (숨김 처리) -->
                             <!--
