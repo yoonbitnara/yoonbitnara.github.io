@@ -51,7 +51,7 @@ layout: default
 {% assign recent_code_quality_posts = 0 %}
 {% assign recent_computerstructure_posts = 0 %}
 {% assign recent_discretemathematics_posts = 0 %}
-{% assign recent_html_posts = 0 %}
+<!-- {% assign recent_html_posts = 0 %} -->
 {% assign recent_internet_posts = 0 %}
 {% assign recent_java_posts = 0 %}
 {% assign recent_database_posts = 0 %}
@@ -97,9 +97,9 @@ layout: default
         {% if post.categories contains 'DiscreteMathematics' %}
             {% assign recent_discretemathematics_posts = recent_discretemathematics_posts | plus: 1 %}
         {% endif %}
-        {% if post.categories contains 'HtmlCss' %}
+        <!-- {% if post.categories contains 'HtmlCss' %}
             {% assign recent_html_posts = recent_html_posts | plus: 1 %}
-        {% endif %}
+        {% endif %} -->
         {% if post.categories contains 'Internet' %}
             {% assign recent_internet_posts = recent_internet_posts | plus: 1 %}
         {% endif %}
@@ -597,7 +597,8 @@ layout: default
                                 {% endfor %}
                             </div>
                             
-                            <!-- HTML 폴더 -->
+                            <!-- HTML 폴더 (숨김 처리) -->
+                            <!--
                             <div class="file-item folder-item" data-folder="html">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
@@ -680,6 +681,7 @@ layout: default
                                 </div>
                                 {% endfor %}
                             </div>
+                            -->
                             
                             <!-- Internet 폴더 -->
                             <div class="file-item folder-item" data-folder="internet">
