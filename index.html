@@ -58,7 +58,7 @@ layout: default
 {% assign recent_linux_posts = 0 %}
 {% assign recent_python_posts = 0 %}
 {% assign recent_r_posts = 0 %}
-{% assign recent_servlet_posts = 0 %}
+<!-- {% assign recent_servlet_posts = 0 %} -->
 {% assign recent_spring_posts = 0 %}
 {% assign recent_til_posts = 0 %}
 {% assign recent_mathematical_trading_posts = 0 %}
@@ -118,9 +118,9 @@ layout: default
         {% if post.categories contains 'R' %}
             {% assign recent_r_posts = recent_r_posts | plus: 1 %}
         {% endif %}
-        {% if post.categories contains 'Servlet' %}
+        <!-- {% if post.categories contains 'Servlet' %}
             {% assign recent_servlet_posts = recent_servlet_posts | plus: 1 %}
-        {% endif %}
+        {% endif %} -->
         {% if post.categories contains 'Spring' %}
             {% assign recent_spring_posts = recent_spring_posts | plus: 1 %}
         {% endif %}
@@ -1272,7 +1272,8 @@ layout: default
                                 {% endfor %}
                             </div>
                             
-                            <!-- Servlet 폴더 -->
+                            <!-- Servlet 폴더 (숨김 처리) -->
+                            <!--
                             <div class="file-item folder-item" data-folder="servlet">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
@@ -1355,6 +1356,7 @@ layout: default
                                 </div>
                                 {% endfor %}
                             </div>
+                            -->
                             
                             <!-- Spring 폴더 -->
                             <div class="file-item folder-item" data-folder="spring">
