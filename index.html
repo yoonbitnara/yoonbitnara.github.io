@@ -54,9 +54,8 @@ layout: default
 {% assign recent_html_posts = 0 %}
 {% assign recent_internet_posts = 0 %}
 {% assign recent_java_posts = 0 %}
-{% assign recent_jdbc_posts = 0 %}
+{% assign recent_database_posts = 0 %}
 {% assign recent_linux_posts = 0 %}
-{% assign recent_mysql_posts = 0 %}
 {% assign recent_python_posts = 0 %}
 {% assign recent_r_posts = 0 %}
 {% assign recent_servlet_posts = 0 %}
@@ -107,14 +106,11 @@ layout: default
         {% if post.categories contains 'Java' %}
             {% assign recent_java_posts = recent_java_posts | plus: 1 %}
         {% endif %}
-        {% if post.categories contains 'Jdbc' %}
-            {% assign recent_jdbc_posts = recent_jdbc_posts | plus: 1 %}
+        {% if post.categories contains 'Database' %}
+            {% assign recent_database_posts = recent_database_posts | plus: 1 %}
         {% endif %}
         {% if post.categories contains 'Linux' %}
             {% assign recent_linux_posts = recent_linux_posts | plus: 1 %}
-        {% endif %}
-        {% if post.categories contains 'Mysql' %}
-            {% assign recent_mysql_posts = recent_mysql_posts | plus: 1 %}
         {% endif %}
         {% if post.categories contains 'Python' %}
             {% assign recent_python_posts = recent_python_posts | plus: 1 %}
@@ -848,20 +844,20 @@ layout: default
                                 {% endfor %}
                             </div>
                             
-                            <!-- JDBC 폴더 -->
-                            <div class="file-item folder-item" data-folder="jdbc">
+                            <!-- Database 폴더 -->
+                            <div class="file-item folder-item" data-folder="database">
                                 <div class="file-icon">
                                     <i class="fa fa-folder"></i>
                                 </div>
                                 <div class="file-name">
-                                    jdbc
-                                    {% if recent_jdbc_posts > 0 %}
+                                    database
+                                    {% if recent_database_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
-                                <div class="file-meta">{{site.categories.Jdbc.size}} 게시물</div>
+                                <div class="file-meta">{{site.categories.Database.size}} 게시물</div>
                                 <div class="file-date">
-                                    {% assign latest_date = site.categories.Jdbc.first.date %}
+                                    {% assign latest_date = site.categories.Database.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
                                     {% if post_date == today %}
@@ -889,9 +885,9 @@ layout: default
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="folder-contents" id="jdbc-contents">
-{% assign sorted_jdbc_posts = site.categories.Jdbc | sort: 'date' | reverse %}
-{% for post in sorted_jdbc_posts %}
+                            <div class="folder-contents" id="database-contents">
+{% assign sorted_database_posts = site.categories.Database | sort: 'date' | reverse %}
+{% for post in sorted_database_posts %}
                                 <div class="file-item file-item">
                                     <div class="file-icon">
                                         <i class="fa fa-file-text"></i>
@@ -1100,89 +1096,6 @@ layout: default
                                 {% endfor %}
                             </div>
                             
-                            <!-- MySQL 폴더 -->
-                            <div class="file-item folder-item" data-folder="mysql">
-                                <div class="file-icon">
-                                    <i class="fa fa-folder"></i>
-                                </div>
-                                <div class="file-name">
-                                    sql
-                                    {% if recent_mysql_posts > 0 %}
-                                        <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
-                                    {% endif %}
-                                </div>
-                                <div class="file-meta">{{site.categories.Mysql.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Mysql.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if post_date == today %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
-                                        {% endif %}
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="folder-contents" id="mysql-contents">
-{% assign sorted_mysql_posts = site.categories.Mysql | sort: 'date' | reverse %}
-{% for post in sorted_mysql_posts %}
-                                <div class="file-item file-item">
-                                    <div class="file-icon">
-                                        <i class="fa fa-file-text"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <a href="{{ post.url }}">{{ post.title }}</a>
-                                    </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
-                                        {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
                             
                             <!-- Python 폴더 -->
                             <div class="file-item folder-item" data-folder="python">
