@@ -63,6 +63,22 @@ layout: default
 {% assign recent_til_posts = 0 %}
 {% assign recent_mathematical_trading_posts = 0 %}
 
+<!-- 오늘 글 수 계산 (N 뱃지용) -->
+{% assign today_js_posts = 0 %}
+{% assign today_algorithm_posts = 0 %}
+{% assign today_bigdata_posts = 0 %}
+{% assign today_code_quality_posts = 0 %}
+{% assign today_computerstructure_posts = 0 %}
+{% assign today_discretemathematics_posts = 0 %}
+{% assign today_internet_posts = 0 %}
+{% assign today_java_posts = 0 %}
+{% assign today_database_posts = 0 %}
+{% assign today_devops_posts = 0 %}
+{% assign today_python_posts = 0 %}
+{% assign today_spring_posts = 0 %}
+{% assign today_til_posts = 0 %}
+{% assign today_mathematical_trading_posts = 0 %}
+
 {% assign today = 'now' | date: '%Y-%m-%d' %}
 {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
 {% assign two_days_ago = 'now' | date: '%s' | minus: 172800 | date: '%Y-%m-%d' %}
@@ -131,6 +147,52 @@ layout: default
             {% assign recent_mathematical_trading_posts = recent_mathematical_trading_posts | plus: 1 %}
         {% endif %}
     {% endif %}
+    
+    <!-- 오늘 글만 카운트 (N 뱃지용) -->
+    {% if post_date == today %}
+        {% if post.categories contains 'Js' %}
+            {% assign today_js_posts = today_js_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Algorithm' %}
+            {% assign today_algorithm_posts = today_algorithm_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Bigdata' %}
+            {% assign today_bigdata_posts = today_bigdata_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Code-Quality' %}
+            {% assign today_code_quality_posts = today_code_quality_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'ComputerStructure' %}
+            {% assign today_computerstructure_posts = today_computerstructure_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'DiscreteMathematics' %}
+            {% assign today_discretemathematics_posts = today_discretemathematics_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Internet' %}
+            {% assign today_internet_posts = today_internet_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Java' %}
+            {% assign today_java_posts = today_java_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Database' %}
+            {% assign today_database_posts = today_database_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'DevOps' %}
+            {% assign today_devops_posts = today_devops_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Python' %}
+            {% assign today_python_posts = today_python_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Spring' %}
+            {% assign today_spring_posts = today_spring_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Til' %}
+            {% assign today_til_posts = today_til_posts | plus: 1 %}
+        {% endif %}
+        {% if post.categories contains 'Mathematical-Trading' %}
+            {% assign today_mathematical_trading_posts = today_mathematical_trading_posts | plus: 1 %}
+        {% endif %}
+    {% endif %}
 {% endfor %}
 
 
@@ -184,7 +246,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     알고리즘
-                                    {% if recent_algorithm_posts > 0 %}
+                                    {% if today_algorithm_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -193,7 +255,7 @@ layout: default
                                     {% assign latest_date = site.categories.Algorithm.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_algorithm_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -268,7 +330,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     빅데이터
-                                    {% if recent_bigdata_posts > 0 %}
+                                    {% if today_bigdata_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -277,7 +339,7 @@ layout: default
                                     {% assign latest_date = site.categories.Bigdata.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_bigdata_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -352,7 +414,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     Code Quality
-                                    {% if recent_code_quality_posts > 0 %}
+                                    {% if today_code_quality_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -361,7 +423,7 @@ layout: default
                                     {% assign latest_date = site.categories['Code-Quality'].first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_code_quality_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -436,7 +498,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     컴퓨터구조
-                                    {% if recent_computerstructure_posts > 0 %}
+                                    {% if today_computerstructure_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -445,7 +507,7 @@ layout: default
                                     {% assign latest_date = site.categories.ComputerStructure.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_computerstructure_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -520,7 +582,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     이산수학
-                                    {% if recent_discretemathematics_posts > 0 %}
+                                    {% if today_discretemathematics_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -529,7 +591,7 @@ layout: default
                                     {% assign latest_date = site.categories.DiscreteMathematics.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_discretemathematics_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -614,7 +676,7 @@ layout: default
                                     {% assign latest_date = site.categories.HtmlCss.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if recent_html_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -690,7 +752,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     인터넷
-                                    {% if recent_internet_posts > 0 %}
+                                    {% if today_internet_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -699,7 +761,7 @@ layout: default
                                     {% assign latest_date = site.categories.Internet.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_internet_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -774,7 +836,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     java
-                                    {% if recent_java_posts > 0 %}
+                                    {% if today_java_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -783,7 +845,7 @@ layout: default
                                     {% assign latest_date = site.categories.Java.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_java_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -858,7 +920,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     database
-                                    {% if recent_database_posts > 0 %}
+                                    {% if today_database_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -867,7 +929,7 @@ layout: default
                                     {% assign latest_date = site.categories.Database.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_database_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -942,7 +1004,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     js
-                                    {% if recent_js_posts > 0 %}
+                                    {% if today_js_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -951,7 +1013,7 @@ layout: default
                                     {% assign latest_date = site.categories.Js.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_js_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -1026,7 +1088,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     DevOps
-                                    {% if recent_devops_posts > 0 %}
+                                    {% if today_devops_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -1035,7 +1097,7 @@ layout: default
                                     {% assign latest_date = site.categories.DevOps.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_devops_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -1111,7 +1173,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     python
-                                    {% if recent_python_posts > 0 %}
+                                    {% if today_python_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -1120,7 +1182,7 @@ layout: default
                                     {% assign latest_date = site.categories.Python.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_python_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -1206,7 +1268,7 @@ layout: default
                                     {% assign latest_date = site.categories.Servlet.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if recent_servlet_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -1282,7 +1344,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     spring
-                                    {% if recent_spring_posts > 0 %}
+                                    {% if today_spring_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -1291,7 +1353,7 @@ layout: default
                                     {% assign latest_date = site.categories.Spring.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_spring_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -1366,7 +1428,7 @@ layout: default
                                 </div>
                                 <div class="file-name">
                                     TIL
-                                    {% if recent_til_posts > 0 %}
+                                    {% if today_til_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                                 </div>
@@ -1375,7 +1437,7 @@ layout: default
                                     {% assign latest_date = site.categories.Til.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_til_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
@@ -1450,7 +1512,7 @@ layout: default
                         </div>
                                 <div class="file-name">
                                     수학적 트레이딩
-                                    {% if recent_mathematical_trading_posts > 0 %}
+                                    {% if today_mathematical_trading_posts > 0 %}
                                         <span class="new-badge" style="animation: newBadgeAnimation 1s infinite ease-in-out, blink 0.3s infinite !important;">N</span>
                                     {% endif %}
                     </div>
@@ -1459,7 +1521,7 @@ layout: default
                                     {% assign latest_date = site.categories.Mathematical-Trading.first.date %}
                                     {% assign post_date = latest_date | date: '%Y-%m-%d' %}
                                     
-                                    {% if post_date == today %}
+                                    {% if today_mathematical_trading_posts > 0 %}
                                         오늘
                                     {% elsif post_date == yesterday %}
                                         어제
