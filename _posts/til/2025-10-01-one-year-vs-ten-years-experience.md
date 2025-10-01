@@ -1,9 +1,9 @@
 ---
-layout: single
 title: "1년차와 10년차의 차이는 9년이 아니다"
 date: 2025-10-01
-categories: TIL
+categories: Til
 tags: [개발자성장, 경력관리, 자기계발, 커리어, 현실조언]
+author: pitbull terrier
 ---
 
 # 1년차와 10년차의 차이는 9년이 아니다
