@@ -1,9 +1,9 @@
 ---
-title: "자료구조 실전 활용법"
-date: 2025-01-15
-categories: Algorithm
-tags: [data-structure, algorithm, practical, java, javascript, 실무활용]
-author: pitbull terrier
+title: "자료구조 활용법"
+date: 2025-10-02
+tags: data-structure, algorithm, practical, java, javascript
+categories: 
+    - Algorithm
 ---
 
 # 자료구조 실전 활용법
