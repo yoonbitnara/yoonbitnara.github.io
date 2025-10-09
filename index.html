@@ -79,10 +79,12 @@ layout: default
 {% assign today_til_posts = 0 %}
 {% assign today_mathematical_trading_posts = 0 %}
 
+{% assign now_kst = 'now' | date: '%Y-%m-%d %H:%M:%S %z' %}
 {% assign today = 'now' | date: '%Y-%m-%d' %}
 {% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
 {% assign two_days_ago = 'now' | date: '%s' | minus: 172800 | date: '%Y-%m-%d' %}
 {% assign one_week_ago = 'now' | date: '%s' | minus: 604800 | date: '%Y-%m-%d' %}
+{% assign two_weeks_ago = 'now' | date: '%s' | minus: 1209600 | date: '%Y-%m-%d' %}
 {% assign one_month_ago = 'now' | date: '%s' | minus: 2592000 | date: '%Y-%m-%d' %}
 {% assign three_months_ago = 'now' | date: '%s' | minus: 7776000 | date: '%Y-%m-%d' %}
 {% assign six_months_ago = 'now' | date: '%s' | minus: 15552000 | date: '%Y-%m-%d' %}
@@ -265,17 +267,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -298,25 +319,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -349,17 +388,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -382,25 +440,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -433,17 +509,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -466,25 +561,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -517,17 +630,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -550,25 +682,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -601,17 +751,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -634,25 +803,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -686,17 +873,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -719,25 +925,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -771,17 +995,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -804,25 +1047,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -855,17 +1116,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -888,25 +1168,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -939,17 +1237,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -972,25 +1289,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -1023,17 +1358,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -1056,25 +1410,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -1107,17 +1479,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -1140,25 +1531,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -1192,17 +1601,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -1225,25 +1653,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -1278,17 +1724,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -1311,25 +1776,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -1363,17 +1846,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -1396,25 +1898,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -1447,17 +1967,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -1480,25 +2019,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -1531,17 +2088,36 @@ layout: default
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
                                         
-                                        {% if diff_days < 7 %}
-                                        {{diff_days}}일 전
-                                    {% elsif diff_days < 30 %}
-                                        {% assign weeks = diff_days | divided_by: 7 %}
-                                        {{weeks}}주 전
-                                    {% elsif diff_days < 365 %}
-                                        {% assign months = diff_days | divided_by: 30 %}
-                                        {{months}}개월 전
-                                    {% else %}
-                                        {% assign years = diff_days | divided_by: 365 %}
-                                        {{years}}년 전
+                                        {% if diff_days == 2 %}
+                                            2일 전
+                                        {% elsif diff_days == 3 %}
+                                            3일 전
+                                        {% elsif diff_days == 4 %}
+                                            4일 전
+                                        {% elsif diff_days == 5 %}
+                                            5일 전
+                                        {% elsif diff_days == 6 %}
+                                            6일 전
+                                        {% elsif diff_days >= 7 and diff_days < 14 %}
+                                            1주 전
+                                        {% elsif diff_days >= 14 and diff_days < 21 %}
+                                            2주 전
+                                        {% elsif diff_days >= 21 and diff_days < 28 %}
+                                            3주 전
+                                        {% elsif diff_days >= 28 and diff_days < 30 %}
+                                            4주 전
+                                        {% elsif diff_days >= 30 and diff_days < 60 %}
+                                            1개월 전
+                                        {% elsif diff_days >= 60 and diff_days < 90 %}
+                                            2개월 전
+                                        {% elsif diff_days >= 90 and diff_days < 365 %}
+                                            {% assign months = diff_days | divided_by: 30 %}
+                                            {{months}}개월 전
+                                        {% elsif diff_days >= 365 %}
+                                            {% assign years = diff_days | divided_by: 365 %}
+                                            {{years}}년 전
+                                        {% else %}
+                                            {{diff_days}}일 전
                                         {% endif %}
                                     {% endif %}
                 </div>
@@ -1564,25 +2140,43 @@ layout: default
                                             오늘
                                         {% elsif post_date == yesterday %}
                                             어제
-                                        {% elsif post_date >= two_days_ago %}
-                                            이번주
-                                        {% elsif post_date >= one_week_ago %}
-                                            지난주
-                                        {% elsif post_date >= one_month_ago %}
-                                            이번달
-                                        {% elsif post_date >= three_months_ago %}
-                                            몇달전
-                                        {% elsif post_date >= six_months_ago %}
-                                            반년전
-                                        {% elsif post_date >= one_year_ago and post_date < two_years_ago %}
-                                            1년전
-                                        {% elsif post_date >= two_years_ago and post_date < three_years_ago %}
-                                            2년전
-                                        {% elsif post_date >= three_years_ago %}
-                                            {% assign years_ago = current_year | minus: post_year %}
-                                            {{ years_ago }}년전
                                         {% else %}
-                                            {{ post.date | date: "%Y-%m-%d" }}
+                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign post_seconds = post.date | date: '%s' %}
+                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
+                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
+                                            
+                                            {% if diff_days == 2 %}
+                                                2일 전
+                                            {% elsif diff_days == 3 %}
+                                                3일 전
+                                            {% elsif diff_days == 4 %}
+                                                4일 전
+                                            {% elsif diff_days == 5 %}
+                                                5일 전
+                                            {% elsif diff_days == 6 %}
+                                                6일 전
+                                            {% elsif diff_days >= 7 and diff_days < 14 %}
+                                                1주 전
+                                            {% elsif diff_days >= 14 and diff_days < 21 %}
+                                                2주 전
+                                            {% elsif diff_days >= 21 and diff_days < 28 %}
+                                                3주 전
+                                            {% elsif diff_days >= 28 and diff_days < 30 %}
+                                                4주 전
+                                            {% elsif diff_days >= 30 and diff_days < 60 %}
+                                                1개월 전
+                                            {% elsif diff_days >= 60 and diff_days < 90 %}
+                                                2개월 전
+                                            {% elsif diff_days >= 90 and diff_days < 365 %}
+                                                {% assign months = diff_days | divided_by: 30 %}
+                                                {{months}}개월 전
+                                            {% elsif diff_days >= 365 %}
+                                                {% assign years = diff_days | divided_by: 365 %}
+                                                {{years}}년 전
+                                            {% else %}
+                                                {{ post.date | date: "%Y-%m-%d" }}
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
