@@ -79,20 +79,22 @@ layout: default
 {% assign today_til_posts = 0 %}
 {% assign today_mathematical_trading_posts = 0 %}
 
-{% assign now_kst = 'now' | date: '%Y-%m-%d %H:%M:%S %z' %}
-{% assign today = 'now' | date: '%Y-%m-%d' %}
-{% assign yesterday = 'now' | date: '%s' | minus: 86400 | date: '%Y-%m-%d' %}
-{% assign two_days_ago = 'now' | date: '%s' | minus: 172800 | date: '%Y-%m-%d' %}
-{% assign one_week_ago = 'now' | date: '%s' | minus: 604800 | date: '%Y-%m-%d' %}
-{% assign two_weeks_ago = 'now' | date: '%s' | minus: 1209600 | date: '%Y-%m-%d' %}
-{% assign one_month_ago = 'now' | date: '%s' | minus: 2592000 | date: '%Y-%m-%d' %}
-{% assign three_months_ago = 'now' | date: '%s' | minus: 7776000 | date: '%Y-%m-%d' %}
-{% assign six_months_ago = 'now' | date: '%s' | minus: 15552000 | date: '%Y-%m-%d' %}
-{% assign one_year_ago = 'now' | date: '%s' | minus: 31536000 | date: '%Y-%m-%d' %}
-{% assign two_years_ago = 'now' | date: '%s' | minus: 63072000 | date: '%Y-%m-%d' %}
-{% assign three_years_ago = 'now' | date: '%s' | minus: 94608000 | date: '%Y-%m-%d' %}
-{% assign current_year = 'now' | date: '%Y' %}
-{% assign current_month = 'now' | date: '%m' %}
+{% comment %} KST 시간대 고려한 날짜 계산 (UTC+9) {% endcomment %}
+{% assign kst_offset = 32400 %}
+{% assign now_kst_seconds = 'now' | date: '%s' | plus: kst_offset %}
+{% assign today = now_kst_seconds | date: '%Y-%m-%d' %}
+{% assign yesterday = now_kst_seconds | minus: 86400 | date: '%Y-%m-%d' %}
+{% assign two_days_ago = now_kst_seconds | minus: 172800 | date: '%Y-%m-%d' %}
+{% assign one_week_ago = now_kst_seconds | minus: 604800 | date: '%Y-%m-%d' %}
+{% assign two_weeks_ago = now_kst_seconds | minus: 1209600 | date: '%Y-%m-%d' %}
+{% assign one_month_ago = now_kst_seconds | minus: 2592000 | date: '%Y-%m-%d' %}
+{% assign three_months_ago = now_kst_seconds | minus: 7776000 | date: '%Y-%m-%d' %}
+{% assign six_months_ago = now_kst_seconds | minus: 15552000 | date: '%Y-%m-%d' %}
+{% assign one_year_ago = now_kst_seconds | minus: 31536000 | date: '%Y-%m-%d' %}
+{% assign two_years_ago = now_kst_seconds | minus: 63072000 | date: '%Y-%m-%d' %}
+{% assign three_years_ago = now_kst_seconds | minus: 94608000 | date: '%Y-%m-%d' %}
+{% assign current_year = now_kst_seconds | date: '%Y' %}
+{% assign current_month = now_kst_seconds | date: '%m' %}
 
 {% for post in site.posts %}
     {% assign post_date = post.date | date: '%Y-%m-%d' %}
@@ -262,7 +264,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -320,7 +322,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -383,7 +385,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -441,7 +443,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -504,7 +506,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -562,7 +564,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -625,7 +627,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -683,7 +685,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -746,7 +748,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -804,7 +806,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -868,7 +870,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -926,7 +928,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -990,7 +992,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1048,7 +1050,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1111,7 +1113,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1169,7 +1171,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1232,7 +1234,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1290,7 +1292,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1353,7 +1355,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1411,7 +1413,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1474,7 +1476,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1532,7 +1534,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1596,7 +1598,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1654,7 +1656,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1719,7 +1721,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1777,7 +1779,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1841,7 +1843,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1899,7 +1901,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -1962,7 +1964,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -2020,7 +2022,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -2083,7 +2085,7 @@ layout: default
                                     {% elsif post_date == yesterday %}
                                         어제
                                     {% else %}
-                                        {% assign now_seconds = 'now' | date: '%s' %}
+                                        {% assign now_seconds = now_kst_seconds %}
                                         {% assign post_seconds = latest_date | date: '%s' %}
                                         {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                         {% assign diff_days = diff_seconds | divided_by: 86400 %}
@@ -2141,7 +2143,7 @@ layout: default
                                         {% elsif post_date == yesterday %}
                                             어제
                                         {% else %}
-                                            {% assign now_seconds = 'now' | date: '%s' %}
+                                            {% assign now_seconds = now_kst_seconds %}
                                             {% assign post_seconds = post.date | date: '%s' %}
                                             {% assign diff_seconds = now_seconds | minus: post_seconds %}
                                             {% assign diff_days = diff_seconds | divided_by: 86400 %}
