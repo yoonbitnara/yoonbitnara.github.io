@@ -176,19 +176,19 @@ if (user.getAge() < 19) {
 
 ### 계층을 제대로 나누기
 
-**Controller의 역할:**
+**Controller의 역할**
 - HTTP 요청과 응답만 처리
 - 요청 데이터를 DTO로 변환
 - Service 호출
 - 응답 데이터를 HTTP로 변환
 
-**Service의 역할:**
+**Service의 역할**
 - 비즈니스 로직 처리
 - 트랜잭션 관리
 - 도메인 객체 조합
 - Repository 조율
 
-**Repository의 역할:**
+**Repository의 역할**
 - 데이터 접근만 담당
 - CRUD 연산
 - 쿼리 최적화
