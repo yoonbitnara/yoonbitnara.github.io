@@ -255,52 +255,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Algorithm.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Algorithm.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_algorithm_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Algorithm.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="algorithm-contents">
@@ -313,52 +269,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -376,52 +288,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Bigdata.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Bigdata.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_bigdata_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Bigdata.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="bigdata-contents">
@@ -434,52 +302,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -497,52 +321,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories['Code-Quality'].size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories['Code-Quality'].first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_code_quality_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories['Code-Quality'].first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="code-quality-contents">
@@ -555,52 +335,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -618,52 +354,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.ComputerStructure.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.ComputerStructure.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_computerstructure_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.ComputerStructure.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="computerstructure-contents">
@@ -676,52 +368,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -739,52 +387,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.DiscreteMathematics.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.DiscreteMathematics.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_discretemathematics_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.DiscreteMathematics.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="discretemathematics-contents">
@@ -797,52 +401,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -861,52 +421,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.HtmlCss.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.HtmlCss.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if recent_html_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.HtmlCss.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="html-contents">
@@ -919,52 +435,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -983,52 +455,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Internet.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Internet.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_internet_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Internet.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="internet-contents">
@@ -1041,52 +469,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -1104,52 +488,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Java.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Java.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_java_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Java.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="java-contents">
@@ -1162,52 +502,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -1225,52 +521,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Database.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Database.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_database_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Database.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="database-contents">
@@ -1283,52 +535,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -1346,52 +554,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Js.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Js.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_js_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Js.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="js-contents">
@@ -1404,52 +568,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -1467,52 +587,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.DevOps.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.DevOps.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_devops_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.DevOps.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="devops-contents">
@@ -1525,52 +601,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -1589,52 +621,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Python.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Python.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_python_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Python.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="python-contents">
@@ -1647,52 +635,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -1712,52 +656,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Servlet.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Servlet.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if recent_servlet_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Servlet.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="servlet-contents">
@@ -1770,52 +670,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -1834,52 +690,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Spring.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Spring.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_spring_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Spring.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="spring-contents">
@@ -1892,52 +704,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -1955,52 +723,8 @@ layout: default
                                     {% endif %}
                                 </div>
                                 <div class="file-meta">{{site.categories.Til.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Til.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_til_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Til.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                                 </div>
                             </div>
                             <div class="folder-contents" id="til-contents">
@@ -2013,52 +737,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -2076,52 +756,8 @@ layout: default
                                     {% endif %}
                     </div>
                                 <div class="file-meta">{{site.categories.Mathematical-Trading.size}} 게시물</div>
-                                <div class="file-date">
-                                    {% assign latest_date = site.categories.Mathematical-Trading.first.date %}
-                                    {% assign post_date = latest_date | date: '%Y-%m-%d' %}
-                                    
-                                    {% if today_mathematical_trading_posts > 0 %}
-                                        오늘
-                                    {% elsif post_date == yesterday %}
-                                        어제
-                                    {% else %}
-                                        {% assign now_seconds = now_kst_seconds %}
-                                        {% assign post_seconds = latest_date | date: '%s' %}
-                                        {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                        {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                        
-                                        {% if diff_days == 2 %}
-                                            2일 전
-                                        {% elsif diff_days == 3 %}
-                                            3일 전
-                                        {% elsif diff_days == 4 %}
-                                            4일 전
-                                        {% elsif diff_days == 5 %}
-                                            5일 전
-                                        {% elsif diff_days == 6 %}
-                                            6일 전
-                                        {% elsif diff_days >= 7 and diff_days < 14 %}
-                                            1주 전
-                                        {% elsif diff_days >= 14 and diff_days < 21 %}
-                                            2주 전
-                                        {% elsif diff_days >= 21 and diff_days < 28 %}
-                                            3주 전
-                                        {% elsif diff_days >= 28 and diff_days < 30 %}
-                                            4주 전
-                                        {% elsif diff_days >= 30 and diff_days < 60 %}
-                                            1개월 전
-                                        {% elsif diff_days >= 60 and diff_days < 90 %}
-                                            2개월 전
-                                        {% elsif diff_days >= 90 and diff_days < 365 %}
-                                            {% assign months = diff_days | divided_by: 30 %}
-                                            {{months}}개월 전
-                                        {% elsif diff_days >= 365 %}
-                                            {% assign years = diff_days | divided_by: 365 %}
-                                            {{years}}년 전
-                                        {% else %}
-                                            {{diff_days}}일 전
-                                        {% endif %}
-                                    {% endif %}
+                                <div class="file-date" data-post-date="{{ site.categories.Mathematical-Trading.first.date | date: '%Y-%m-%d' }}">
+                                    로딩중...
                 </div>
             </div>
                             <div class="folder-contents" id="mathematical-trading-contents">
@@ -2134,52 +770,8 @@ layout: default
                                     <div class="file-name">
                                         <a href="{{ post.url }}">{{ post.title }}</a>
                                     </div>
-                                    <div class="file-meta">
-                                        {% assign post_date = post.date | date: '%Y-%m-%d' %}
-                                        {% assign post_year = post.date | date: '%Y' %}
-                                        {% assign post_month = post.date | date: '%m' %}
-                                        {% if post_date == today %}
-                                            오늘
-                                        {% elsif post_date == yesterday %}
-                                            어제
-                                        {% else %}
-                                            {% assign now_seconds = now_kst_seconds %}
-                                            {% assign post_seconds = post.date | date: '%s' %}
-                                            {% assign diff_seconds = now_seconds | minus: post_seconds %}
-                                            {% assign diff_days = diff_seconds | divided_by: 86400 %}
-                                            
-                                            {% if diff_days == 2 %}
-                                                2일 전
-                                            {% elsif diff_days == 3 %}
-                                                3일 전
-                                            {% elsif diff_days == 4 %}
-                                                4일 전
-                                            {% elsif diff_days == 5 %}
-                                                5일 전
-                                            {% elsif diff_days == 6 %}
-                                                6일 전
-                                            {% elsif diff_days >= 7 and diff_days < 14 %}
-                                                1주 전
-                                            {% elsif diff_days >= 14 and diff_days < 21 %}
-                                                2주 전
-                                            {% elsif diff_days >= 21 and diff_days < 28 %}
-                                                3주 전
-                                            {% elsif diff_days >= 28 and diff_days < 30 %}
-                                                4주 전
-                                            {% elsif diff_days >= 30 and diff_days < 60 %}
-                                                1개월 전
-                                            {% elsif diff_days >= 60 and diff_days < 90 %}
-                                                2개월 전
-                                            {% elsif diff_days >= 90 and diff_days < 365 %}
-                                                {% assign months = diff_days | divided_by: 30 %}
-                                                {{months}}개월 전
-                                            {% elsif diff_days >= 365 %}
-                                                {% assign years = diff_days | divided_by: 365 %}
-                                                {{years}}년 전
-                                            {% else %}
-                                                {{ post.date | date: "%Y-%m-%d" }}
-                                            {% endif %}
-                                        {% endif %}
+                                    <div class="file-meta" data-post-date="{{ post.date | date: '%Y-%m-%d' }}">
+                                        로딩중...
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -3227,5 +1819,72 @@ layout: default
 
             // 업데이트 알림 초기화
             initUpdateNotification();
+
+            // ========== 동적 날짜 계산 함수 ==========
+            function getKSTDate() {
+                // 현재 UTC 시간을 가져와서 KST(UTC+9)로 변환
+                const now = new Date();
+                const kstOffset = 9 * 60; // 9시간을 분으로
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const kstTime = new Date(utc + (kstOffset * 60000));
+                return kstTime;
+            }
+
+            function formatRelativeDate(postDateStr) {
+                // postDateStr 형식: "YYYY-MM-DD" 또는 ISO 형식
+                const postDate = new Date(postDateStr);
+                const now = getKSTDate();
+                
+                // 날짜를 KST 기준으로 정규화 (시간 제거)
+                const postDateOnly = new Date(postDate.getFullYear(), postDate.getMonth(), postDate.getDate());
+                const nowDateOnly = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                
+                const diffTime = nowDateOnly - postDateOnly;
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                
+                if (diffDays === 0) return '오늘';
+                if (diffDays === 1) return '어제';
+                if (diffDays === 2) return '2일 전';
+                if (diffDays === 3) return '3일 전';
+                if (diffDays === 4) return '4일 전';
+                if (diffDays === 5) return '5일 전';
+                if (diffDays === 6) return '6일 전';
+                if (diffDays >= 7 && diffDays < 14) return '1주 전';
+                if (diffDays >= 14 && diffDays < 21) return '2주 전';
+                if (diffDays >= 21 && diffDays < 28) return '3주 전';
+                if (diffDays >= 28 && diffDays < 30) return '4주 전';
+                if (diffDays >= 30 && diffDays < 60) return '1개월 전';
+                if (diffDays >= 60 && diffDays < 90) return '2개월 전';
+                if (diffDays >= 90 && diffDays < 365) {
+                    const months = Math.floor(diffDays / 30);
+                    return `${months}개월 전`;
+                }
+                if (diffDays >= 365) {
+                    const years = Math.floor(diffDays / 365);
+                    return `${years}년 전`;
+                }
+                return `${diffDays}일 전`;
+            }
+
+            function updateAllDates() {
+                // 모든 날짜 표시 요소 업데이트
+                document.querySelectorAll('[data-post-date]').forEach(element => {
+                    const postDate = element.getAttribute('data-post-date');
+                    if (postDate) {
+                        element.textContent = formatRelativeDate(postDate);
+                    }
+                });
+            }
+
+            // 페이지 로드 시 모든 날짜 업데이트
+            updateAllDates();
+            
+            // 자정에 날짜가 바뀌면 업데이트 (선택사항)
+            setInterval(() => {
+                const now = getKSTDate();
+                if (now.getHours() === 0 && now.getMinutes() === 0) {
+                    updateAllDates();
+                }
+            }, 60000); // 1분마다 체크
         });
         </script>
