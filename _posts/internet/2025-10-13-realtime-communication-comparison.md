@@ -1,8 +1,17 @@
 ---
 title: "WebSocket vs SSE vs Long Polling"
+excerpt: "실시간 웹 통신, 어떤 기술을 써야 할까? WebSocket, SSE, Long Polling의 동작 원리부터 실전 활용까지"
+
+categories:
+  - Internet
+tags:
+  - [WebSocket, SSE, Long Polling, 실시간통신, 웹소켓]
+
+toc: true
+toc_sticky: true
+
 date: 2025-10-13
-categories: Internet
-tags: [WebSocket, SSE, Long Polling, 실시간통신, 웹소켓]
+last_modified_at: 2025-10-13
 ---
 
 # 실시간 통신 기술 비교 - WebSocket vs SSE vs Long Polling
