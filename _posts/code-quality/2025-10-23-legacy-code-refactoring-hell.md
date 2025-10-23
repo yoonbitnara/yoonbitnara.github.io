@@ -3,7 +3,7 @@ title: "10년 된 300줄짜리 함수 뜯어보기"
 tags: refactoring legacy-code code-quality javascript clean-code
 date: "2025.10.23"
 categories:
-    - Code Quality
+    - Code-Quality
 ---
 
 ## 실제 운영 중인 코드다
